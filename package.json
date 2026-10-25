@@ -1,0 +1,23 @@
+{
+  "name": "interactive-periodic-table",
+  "version": "1.0.0",
+  "description": "Interactive Periodic Table of Elements with 3D/2D Bohr atomic structure visualization and verified scientific data for all 118 elements.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "start": "node scripts/dev-server.js",
+    "build": "node scripts/build.js",
+    "preview": "node scripts/dev-server.js --dir dist",
+    "validate": "node scripts/validate.js",
+    "test": "node scripts/validate.js"
+  },
+  "keywords": [
+    "periodic-table",
+    "chemistry",
+    "atomic-structure",
+    "bohr-model",
+    "elements",
+    "scientific-visualization"
+  ],
+  "license": "MIT"
+}

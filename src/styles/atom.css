@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Interactive 2D Bohr Atomic Structure Model Styles (Material 3 Expressive)
+   ========================================================================== */
+
+.atom-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.atom-panel-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.atom-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.atom-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-primary);
+}
+
+.atom-element-heading {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.atom-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.atom-ctrl-btn {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border-subtle);
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.atom-primary-pill {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  border-color: var(--accent-primary);
+}
+
+.atom-ctrl-btn:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+.atom-ctrl-btn:focus-visible {
+  outline: 2px solid var(--accent-focus);
+  outline-offset: 2px;
+}
+
+.atom-icon-btn {
+  width: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+/* 2D Canvas Stage */
+.atom-stage-wrapper {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-subtle);
+  background-color: var(--bg-surface-subtle);
+  overflow: hidden;
+  user-select: none;
+}
+
+.atom-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+  touch-action: none;
+}
+
+.atom-canvas:active {
+  cursor: grabbing;
+}
+
+.atom-interaction-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* Particle Count Bar */
+.atom-stats-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.particle-stat {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface-subtle);
+  font-size: 11.5px;
+}
+
+.particle-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dot-proton {
+  background-color: #fb7185;
+  border: 1.5px solid #881337;
+}
+
+.dot-neutron {
+  background-color: #94a3b8;
+  border: 1.5px solid #334155;
+}
+
+.dot-electron {
+  background-color: var(--accent-primary);
+  border: 1.5px solid var(--m3-primary-container);
+}
+
+.particle-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.particle-value {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Shell Occupancy Strip */
+.atom-shell-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.shell-pill {
+  flex: 1;
+  min-width: 50px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.shell-pill-key {
+  color: var(--text-secondary);
+}
+
+.shell-pill-key sub {
+  font-size: 8.5px;
+}
+
+.shell-pill-val {
+  color: var(--accent-primary);
+}
+
+/* Educational Model Disclaimer */
+.atom-disclaimer {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 14px;
+  background-color: var(--bg-surface-subtle);
+  border: 1px dashed var(--border-strong);
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.disclaimer-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  margin-right: 5px;
+  border-radius: 999px;
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}

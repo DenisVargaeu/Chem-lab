@@ -1,0 +1,304 @@
+/* ==========================================================================
+   Full-Width Periodic Table Grid & Material 3 Expressive Element Tiles
+   ========================================================================== */
+
+.ptable-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ptable-grid {
+  display: grid;
+  /* Col 1: Period header (32px); Cols 2..19: 18 full-width IUPAC groups */
+  grid-template-columns: 32px repeat(18, minmax(56px, 1fr));
+  /* Row 1: Group headers; Rows 2..8: Periods 1..7; Row 9: Spacer; Rows 10..11: Lanthanides & Actinides */
+  grid-template-rows: 30px repeat(7, minmax(70px, auto)) 14px repeat(2, minmax(70px, auto));
+  gap: 6px;
+  min-width: 1100px;
+}
+
+.ptable-corner-key {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 9.5px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--accent-primary);
+  line-height: 1.1;
+  user-select: none;
+}
+
+.ptable-header-btn {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: var(--bg-surface-subtle);
+  color: var(--text-secondary);
+  font-size: 11.5px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.16s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.ptable-header-btn:hover {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.ptable-header-btn.is-active {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  border-color: var(--accent-primary);
+  font-weight: 800;
+}
+
+/* Material 3 Expressive Element Tile */
+.element-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 4px 5px;
+  border-radius: 13px;
+  border-width: 1.5px;
+  border-style: solid;
+  cursor: pointer;
+  text-align: left;
+  min-height: 70px;
+  user-select: none;
+  transition:
+    transform 0.18s cubic-bezier(0.2, 0, 0, 1.2),
+    border-radius 0.18s cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 0.18s ease,
+    opacity 0.18s ease,
+    border-color 0.16s ease;
+}
+
+.tile-top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1;
+}
+
+.tile-number {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  opacity: 0.9;
+}
+
+.tile-radio-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.75;
+}
+
+.tile-symbol {
+  align-self: center;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 1px 0;
+}
+
+.tile-name {
+  width: 100%;
+  text-align: center;
+  font-size: 9.5px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.96;
+}
+
+.tile-latin {
+  width: 100%;
+  text-align: center;
+  font-size: 8px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.08;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0.76;
+}
+
+/* M3 Expressive Hover, Focus & Selection States */
+.element-tile:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-radius: 17px;
+  z-index: 5;
+  box-shadow: var(--shadow-md);
+}
+
+.element-tile:focus-visible {
+  outline: 2.5px solid var(--accent-focus);
+  outline-offset: 2px;
+  z-index: 6;
+}
+
+.element-tile.is-selected {
+  transform: translateY(-2px) scale(1.06);
+  border-radius: 18px;
+  z-index: 7;
+  box-shadow: 0 0 0 2.5px var(--m3-primary), var(--shadow-md);
+}
+
+.element-tile.is-dimmed,
+.ptable-series-ref.is-dimmed {
+  opacity: 0.16;
+  filter: saturate(0.2);
+}
+
+.element-tile.is-highlighted {
+  box-shadow: 0 0 0 2px var(--accent-primary);
+}
+
+/* Series Reference Cells (Group 3, Periods 6 & 7) & Series Row Labels */
+.ptable-series-ref {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 13px;
+  border-width: 1.5px;
+  border-style: dashed;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.ptable-series-ref:hover {
+  transform: scale(1.03);
+}
+
+.ref-range {
+  font-size: 9.5px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-weight: 700;
+}
+
+.ref-sym {
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.ref-name {
+  font-size: 9px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.ptable-series-row-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 14px;
+  border-width: 1.5px;
+  border-style: solid;
+  cursor: pointer;
+  text-align: right;
+  line-height: 1.25;
+  transition: transform 0.15s ease;
+}
+
+.ptable-series-row-label:hover {
+  transform: translateX(-2px);
+}
+
+.series-title {
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.series-sub {
+  font-size: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  opacity: 0.88;
+}
+
+/* ==========================================================================
+   Category Color Assignments
+   ========================================================================== */
+
+.cat-alkali-metal {
+  background-color: var(--cat-alkali-bg);
+  border-color: var(--cat-alkali-border);
+  color: var(--cat-alkali-text);
+}
+
+.cat-alkaline-earth-metal {
+  background-color: var(--cat-alkaline-bg);
+  border-color: var(--cat-alkaline-border);
+  color: var(--cat-alkaline-text);
+}
+
+.cat-transition-metal {
+  background-color: var(--cat-transition-bg);
+  border-color: var(--cat-transition-border);
+  color: var(--cat-transition-text);
+}
+
+.cat-post-transition-metal {
+  background-color: var(--cat-post-transition-bg);
+  border-color: var(--cat-post-transition-border);
+  color: var(--cat-post-transition-text);
+}
+
+.cat-metalloid {
+  background-color: var(--cat-metalloid-bg);
+  border-color: var(--cat-metalloid-border);
+  color: var(--cat-metalloid-text);
+}
+
+.cat-reactive-nonmetal {
+  background-color: var(--cat-nonmetal-bg);
+  border-color: var(--cat-nonmetal-border);
+  color: var(--cat-nonmetal-text);
+}
+
+.cat-halogen {
+  background-color: var(--cat-halogen-bg);
+  border-color: var(--cat-halogen-border);
+  color: var(--cat-halogen-text);
+}
+
+.cat-noble-gas {
+  background-color: var(--cat-noble-bg);
+  border-color: var(--cat-noble-border);
+  color: var(--cat-noble-text);
+}
+
+.cat-lanthanide {
+  background-color: var(--cat-lanthanide-bg);
+  border-color: var(--cat-lanthanide-border);
+  color: var(--cat-lanthanide-text);
+}
+
+.cat-actinide {
+  background-color: var(--cat-actinide-bg);
+  border-color: var(--cat-actinide-border);
+  color: var(--cat-actinide-text);
+}
