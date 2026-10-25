@@ -43,12 +43,14 @@ export class AtomModel {
     this.nucleons = [];
     this.shellsData = [];
 
+    if (!this.container) return;
     this.initDOM();
     this.bindEvents();
     this.startAnimationLoop();
   }
 
   initDOM() {
+    if (!this.container) return;
     this.container.innerHTML = `
       <div class="atom-panel-header">
         <div class="atom-title-block">
@@ -211,6 +213,7 @@ export class AtomModel {
    * @param {number} [isotopeMassNumber]
    */
   setElement(element, isotopeMassNumber) {
+    if (!this.container || !element) return;
     this.element = element;
     this.massNumber = isotopeMassNumber || element.defaultIsotope;
 

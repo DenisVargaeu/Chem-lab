@@ -39,13 +39,27 @@ Moderná, vedecky presná interaktívna periodická tabuľka všetkých 118 chem
 
 ---
 
+## Viacstránková architektúra (Multi-Page)
+
+Aplikácia je rozdelená na 4 samostatné stránky prepojené hornou navigáciou:
+1. **`index.html` — Periodická tabuľka**: Interaktívna 18-stĺpcová periodická tabuľka všetkých 118 prvkov s kompaktným prehľadom vybraného prvku a priamymi prechodmi na detail, editor a katalóg.
+2. **`prvok.html` — 2D Model a Detail prvku**: Samostatná stránka s animovaným 2D Bohrovým modelom vybraného prvku, výberom izotopov, obsadením vrstiev a kompletnými fyzikálnymi a termodynamickými vlastnosťami.
+3. **`editor.html` — Editor atómu**: Samostatná stránka s interaktívnym 2D editorom elektrónových vrstiev (`K` až `Q`), kde používateľ stavia atómy a ióny priamym klikaním na vrstvy a elektróny.
+4. **`prvky.html` — Katalóg a porovnanie prvkov**: Samostatná stránka na porovnávanie 3 prvkov vedľa seba a prehľadnú zoraditeľnú tabuľku všetkých 118 prvkov so slovenskými a latinskými názvami.
+
 ## Štruktúra projektu
 
 ```text
 /
-├── index.html                  # Hlavná HTML štruktúra aplikácie (v slovenčine)
+├── index.html                  # Stránka 1: Interaktívna periodická tabuľka prvkov
+├── prvok.html                  # Stránka 2: 2D Bohrov model atómu a podrobný detail prvku
+├── editor.html                 # Stránka 3: Interaktívny editor atómu a elektrónových vrstiev
+├── prvky.html                  # Stránka 4: Katalóg všetkých 118 prvkov a porovnávanie
 ├── src/
-│   ├── main.js                 # Riadenie aplikácie, stav, filtre, téma a skratky
+│   ├── main.js                 # Vstupný skript pre index.html
+│   ├── detail-page.js          # Vstupný skript pre prvok.html
+│   ├── editor-page.js          # Vstupný skript pre editor.html
+│   ├── catalog-page.js         # Vstupný skript pre prvky.html
 │   ├── data/
 │   │   └── elements.js         # Overená databáza všetkých 118 prvkov (SK + latinské názvy)
 │   ├── components/
@@ -54,10 +68,11 @@ Moderná, vedecky presná interaktívna periodická tabuľka všetkých 118 chem
 │   │   ├── atom-model.js       # Animovaný 2D Bohrov model vybraného prvku
 │   │   └── atom-editor.js      # Interaktívny editor atómu s priamym klikaním na vrstvy
 │   └── styles/
-│       ├── main.css            # Material 3 Expressive Green téma (tmavá/svetlá) a rozloženie
+│       ├── main.css            # Material 3 Expressive Green téma (tmavá/svetlá) a navigácia
 │       ├── table.css           # Štýly periodickej tabuľky a buniek prvkov
 │       ├── atom.css            # Štýly 2D modelu atómu
-│       └── editor.css          # Štýly interaktívneho editora atómu
+│       ├── editor.css          # Štýly interaktívneho editora atómu
+│       └── catalog.css         # Štýly katalógu a porovnávania prvkov
 ├── assets/
 │   └── favicon.svg             # Ikona aplikácie
 ├── scripts/

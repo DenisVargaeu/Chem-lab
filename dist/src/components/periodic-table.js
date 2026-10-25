@@ -67,6 +67,7 @@ export class PeriodicTable {
   }
 
   render() {
+    if (!this.container) return;
     this.container.innerHTML = '';
     this.tileMap.clear();
     this.coordMap.clear();

@@ -68,6 +68,7 @@ export class ElementDetails {
    * @param {number} [massNumber]
    */
   render(element, massNumber) {
+    if (!this.container || !element) return;
     this.currentElement = element;
     this.selectedMassNumber = massNumber || element.defaultIsotope;
 
@@ -156,8 +157,8 @@ export class ElementDetails {
         </div>
 
         <div class="details-nav-btns">
-          <button type="button" class="nav-el-btn" id="detail-open-editor-btn" title="Načítať prvok ${element.name} do interaktívneho editora atómu nižšie">
-            ⚛ Upraviť v editore ↓
+          <button type="button" class="nav-el-btn" id="detail-open-editor-btn" title="Otvoriť prvok ${element.name} na stránke interaktívneho editora atómu">
+            ⚛ Upraviť v editore →
           </button>
           <button type="button" class="nav-el-btn" id="detail-prev-btn" title="Predchádzajúci prvok: ${prevEl.atomicNumber} ${prevEl.name} (${prevEl.latinName}, ${prevEl.symbol})">
             ← ${prevEl.symbol}

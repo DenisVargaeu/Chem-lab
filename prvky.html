@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="sk" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Katalóg a porovnanie všetkých 118 chemických prvkov — slovenské a latinské názvy, zoradenie podľa vlastností a porovnanie prvkov vedľa seba."
+  />
+  <title>Katalóg a porovnanie prvkov — Slovenské a latinské názvy · ChemLab</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/catalog.css?v=4" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Application Bar with Multi-Page Navigation -->
+    <header class="app-header">
+      <div class="brand-and-nav">
+        <a href="./index.html" class="brand-area" title="Domov — Periodická tabuľka prvkov">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-z">118</span>
+            <span class="brand-sym">Pt</span>
+          </div>
+          <div class="brand-titles">
+            <h1 class="app-title">ChemLab · Periodická sústava</h1>
+            <p class="app-subtitle">Katalóg všetkých 118 prvkov a porovnanie vlastností</p>
+          </div>
+        </a>
+
+        <!-- Multi-Page Navigation Bar -->
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+          <a href="./index.html" class="nav-tab" id="nav-link-table">
+            <span aria-hidden="true">📊</span>
+            <span>Periodická tabuľka</span>
+          </a>
+          <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
+            <span aria-hidden="true">🔬</span>
+            <span>2D Model a Detail</span>
+          </a>
+          <a href="./editor.html" class="nav-tab" id="nav-link-editor">
+            <span aria-hidden="true">⚛</span>
+            <span>Editor atómu</span>
+          </a>
+          <a href="./prvky.html" class="nav-tab is-active" id="nav-link-catalog" aria-current="page">
+            <span aria-hidden="true">📋</span>
+            <span>Katalóg a porovnanie</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="controls-bar" role="search" aria-label="Vyhľadávanie a zoradenie v katalógu">
+        <div class="search-input-wrap">
+          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          <input
+            type="search"
+            id="catalog-search"
+            class="search-input"
+            placeholder="Hľadaj slovenský/latinský názov, značku alebo Z…"
+            autocomplete="off"
+            aria-label="Hľadať v katalógu prvkov"
+          />
+        </div>
+
+        <div class="filter-selects-group">
+          <select id="catalog-category" class="ctrl-select" aria-label="Filtrovať kategóriu"></select>
+          <select id="catalog-sort" class="ctrl-select" aria-label="Zoradiť prvky podľa">
+            <option value="z-asc">Zoradiť: Protónové číslo Z (1 → 118)</option>
+            <option value="z-desc">Zoradiť: Protónové číslo Z (118 → 1)</option>
+            <option value="name-asc">Zoradiť: Slovenský názov (A → Z)</option>
+            <option value="latin-asc">Zoradiť: Latinský názov (A → Z)</option>
+            <option value="mass-asc">Zoradiť: Atómová hmotnosť (od najľahšieho)</option>
+            <option value="eneg-desc">Zoradiť: Elektronegativita (od najvyššej)</option>
+            <option value="mp-desc">Zoradiť: Teplota topenia (od najvyššej)</option>
+          </select>
+        </div>
+
+        <div class="action-buttons-group">
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            class="ctrl-btn theme-btn"
+            title="Prepnúť tmavý a svetlý režim"
+            aria-label="Prepnúť farebný režim"
+          >
+            <span class="theme-icon" aria-hidden="true">☀</span>
+            <span class="btn-text">Svetlý</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <!-- 1. Side-by-Side Element Comparison Card -->
+      <section class="catalog-card compare-section" aria-label="Porovnanie prvkov vedľa seba">
+        <div class="catalog-card-header">
+          <div>
+            <span class="catalog-eyebrow">Interaktívne porovnanie</span>
+            <h2 class="catalog-title">Porovnanie prvkov vedľa seba</h2>
+          </div>
+          <div class="compare-selectors">
+            <label class="cmp-label">
+              <span>Prvok A:</span>
+              <select id="cmp-select-1" class="ctrl-select"></select>
+            </label>
+            <label class="cmp-label">
+              <span>Prvok B:</span>
+              <select id="cmp-select-2" class="ctrl-select"></select>
+            </label>
+            <label class="cmp-label">
+              <span>Prvok C:</span>
+              <select id="cmp-select-3" class="ctrl-select"></select>
+            </label>
+          </div>
+        </div>
+
+        <div id="compare-cards-grid" class="compare-cards-grid"></div>
+      </section>
+
+      <!-- 2. Complete Sortable Table of All 118 Elements -->
+      <section class="catalog-card" aria-label="Prehľadná tabuľka všetkých 118 prvkov">
+        <div class="catalog-card-header">
+          <div>
+            <span class="catalog-eyebrow">Kompletná databáza IUPAC</span>
+            <h2 class="catalog-title">Katalóg všetkých 118 chemických prvkov (Slovenské a latinské názvy)</h2>
+          </div>
+          <span id="catalog-count-badge" class="match-counter">118 / 118 prvkov</span>
+        </div>
+
+        <div class="catalog-table-wrap">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>Z</th>
+                <th>Značka</th>
+                <th>Slovenský názov</th>
+                <th>Latinský názov</th>
+                <th>Kategória</th>
+                <th>Aᵣ (u)</th>
+                <th>Konfigurácia</th>
+                <th>Vrstvy</th>
+                <th>Skupenstvo</th>
+                <th>Elektroneg.</th>
+                <th>Topenie (K)</th>
+                <th>Akcie</th>
+              </tr>
+            </thead>
+            <tbody id="catalog-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/catalog-page.js?v=4"></script>
+</body>
+</html>

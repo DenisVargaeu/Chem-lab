@@ -122,17 +122,26 @@ function validateProjectFiles() {
   console.log('2. Validating project file structure & asset references...');
   const requiredFiles = [
     'index.html',
+    'prvok.html',
+    'editor.html',
+    'prvky.html',
     'package.json',
     'README.md',
     'assets/favicon.svg',
     'src/main.js',
+    'src/detail-page.js',
+    'src/editor-page.js',
+    'src/catalog-page.js',
     'src/data/elements.js',
     'src/components/periodic-table.js',
     'src/components/element-details.js',
     'src/components/atom-model.js',
+    'src/components/atom-editor.js',
     'src/styles/main.css',
     'src/styles/table.css',
     'src/styles/atom.css',
+    'src/styles/editor.css',
+    'src/styles/catalog.css',
   ];
 
   for (const relPath of requiredFiles) {

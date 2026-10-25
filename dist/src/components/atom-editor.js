@@ -161,6 +161,7 @@ export class AtomEditor {
     this.renderedElectrons = []; // [{ shellIndex, electronIndex, x, y, r }]
     this.nucleons = [];
 
+    if (!this.container) return;
     this.initDOM();
     this.bindEvents();
     this.rebuildNucleusGeometry();
@@ -169,6 +170,7 @@ export class AtomEditor {
   }
 
   initDOM() {
+    if (!this.container) return;
     this.container.innerHTML = `
       <div class="editor-header">
         <div class="editor-title-group">
@@ -580,7 +582,7 @@ export class AtomEditor {
    * @param {number} [isotopeMassNumber]
    */
   loadFromElement(element, isotopeMassNumber) {
-    if (!element) return;
+    if (!this.container || !element) return;
     this.pushUndoState();
     this.protons = element.atomicNumber;
     const mass = isotopeMassNumber || element.defaultIsotope;

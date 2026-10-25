@@ -1,0 +1,291 @@
+/* ==========================================================================
+   Catalog & Side-by-Side Comparison Page Styles (prvky.html)
+   ========================================================================== */
+
+.catalog-card {
+  width: 100%;
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.catalog-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.catalog-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-primary);
+}
+
+.catalog-title {
+  margin: 2px 0 0;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.compare-selectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cmp-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.compare-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cmp-card {
+  background-color: var(--bg-surface-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cmp-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cmp-badge {
+  width: 58px;
+  height: 62px;
+  border-radius: 16px;
+  border-width: 2px;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cmp-z {
+  font-size: 10.5px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.cmp-sym {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cmp-headings {
+  display: flex;
+  flex-direction: column;
+}
+
+.cmp-slot-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.cmp-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.cmp-latin {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.cmp-dl {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cmp-dl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background-color: var(--bg-surface);
+  font-size: 12px;
+}
+
+.cmp-dl dt {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.cmp-dl dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+}
+
+.cmp-dl code {
+  color: var(--accent-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.cmp-card-links {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cmp-link-btn {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 7px 10px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border-subtle);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.cmp-link-tonal {
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+  border-color: var(--accent-primary);
+}
+
+.cmp-link-btn:hover {
+  border-color: var(--accent-primary);
+  transform: translateY(-1px);
+}
+
+/* Full 118 Elements Table */
+.catalog-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+}
+
+.catalog-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 980px;
+}
+
+.catalog-table th,
+.catalog-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.catalog-table th {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  position: sticky;
+  top: 0;
+}
+
+.catalog-table tbody tr:hover {
+  background-color: var(--bg-surface-subtle);
+}
+
+.td-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.td-mono code {
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.td-latin {
+  font-style: italic;
+  color: var(--accent-primary);
+  font-weight: 600;
+}
+
+.cat-mini-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 8px;
+  border-width: 1.5px;
+  border-style: solid;
+  font-weight: 800;
+  font-size: 12.5px;
+}
+
+.td-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.tbl-act-link,
+.tbl-act-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.14s ease, background-color 0.14s ease;
+}
+
+.tbl-act-link:hover,
+.tbl-act-btn:hover {
+  border-color: var(--accent-primary);
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+}
+
+@media (max-width: 1080px) {
+  .compare-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

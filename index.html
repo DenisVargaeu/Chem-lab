@@ -5,28 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Interaktívna periodická tabuľka všetkých 118 chemických prvkov so slovenskými a latinskými názvami, 2D Bohrovým modelom a interaktívnym editorom atómových vrstiev."
+    content="Interaktívna periodická tabuľka všetkých 118 chemických prvkov so slovenskými a latinskými názvami, 2D Bohrovým modelom a editorom atómu."
   />
-  <title>Periodická tabuľka prvkov — Slovenské a latinské názvy · 2D Editor atómu</title>
+  <title>Periodická tabuľka prvkov — Slovenské a latinské názvy · ChemLab</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./src/styles/main.css" />
-  <link rel="stylesheet" href="./src/styles/table.css" />
-  <link rel="stylesheet" href="./src/styles/atom.css" />
-  <link rel="stylesheet" href="./src/styles/editor.css" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=4" />
 </head>
 <body>
   <div class="app-shell">
-    <!-- Top Application Bar (Material 3 Expressive) -->
+    <!-- Top Application Bar with 4-Page Navigation (Material 3 Expressive) -->
     <header class="app-header">
-      <div class="brand-area">
-        <div class="brand-mark" aria-hidden="true">
-          <span class="brand-z">118</span>
-          <span class="brand-sym">Pt</span>
-        </div>
-        <div class="brand-titles">
-          <h1 class="app-title">Periodická tabuľka prvkov</h1>
-          <p class="app-subtitle">118 prvkov IUPAC · Slovenské a latinské názvy · 2D model a interaktívny editor atómu</p>
-        </div>
+      <div class="brand-and-nav">
+        <a href="./index.html" class="brand-area" title="Domov — Periodická tabuľka prvkov">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-z">118</span>
+            <span class="brand-sym">Pt</span>
+          </div>
+          <div class="brand-titles">
+            <h1 class="app-title">ChemLab · Periodická sústava</h1>
+            <p class="app-subtitle">118 prvkov IUPAC · Slovenské a latinské názvy</p>
+          </div>
+        </a>
+
+        <!-- Multi-Page Navigation Bar -->
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+          <a href="./index.html" class="nav-tab is-active" id="nav-link-table" aria-current="page">
+            <span aria-hidden="true">📊</span>
+            <span>Periodická tabuľka</span>
+          </a>
+          <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
+            <span aria-hidden="true">🔬</span>
+            <span>2D Model a Detail</span>
+          </a>
+          <a href="./editor.html" class="nav-tab" id="nav-link-editor">
+            <span aria-hidden="true">⚛</span>
+            <span>Editor atómu</span>
+          </a>
+          <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
+            <span aria-hidden="true">📋</span>
+            <span>Katalóg a porovnanie</span>
+          </a>
+        </nav>
       </div>
 
       <div class="controls-bar" role="search" aria-label="Vyhľadávanie a filtrovanie prvkov">
@@ -73,17 +94,8 @@
         <div class="action-buttons-group">
           <button
             type="button"
-            id="open-editor-top-btn"
-            class="ctrl-btn ctrl-btn-tonal"
-            title="Prejsť na interaktívny editor atómu a vrstiev"
-          >
-            <span aria-hidden="true">⚛</span>
-            <span class="btn-text">Editor atómu</span>
-          </button>
-          <button
-            type="button"
             id="random-element-btn"
-            class="ctrl-btn"
+            class="ctrl-btn ctrl-btn-tonal"
             title="Vybrať náhodný prvok (Skratka: R)"
           >
             <span aria-hidden="true">⚄</span>
@@ -120,12 +132,12 @@
       </div>
     </section>
 
-    <!-- Vertical Stacked Workspace:
-         1. TOP: Full-Width Periodic Table
-         2. MIDDLE: Selected Element Inspector (2D Atom Model + Detailed Scientific Properties)
-         3. BOTTOM: Interactive Atomic Editor — Direct Shell Editing Sandbox -->
+    <!-- Page 1 Content: Compact Selected Element Preview Bar + Full-Width Periodic Table -->
     <main class="workspace">
-      <!-- 1. TOP: Full-Width Periodic Table -->
+      <!-- Compact Selected Element Quick Bar with Direct Multi-Page Links -->
+      <section id="selected-element-bar" class="selected-element-bar" aria-live="polite"></section>
+
+      <!-- Full-Width Periodic Table -->
       <section class="table-pane" aria-label="Periodická tabuľka">
         <div id="periodic-table-container" class="periodic-table-mount">
           <div class="loading-state" role="status">Načítavam 118 chemických prvkov…</div>
@@ -135,25 +147,15 @@
           <span><kbd>[</kbd><kbd>]</kbd> Predchádzajúci / Ďalší prvok</span>
           <span><kbd>/</kbd> Hľadať</span>
           <span><kbd>R</kbd> Náhodný prvok</span>
-          <span><kbd>P</kbd> Pozastaviť / Spustiť 2D atóm</span>
           <span><kbd>Esc</kbd> Zrušiť filtre</span>
         </footer>
       </section>
-
-      <!-- 2. MIDDLE: Full-Width Element Inspector (2D Atom Model + Detailed Scientific Properties) -->
-      <section id="inspector-pane" class="inspector-pane" aria-label="Detail vybraného prvku">
-        <div id="atom-model-container" class="inspector-card atom-card"></div>
-        <div id="element-details-container" class="inspector-card details-card"></div>
-      </section>
-
-      <!-- 3. BOTTOM: Interactive Atomic Editor — Direct Shell Editing -->
-      <section id="atom-editor-container" class="atom-editor-section" aria-label="Interaktívny editor atómu"></section>
     </main>
   </div>
 
   <!-- Floating Element Hover Tooltip -->
   <div id="element-tooltip" class="element-tooltip" role="tooltip" aria-hidden="true"></div>
 
-  <script type="module" src="./src/main.js"></script>
+  <script type="module" src="./src/main.js?v=4"></script>
 </body>
 </html>

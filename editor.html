@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="sk" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Interaktívny 2D editor atómu — priama vizuálna úprava elektrónových vrstiev K až Q klikaním, staviteľ iónov a izotopov v reálnom čase."
+  />
+  <title>Editor atómu — Priama úprava elektrónových vrstiev · ChemLab</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=4" />
+  <link rel="stylesheet" href="./src/styles/editor.css?v=4" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Application Bar with Multi-Page Navigation -->
+    <header class="app-header">
+      <div class="brand-and-nav">
+        <a href="./index.html" class="brand-area" title="Domov — Periodická tabuľka prvkov">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-z">118</span>
+            <span class="brand-sym">Pt</span>
+          </div>
+          <div class="brand-titles">
+            <h1 class="app-title">ChemLab · Periodická sústava</h1>
+            <p class="app-subtitle">Interaktívny editor atómu a elektrónových vrstiev</p>
+          </div>
+        </a>
+
+        <!-- Multi-Page Navigation Bar -->
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+          <a href="./index.html" class="nav-tab" id="nav-link-table">
+            <span aria-hidden="true">📊</span>
+            <span>Periodická tabuľka</span>
+          </a>
+          <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
+            <span aria-hidden="true">🔬</span>
+            <span>2D Model a Detail</span>
+          </a>
+          <a href="./editor.html" class="nav-tab is-active" id="nav-link-editor" aria-current="page">
+            <span aria-hidden="true">⚛</span>
+            <span>Editor atómu</span>
+          </a>
+          <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
+            <span aria-hidden="true">📋</span>
+            <span>Katalóg a porovnanie</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="controls-bar" aria-label="Rýchly výber prvku do editora">
+        <div class="filter-selects-group">
+          <select id="editor-element-picker" class="ctrl-select" aria-label="Načítať prvok zo zoznamu 118 prvkov"></select>
+        </div>
+
+        <div class="action-buttons-group">
+          <button
+            type="button"
+            id="editor-random-btn"
+            class="ctrl-btn ctrl-btn-tonal"
+            title="Načítať náhodný prvok do editora (Skratka: R)"
+          >
+            <span aria-hidden="true">⚄</span>
+            <span class="btn-text">Náhodný atóm</span>
+          </button>
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            class="ctrl-btn theme-btn"
+            title="Prepnúť tmavý a svetlý režim"
+            aria-label="Prepnúť farebný režim"
+          >
+            <span class="theme-icon" aria-hidden="true">☀</span>
+            <span class="btn-text">Svetlý</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dedicated Full-Page Atomic Editor Workspace -->
+    <main class="workspace">
+      <section id="atom-editor-container" class="atom-editor-section" aria-label="Interaktívny editor atómu"></section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/editor-page.js?v=4"></script>
+</body>
+</html>
