@@ -8,7 +8,6 @@ import {
 import { PeriodicTable } from './components/periodic-table.js';
 import { AtomModel } from './components/atom-model.js';
 import { ElementDetails } from './components/element-details.js';
-import { AtomEditor } from './components/atom-editor.js';
 
 const THEME_STORAGE_KEY = 'periodic_table_theme_v1';
 
@@ -59,23 +58,6 @@ class PeriodicTableApp {
         onNavigateElement: (el) => this.selectElement(el),
         onHighlightGroup: (group) => this.toggleGroupHighlight(group, true),
         onHighlightPeriod: (period) => this.togglePeriodHighlight(period, true),
-        onOpenInEditor: (el, massNumber) => {
-          if (this.atomEditor) {
-            this.atomEditor.loadFromElement(el, massNumber);
-            this.atomEditorContainer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        },
-      });
-
-      this.atomEditor = new AtomEditor({
-        container: this.atomEditorContainer,
-        onSyncToTable: (atomicNumber) => {
-          const targetEl = ELEMENTS_BY_NUMBER[atomicNumber];
-          if (targetEl) {
-            this.selectElement(targetEl, { scrollMobile: false });
-            this.tableContainer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        },
       });
 
       this.bindGlobalEvents();
@@ -137,16 +119,12 @@ class PeriodicTableApp {
     if (this.atomModel) {
       this.atomModel.renderFrame();
     }
-    if (this.atomEditor) {
-      this.atomEditor.renderCanvas();
-    }
   }
 
   cacheDOM() {
     this.tableContainer = document.getElementById('periodic-table-container');
     this.atomContainer = document.getElementById('atom-model-container');
     this.detailsContainer = document.getElementById('element-details-container');
-    this.atomEditorContainer = document.getElementById('atom-editor-container');
     this.inspectorPane = document.getElementById('inspector-pane');
     this.tooltipEl = document.getElementById('element-tooltip');
 
@@ -157,7 +135,6 @@ class PeriodicTableApp {
     this.periodSelect = document.getElementById('period-select');
     this.stateSelect = document.getElementById('state-filter');
 
-    this.openEditorTopBtn = document.getElementById('open-editor-top-btn');
     this.randomBtn = document.getElementById('random-element-btn');
     this.resetBtn = document.getElementById('reset-all-btn');
     this.themeToggleBtn = document.getElementById('theme-toggle-btn');
@@ -301,15 +278,6 @@ class PeriodicTableApp {
       this.filterState.stateAtSTP = e.target.value;
       this.updateFilters();
     });
-
-    if (this.openEditorTopBtn) {
-      this.openEditorTopBtn.addEventListener('click', () => {
-        if (this.atomEditor && this.selectedElement) {
-          this.atomEditor.loadFromElement(this.selectedElement, this.selectedIsotopeMass);
-        }
-        this.atomEditorContainer?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
 
     this.randomBtn.addEventListener('click', () => {
       this.selectRandomElement();

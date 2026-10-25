@@ -130,11 +130,9 @@ function validateProjectFiles() {
     'src/components/periodic-table.js',
     'src/components/element-details.js',
     'src/components/atom-model.js',
-    'src/components/atom-editor.js',
     'src/styles/main.css',
     'src/styles/table.css',
     'src/styles/atom.css',
-    'src/styles/editor.css',
   ];
 
   for (const relPath of requiredFiles) {
