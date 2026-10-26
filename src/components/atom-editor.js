@@ -660,7 +660,7 @@ export class AtomEditor {
       this.rippleEffects.push({
         x: ripplePos.x,
         y: ripplePos.y,
-        color: '#55e686',
+        color: '#2563eb',
         startTime: performance.now(),
       });
     }
@@ -1320,13 +1320,13 @@ export class AtomEditor {
         ctx.strokeStyle = isLight ? 'rgba(225, 29, 72, 0.78)' : 'rgba(251, 113, 133, 0.85)';
         ctx.lineWidth = isHoveredShell || isSelected ? 3.0 : 2.0;
       } else if (isHoveredShell) {
-        ctx.strokeStyle = isLight ? '#146c32' : '#6dd58c';
+        ctx.strokeStyle = isLight ? '#2563eb' : '#60a5fa';
         ctx.lineWidth = 3.2;
       } else if (isSelected) {
-        ctx.strokeStyle = isLight ? 'rgba(20, 108, 50, 0.68)' : 'rgba(109, 213, 140, 0.68)';
+        ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.72)' : 'rgba(96, 165, 250, 0.72)';
         ctx.lineWidth = 2.2;
       } else {
-        ctx.strokeStyle = isLight ? 'rgba(20, 108, 50, 0.25)' : 'rgba(109, 213, 140, 0.25)';
+        ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.28)' : 'rgba(96, 165, 250, 0.28)';
         ctx.lineWidth = 1.5;
       }
       ctx.stroke();
@@ -1345,25 +1345,25 @@ export class AtomEditor {
           : '#3f1520'
         : isSelected || isHoveredShell
         ? isLight
-          ? '#a3f4b5'
-          : '#005227'
+          ? '#2563eb'
+          : '#1d4ed8'
         : isLight
-        ? '#e2f0e5'
-        : '#18291e';
+        ? '#dbeafe'
+        : '#1e293b';
 
       ctx.strokeStyle = isOverCap
         ? '#fb7185'
         : isSelected || isHoveredShell
         ? isLight
-          ? '#146c32'
-          : '#6dd58c'
+          ? '#1d4ed8'
+          : '#60a5fa'
         : isLight
-        ? 'rgba(20, 108, 50, 0.3)'
-        : 'rgba(109, 213, 140, 0.3)';
+        ? 'rgba(37, 99, 235, 0.35)'
+        : 'rgba(96, 165, 250, 0.35)';
       ctx.lineWidth = 1.2;
 
       ctx.beginPath();
-      ctx.roundRect(cx - bw / 2, labelY - bh / 2, bw, bh, 8);
+      ctx.roundRect(cx - bw / 2, labelY - bh / 2, bw, bh, 6);
       ctx.fill();
       ctx.stroke();
 
@@ -1372,12 +1372,10 @@ export class AtomEditor {
           ? '#9f1239'
           : '#fecdd3'
         : isSelected || isHoveredShell
-        ? isLight
-          ? '#00210a'
-          : '#89f3a6'
+        ? '#ffffff'
         : isLight
-        ? '#14532d'
-        : '#a7f3d0';
+        ? '#1e40af'
+        : '#bfdbfe';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(labelText, cx, labelY + 0.5);
@@ -1398,10 +1396,10 @@ export class AtomEditor {
       ctx.save();
       ctx.beginPath();
       ctx.arc(gx, gy, 8.5, 0, Math.PI * 2);
-      ctx.fillStyle = isLight ? 'rgba(20, 108, 50, 0.25)' : 'rgba(85, 230, 134, 0.28)';
+      ctx.fillStyle = isLight ? 'rgba(37, 99, 235, 0.22)' : 'rgba(59, 130, 246, 0.28)';
       ctx.fill();
       ctx.setLineDash([3, 2]);
-      ctx.strokeStyle = isLight ? '#146c32' : '#55e686';
+      ctx.strokeStyle = isLight ? '#2563eb' : '#60a5fa';
       ctx.lineWidth = 1.5;
       ctx.stroke();
       ctx.restore();
@@ -1465,11 +1463,11 @@ export class AtomEditor {
         ctx.fillStyle = isHoveredThisElectron
           ? '#fb7185'
           : isLight
-          ? '#146c32'
-          : '#55e686';
+          ? '#2563eb'
+          : '#3b82f6';
         ctx.fill();
         ctx.lineWidth = 1.5;
-        ctx.strokeStyle = isLight ? '#ffffff' : '#062612';
+        ctx.strokeStyle = isLight ? '#ffffff' : '#0f172a';
         ctx.stroke();
       }
     }
@@ -1501,10 +1499,10 @@ export class AtomEditor {
     // Distinct nucleus boundary ring separating nucleus from K-shell
     ctx.beginPath();
     ctx.arc(cx, cy, maxNucleusRadius, 0, Math.PI * 2);
-    ctx.fillStyle = isLight ? 'rgba(20, 108, 50, 0.07)' : 'rgba(109, 213, 140, 0.07)';
+    ctx.fillStyle = isLight ? 'rgba(37, 99, 235, 0.06)' : 'rgba(59, 130, 246, 0.08)';
     ctx.fill();
     ctx.setLineDash([3, 3]);
-    ctx.strokeStyle = isLight ? 'rgba(20, 108, 50, 0.25)' : 'rgba(109, 213, 140, 0.25)';
+    ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.28)' : 'rgba(96, 165, 250, 0.28)';
     ctx.lineWidth = 1;
     ctx.stroke();
     ctx.setLineDash([]);

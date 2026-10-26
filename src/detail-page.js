@@ -6,7 +6,7 @@ import {
 import { AtomModel } from './components/atom-model.js';
 import { ElementDetails } from './components/element-details.js';
 
-const THEME_STORAGE_KEY = 'periodic_table_theme_v1';
+const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
 class DetailPageApp {
   constructor() {
@@ -59,9 +59,7 @@ class DetailPageApp {
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.theme = savedTheme;
     } else {
-      const prefersLight =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      this.theme = prefersLight ? 'light' : 'dark';
+      this.theme = 'light';
     }
     this.applyTheme(this.theme);
   }

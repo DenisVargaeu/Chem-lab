@@ -8,7 +8,7 @@ import {
 } from './data/elements.js';
 import { normalizeText } from './components/periodic-table.js';
 
-const THEME_STORAGE_KEY = 'periodic_table_theme_v1';
+const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
 const STATE_LABELS_SK = {
   solid: 'Pevné',
@@ -51,9 +51,7 @@ class CatalogPageApp {
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.theme = savedTheme;
     } else {
-      const prefersLight =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      this.theme = prefersLight ? 'light' : 'dark';
+      this.theme = 'light';
     }
     this.applyTheme(this.theme);
   }

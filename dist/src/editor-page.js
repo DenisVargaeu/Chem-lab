@@ -5,7 +5,7 @@ import {
 } from './data/elements.js';
 import { AtomEditor } from './components/atom-editor.js';
 
-const THEME_STORAGE_KEY = 'periodic_table_theme_v1';
+const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
 class EditorPageApp {
   constructor() {
@@ -45,9 +45,7 @@ class EditorPageApp {
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.theme = savedTheme;
     } else {
-      const prefersLight =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      this.theme = prefersLight ? 'light' : 'dark';
+      this.theme = 'light';
     }
     this.applyTheme(this.theme);
   }

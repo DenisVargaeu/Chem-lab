@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="sk" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Vizualizér chemických vzorcov, molekúl a iónových zlúčenín — interaktívne 3D/2D modely, výpočet počtu atómov, molárnej hmotnosti a vysvetlenie zloženia."
+  />
+  <title>Molekuly a zlúčeniny — Vizualizér chemických vzorcov · ChemLab</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=7" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=7" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=7" />
+  <link rel="stylesheet" href="./src/styles/molecules.css?v=7" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Application Bar with 5-Page Navigation -->
+    <header class="app-header">
+      <div class="brand-and-nav">
+        <a href="./index.html" class="brand-area" title="Domov — Periodická tabuľka prvkov">
+          <div class="brand-mark" aria-hidden="true">
+            <span class="brand-z">118</span>
+            <span class="brand-sym">Pt</span>
+          </div>
+          <div class="brand-titles">
+            <h1 class="app-title">ChemLab · Periodická sústava</h1>
+            <p class="app-subtitle">Vizualizér chemických vzorcov, molekúl a zlúčenín</p>
+          </div>
+        </a>
+
+        <!-- Multi-Page Navigation Bar -->
+        <nav class="main-nav" aria-label="Hlavná navigácia">
+          <a href="./index.html" class="nav-tab" id="nav-link-table">
+            <span aria-hidden="true">📊</span>
+            <span>Periodická tabuľka</span>
+          </a>
+          <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
+            <span aria-hidden="true">🔬</span>
+            <span>2D Model a Detail</span>
+          </a>
+          <a href="./editor.html" class="nav-tab" id="nav-link-editor">
+            <span aria-hidden="true">⚛</span>
+            <span>Editor atómu</span>
+          </a>
+          <a href="./molekuly.html" class="nav-tab is-active" id="nav-link-molecules" aria-current="page">
+            <span aria-hidden="true">🧪</span>
+            <span>Molekuly a zlúčeniny</span>
+          </a>
+          <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
+            <span aria-hidden="true">📋</span>
+            <span>Katalóg a porovnanie</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="controls-bar" aria-label="Ovládanie stránky molekúl">
+        <div class="action-buttons-group">
+          <button
+            type="button"
+            id="mol-random-example-btn"
+            class="ctrl-btn ctrl-btn-tonal"
+            title="Načítať náhodný vzorec zo zbierky"
+          >
+            <span aria-hidden="true">⚄</span>
+            <span class="btn-text">Náhodný vzorec</span>
+          </button>
+          <button
+            type="button"
+            id="theme-toggle-btn"
+            class="ctrl-btn theme-btn"
+            title="Prepnúť tmavý a svetlý režim"
+            aria-label="Prepnúť farebný režim"
+          >
+            <span class="theme-icon" aria-hidden="true">☀</span>
+            <span class="btn-text">Svetlý</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace: Chemical Formula Visualizer -->
+    <main class="workspace molecules-workspace">
+      <!-- 1. Formula Input Editor & Smart Number Mode Controls -->
+      <section class="mol-editor-card" aria-label="Editor chemických vzorcov">
+        <div class="mol-editor-top">
+          <div class="mol-editor-headings">
+            <span class="mol-eyebrow">Sekcia · Molekuly a zlúčeniny</span>
+            <h2 class="mol-section-title">Editor a vizualizér chemických vzorcov</h2>
+            <p class="mol-section-desc">
+              Napíšte chemický vzorec (napr. <code>4CO₂</code>, <code>H₂O</code>, <code>Ca(OH)₂</code>, <code>Al₂(SO₄)₃</code>, <code>CH₃COOH</code>).
+              <strong>Číslo bez Shiftu</strong> vloží koeficient (<code>4</code>), <strong>Shift + číslo</strong> vloží dolný index (<code>₂</code>) za značku prvku alebo zátvorku.
+            </p>
+          </div>
+
+          <!-- Prepínač režimu zadávania čísel (pre klávesnicu aj dotyk/myš) -->
+          <div class="mol-mode-panel" aria-label="Režim zadávania čísel">
+            <div class="mol-mode-label-row">
+              <span class="mol-mode-title">Režim čísel:</span>
+              <span id="mol-active-mode-indicator" class="mol-active-mode-pill">
+                Automaticky (Shift+číslo = dolný index)
+              </span>
+            </div>
+            <div class="mol-mode-toggle-group" role="group" aria-label="Prepínač Koeficient / Dolný index">
+              <button
+                type="button"
+                class="mol-input-mode-btn is-active"
+                data-input-mode="auto"
+                title="Číslo bez Shiftu = koeficient (4), Shift + číslo = dolný index (₂)"
+              >
+                ⚡ Auto (Shift = ₂)
+              </button>
+              <button
+                type="button"
+                class="mol-input-mode-btn"
+                data-input-mode="coefficient"
+                title="Každé zadané číslo sa vloží ako normálne veľké číslo — koeficient (napr. 4)"
+              >
+                🔢 Koeficient (4)
+              </button>
+              <button
+                type="button"
+                class="mol-input-mode-btn"
+                data-input-mode="subscript"
+                title="Každé zadané číslo za prvkom/zátvorkou sa vloží ako dolný index (napr. ₂)"
+              >
+                ₂ Dolný index (₂)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hlavné vstupné pole pre chemický vzorec -->
+        <div class="mol-input-bar">
+          <div class="mol-input-field-wrap">
+            <label for="formula-input" class="sr-only">Zadajte chemický vzorec</label>
+            <input
+              type="text"
+              id="formula-input"
+              class="mol-formula-input"
+              value="4CO₂"
+              placeholder="Zadajte vzorec, napr. 4CO₂, H₂O, Ca(OH)₂, Al₂(SO₄)₃, CH₃COOH…"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              aria-describedby="mol-input-feedback"
+            />
+            <button
+              type="button"
+              id="formula-clear-btn"
+              class="mol-clear-btn"
+              title="Vymazať vzorec"
+              aria-label="Vymazať vzorec"
+            >
+              × Vymazať
+            </button>
+          </div>
+
+          <!-- Živý typografický náhľad vzorca -->
+          <div class="mol-live-preview-box" aria-live="polite">
+            <span class="mol-preview-caption">Typografický zápis:</span>
+            <output id="formula-live-preview" class="mol-preview-formula">4CO<sub>2</sub></output>
+          </div>
+        </div>
+
+        <!-- Pomocná dotyková klávesnica pre rýchle vkladanie na mobile a bez klávesnice -->
+        <div class="mol-keypad-row" aria-label="Rýchle vkladanie indexov a zátvoriek na kliknutie">
+          <span class="mol-keypad-label">Vložiť na pozíciu kurzora:</span>
+          <div class="mol-keypad-group">
+            <button type="button" class="mol-key-btn" data-insert-coeff="2" title="Vložiť koeficient 2">2</button>
+            <button type="button" class="mol-key-btn" data-insert-coeff="3" title="Vložiť koeficient 3">3</button>
+            <button type="button" class="mol-key-btn" data-insert-coeff="4" title="Vložiť koeficient 4">4</button>
+            <span class="mol-keypad-sep" aria-hidden="true">|</span>
+            <button type="button" class="mol-key-btn mol-key-sub" data-insert-sub="2" title="Vložiť dolný index ₂">₂</button>
+            <button type="button" class="mol-key-btn mol-key-sub" data-insert-sub="3" title="Vložiť dolný index ₃">₃</button>
+            <button type="button" class="mol-key-btn mol-key-sub" data-insert-sub="4" title="Vložiť dolný index ₄">₄</button>
+            <button type="button" class="mol-key-btn mol-key-sub" data-insert-sub="5" title="Vložiť dolný index ₅">₅</button>
+            <button type="button" class="mol-key-btn mol-key-sub" data-insert-sub="6" title="Vložiť dolný index ₆">₆</button>
+            <span class="mol-keypad-sep" aria-hidden="true">|</span>
+            <button type="button" class="mol-key-btn" data-insert-raw="(" title="Otváracia zátvorka (">(</button>
+            <button type="button" class="mol-key-btn" data-insert-raw=")" title="Zatváracia zátvorka )">)</button>
+            <button type="button" class="mol-key-btn" data-insert-raw="·" title="Bodka hydrátu ·">·</button>
+          </div>
+        </div>
+
+        <!-- Kontextové upozornenie pri písaní / chybové hlásenie -->
+        <div id="mol-input-feedback" class="mol-input-feedback" role="status" aria-live="polite" hidden></div>
+
+        <!-- Rýchle príklady na 1 kliknutie -->
+        <div class="mol-examples-bar" aria-label="Ukážkové chemické vzorce">
+          <span class="mol-examples-label">Príklady na rýchle vloženie:</span>
+          <div id="mol-examples-chips" class="mol-examples-chips"></div>
+        </div>
+      </section>
+
+      <!-- 2. Hlavný výsledkový panel látky (Názov, Typ zlúčeniny, Model + Výpočet atómov) -->
+      <section id="mol-results-container" class="mol-results-container">
+        <!-- Hero súhrn rozpoznanej látky -->
+        <div id="mol-substance-banner" class="mol-substance-banner"></div>
+
+        <!-- Hlavná dvojstĺpcová sekcia: Vľavo veľký interaktívny model, vpravo tabuľka výpočtu a slovné vysvetlenie -->
+        <div class="mol-main-grid">
+          <div id="molecule-visualizer-mount" class="inspector-card mol-viz-card"></div>
+
+          <div class="inspector-card mol-calc-card">
+            <div class="mol-card-header">
+              <span class="mol-eyebrow">Presný výpočet zloženia</span>
+              <h3 id="mol-calc-title" class="mol-card-title">Rozbor počtu molekúl a atómov</h3>
+            </div>
+
+            <div class="mol-summary-table-wrap">
+              <table class="mol-summary-table" aria-label="Tabuľka vlastností a počtu atómov">
+                <thead>
+                  <tr>
+                    <th>Vlastnosť</th>
+                    <th>Výsledok</th>
+                  </tr>
+                </thead>
+                <tbody id="mol-summary-tbody"></tbody>
+              </table>
+            </div>
+
+            <div class="mol-explanation-box">
+              <span class="mol-explanation-label">Ako sme dospeli k výsledku:</span>
+              <p id="mol-dynamic-explanation" class="mol-explanation-text"></p>
+            </div>
+
+            <!-- Poznámka k rozlíšeniu veľkých a malých písmen alebo iónovej stavbe -->
+            <div id="mol-bonding-classification-box" class="mol-bonding-box"></div>
+          </div>
+        </div>
+
+        <!-- 3. Sekcia „O tejto látke“ + Interaktívny rozpis prvkov -->
+        <div class="mol-bottom-grid">
+          <!-- Sekcia O tejto látke -->
+          <article id="mol-about-card" class="inspector-card mol-about-card" aria-label="O tejto látke"></article>
+
+          <!-- Sekcia Interaktívny rozpis prvkov -->
+          <article class="inspector-card mol-breakdown-card" aria-label="Interaktívny rozpis prvkov">
+            <div class="mol-card-header">
+              <span class="mol-eyebrow">Prepojenie s periodickou tabuľkou ChemLab</span>
+              <h3 class="mol-card-title">Interaktívny rozpis prvkov v zlúčenine</h3>
+              <p class="mol-card-sub">
+                Kliknutím na ľubovoľný prvok otvoríte jeho podrobný 2D Bohrov model a fyzikálno-chemické vlastnosti.
+              </p>
+            </div>
+
+            <div class="mol-breakdown-table-wrap">
+              <table class="mol-breakdown-table">
+                <thead>
+                  <tr>
+                    <th>Značka</th>
+                    <th>Názov prvku</th>
+                    <th id="th-per-unit-count">Atómy v 1 molekule</th>
+                    <th>Celkový počet atómov</th>
+                    <th>Molárna hmotnosť prvku</th>
+                    <th>Hmotnostný podiel</th>
+                    <th>Detail v ChemLab</th>
+                  </tr>
+                </thead>
+                <tbody id="mol-breakdown-tbody"></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./src/molecules-page.js?v=7"></script>
+</body>
+</html>

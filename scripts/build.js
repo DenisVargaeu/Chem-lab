@@ -26,7 +26,7 @@ function build() {
   }
   fs.mkdirSync(distDir, { recursive: true });
 
-  const targets = ['index.html', 'prvok.html', 'editor.html', 'prvky.html', 'src', 'assets'];
+  const targets = ['index.html', 'prvok.html', 'editor.html', 'molekuly.html', 'prvky.html', 'src', 'assets'];
   for (const item of targets) {
     const srcPath = path.join(rootDir, item);
     if (fs.existsSync(srcPath)) {

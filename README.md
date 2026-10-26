@@ -37,15 +37,28 @@ Moderná, vedecky presná interaktívna periodická tabuľka všetkých 118 chem
   - Vedecké upozornenia pri prekročení kapacity vrstvy, prázdnej vnútornej vrstve, excitovanom stave alebo nestabilnom izotope.
   - Podpora histórie úprav (`↶ Späť` / `↷ Dopredu`) a predvolieb bežných atómov a iónov.
 
+### 4. Molekuly a zlúčeniny — Vizualizér chemických vzorcov (`molekuly.html`)
+- **Inteligentný editor chemických vzorcov**:
+  - **Číslo bez Shiftu** vloží normálne veľké číslo — stechiometrický **koeficient** (napr. `4` v `4CO₂`).
+  - **Shift + číslo** vloží **dolný index** (napr. `₂` v `4CO₂` alebo `Ca(OH)₂`) s kontextovou kontrolou pozície kurzora.
+  - Viditeľný prepínač režimu **Auto / Koeficient / Dolný index** a dotyková pomocná klávesnica pre mobilné zariadenia.
+- **Vedecky presný parser chemických vzorcov**:
+  - Podporuje koeficienty (`4CO2`, `2H2O`), dolné indexy (`H₂O`), okrúhle a hranaté zátvorky s násobiteľmi (`Ca(OH)2`, `Al2(SO4)3`), organické vzorce (`CH3COOH`), hydráty (`CuSO4·5H2O`) a prísne rozlišuje veľkosť písmen (`Co` = kobalt vs. `CO` = oxid uhoľnatý).
+- **Interaktívny 3D/2D model molekúl a vzorcových jednotiek**:
+  - Pri koeficiente väčšom ako 1 (napr. `4CO₂`) zobrazuje samostatné modely molekúl s prepínačom medzi pohľadom na **všetky molekuly** a **jednu molekulu**.
+  - Kliknutím na ľubovoľnú guľu atómu sa zobrazia podrobnosti prvku s priamym preklikom do periodickej tabuľky a 2D Bohrovho modelu.
+  - Rozlišuje **molekulové zlúčeniny** (napr. $\text{CO}_2$, $\text{H}_2\text{O}$) a **iónové zlúčeniny so vzorcovými jednotkami** (napr. $\text{NaCl}$, $\text{Ca(OH)}_2$, $\text{Al}_2(\text{SO}_4)_3$).
+
 ---
 
 ## Viacstránková architektúra (Multi-Page)
 
-Aplikácia je rozdelená na 4 samostatné stránky prepojené hornou navigáciou:
-1. **`index.html` — Periodická tabuľka**: Interaktívna 18-stĺpcová periodická tabuľka všetkých 118 prvkov s kompaktným prehľadom vybraného prvku a priamymi prechodmi na detail, editor a katalóg.
+Aplikácia je rozdelená na 5 samostatných stránok prepojených hornou navigáciou:
+1. **`index.html` — Periodická tabuľka**: Interaktívna 18-stĺpcová periodická tabuľka všetkých 118 prvkov s kompaktným prehľadom vybraného prvku a priamymi prechodmi na detail, editor, molekuly a katalóg.
 2. **`prvok.html` — 2D Model a Detail prvku**: Samostatná stránka s animovaným 2D Bohrovým modelom vybraného prvku, výberom izotopov, obsadením vrstiev a kompletnými fyzikálnymi a termodynamickými vlastnosťami.
 3. **`editor.html` — Editor atómu**: Samostatná stránka s interaktívnym 2D editorom elektrónových vrstiev (`K` až `Q`), kde používateľ stavia atómy a ióny priamym klikaním na vrstvy a elektróny.
-4. **`prvky.html` — Katalóg a porovnanie prvkov**: Samostatná stránka na porovnávanie 3 prvkov vedľa seba a prehľadnú zoraditeľnú tabuľku všetkých 118 prvkov so slovenskými a latinskými názvami.
+4. **`molekuly.html` — Molekuly a zlúčeniny**: Samostatná stránka s vizualizérom chemických vzorcov, inteligentným zadávaním koeficientov a dolných indexov (`Shift + číslo`), interaktívnym modelom molekúl, výpočtom molárnej hmotnosti a rozpisom atómov.
+5. **`prvky.html` — Katalóg a porovnanie prvkov**: Samostatná stránka na porovnávanie 3 prvkov vedľa seba a prehľadnú zoraditeľnú tabuľku všetkých 118 prvkov so slovenskými a latinskými názvami.
 
 ## Štruktúra projektu
 
@@ -54,24 +67,31 @@ Aplikácia je rozdelená na 4 samostatné stránky prepojené hornou navigáciou
 ├── index.html                  # Stránka 1: Interaktívna periodická tabuľka prvkov
 ├── prvok.html                  # Stránka 2: 2D Bohrov model atómu a podrobný detail prvku
 ├── editor.html                 # Stránka 3: Interaktívny editor atómu a elektrónových vrstiev
-├── prvky.html                  # Stránka 4: Katalóg všetkých 118 prvkov a porovnávanie
+├── molekuly.html               # Stránka 4: Molekuly a zlúčeniny (Chemical Formula Visualizer)
+├── prvky.html                  # Stránka 5: Katalóg všetkých 118 prvkov a porovnávanie
 ├── src/
 │   ├── main.js                 # Vstupný skript pre index.html
 │   ├── detail-page.js          # Vstupný skript pre prvok.html
 │   ├── editor-page.js          # Vstupný skript pre editor.html
+│   ├── molecules-page.js       # Vstupný skript pre molekuly.html
 │   ├── catalog-page.js         # Vstupný skript pre prvky.html
+│   ├── lib/
+│   │   └── formula-parser.js   # Parser chemických vzorcov, výpočet atómov a Shift+číslo logika
 │   ├── data/
-│   │   └── elements.js         # Overená databáza všetkých 118 prvkov (SK + latinské názvy)
+│   │   ├── elements.js         # Overená databáza všetkých 118 prvkov (SK + latinské názvy)
+│   │   └── compounds.js        # Overená databáza molekúl, iónových zlúčenín a ich geometrie
 │   ├── components/
 │   │   ├── periodic-table.js   # 18-stĺpcová periodická tabuľka, klávesnica a filtre
 │   │   ├── element-details.js  # Detail prvku, výber izotopu a tabuľka vlastností
 │   │   ├── atom-model.js       # Animovaný 2D Bohrov model vybraného prvku
-│   │   └── atom-editor.js      # Interaktívny editor atómu s priamym klikaním na vrstvy
+│   │   ├── atom-editor.js      # Interaktívny editor atómu s priamym klikaním na vrstvy
+│   │   └── molecule-visualizer.js # Interaktívny model molekúl a vzorcových jednotiek
 │   └── styles/
 │       ├── main.css            # Material 3 Expressive Green téma (tmavá/svetlá) a navigácia
 │       ├── table.css           # Štýly periodickej tabuľky a buniek prvkov
 │       ├── atom.css            # Štýly 2D modelu atómu
 │       ├── editor.css          # Štýly interaktívneho editora atómu
+│       ├── molecules.css       # Štýly vizualizéra chemických vzorcov a molekúl
 │       └── catalog.css         # Štýly katalógu a porovnávania prvkov
 ├── assets/
 │   └── favicon.svg             # Ikona aplikácie

@@ -347,11 +347,11 @@ export class AtomModel {
     const minDim = Math.min(w, h);
     const maxRadius = minDim * 0.43 * this.zoom;
 
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    const ringStroke = isLight ? 'rgba(20, 108, 50, 0.28)' : 'rgba(109, 213, 140, 0.28)';
-    const labelBg = isLight ? '#dfece1' : '#1b2b21';
-    const labelBorder = isLight ? 'rgba(20, 108, 50, 0.3)' : 'rgba(109, 213, 140, 0.32)';
-    const labelText = isLight ? '#0d5224' : '#89f3a6';
+    const isLight = document.documentElement.getAttribute('data-theme') !== 'dark';
+    const ringStroke = isLight ? 'rgba(37, 99, 235, 0.30)' : 'rgba(96, 165, 250, 0.32)';
+    const labelBg = isLight ? '#dbeafe' : '#1e3a8a';
+    const labelBorder = isLight ? 'rgba(37, 99, 235, 0.35)' : 'rgba(96, 165, 250, 0.40)';
+    const labelText = isLight ? '#1e40af' : '#dbeafe';
 
     for (const shell of this.shellsData) {
       const r = shell.radiusFactor * maxRadius;
@@ -416,7 +416,7 @@ export class AtomModel {
 
     ctx.beginPath();
     ctx.arc(cx, cy, maxNucleusRadius + nucleonRadius + 2, 0, Math.PI * 2);
-    ctx.fillStyle = isLight ? 'rgba(20, 108, 50, 0.08)' : 'rgba(109, 213, 140, 0.08)';
+    ctx.fillStyle = isLight ? 'rgba(37, 99, 235, 0.08)' : 'rgba(59, 130, 246, 0.10)';
     ctx.fill();
 
     const protonFill = isLight ? '#e11d48' : '#fb7185';
@@ -440,8 +440,8 @@ export class AtomModel {
   }
 
   draw2DElectron(ctx, x, y, r, isLight) {
-    const electronFill = isLight ? '#146c32' : '#55e686';
-    const electronStroke = isLight ? '#ffffff' : '#062612';
+    const electronFill = isLight ? '#2563eb' : '#3b82f6';
+    const electronStroke = isLight ? '#ffffff' : '#0f172a';
 
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);

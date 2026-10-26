@@ -1,119 +1,36 @@
 /* ==========================================================================
-   Main Application Styles — Material 3 Expressive (Green Seed Accent)
-   Full-width Periodic Table on top + Full-width Element Dashboard below.
+   Main Application Styles — Flat White & Blue Design
+   Preserves all 10 Periodic Table Category Colors.
    ========================================================================== */
 
 :root,
-:root[data-theme="dark"] {
-  /* M3 Expressive Dark Green Tonal Surfaces */
-  --bg-app: #0a120d;
-  --bg-surface: #111d15;
-  --bg-surface-elevated: #18291e;
-  --bg-surface-subtle: #0d1711;
-  --bg-input: #15241a;
-
-  /* M3 Expressive Green Primary & Secondary Tokens */
-  --m3-primary: #6dd58c;
-  --m3-on-primary: #003919;
-  --m3-primary-container: #005227;
-  --m3-on-primary-container: #89f3a6;
-  --m3-secondary-container: #223a2a;
-  --m3-on-secondary-container: #cce8d2;
-
-  --text-primary: #e4f3e7;
-  --text-secondary: #9bb8a3;
-  --text-muted: #6c8a75;
-
-  --border-subtle: #1e3325;
-  --border-strong: #2f4f3a;
-  --accent-primary: #6dd58c;
-  --accent-focus: #6dd58c;
-
-  /* Harmonized M3 Expressive Category Palette (Dark Mode) */
-  --cat-alkali-bg: #32181c;
-  --cat-alkali-border: #8c3b47;
-  --cat-alkali-text: #ffb2ba;
-  --cat-alkali-swatch: #ff6b7b;
-
-  --cat-alkaline-bg: #311f12;
-  --cat-alkaline-border: #8b5629;
-  --cat-alkaline-text: #ffbc85;
-  --cat-alkaline-swatch: #fb923c;
-
-  --cat-transition-bg: #132822;
-  --cat-transition-border: #2e6f5b;
-  --cat-transition-text: #85f2ce;
-  --cat-transition-swatch: #2dd4bf;
-
-  --cat-post-transition-bg: #142a18;
-  --cat-post-transition-border: #337441;
-  --cat-post-transition-text: #94f7a7;
-  --cat-post-transition-swatch: #4ade80;
-
-  --cat-metalloid-bg: #292711;
-  --cat-metalloid-border: #756e25;
-  --cat-metalloid-text: #efe375;
-  --cat-metalloid-swatch: #facc15;
-
-  --cat-nonmetal-bg: #1b2d12;
-  --cat-nonmetal-border: #4a802d;
-  --cat-nonmetal-text: #b4f78e;
-  --cat-nonmetal-swatch: #84cc16;
-
-  --cat-halogen-bg: #11292e;
-  --cat-halogen-border: #2a7180;
-  --cat-halogen-text: #7ee8fa;
-  --cat-halogen-swatch: #22d3ee;
-
-  --cat-noble-bg: #221b33;
-  --cat-noble-border: #5c478a;
-  --cat-noble-text: #d6bfff;
-  --cat-noble-swatch: #a78bfa;
-
-  --cat-lanthanide-bg: #301729;
-  --cat-lanthanide-border: #823c6d;
-  --cat-lanthanide-text: #ffafd8;
-  --cat-lanthanide-swatch: #f472b6;
-
-  --cat-actinide-bg: #321721;
-  --cat-actinide-border: #873954;
-  --cat-actinide-text: #ffb1c8;
-  --cat-actinide-swatch: #fb7185;
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.32);
-  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.48);
-  --radius-xl: 28px;
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --radius-pill: 999px;
-}
-
 :root[data-theme="light"] {
-  /* M3 Expressive Light Green Tonal Surfaces */
-  --bg-app: #f3faf4;
+  /* Flat White & Light Slate Surfaces (Main = White) */
+  --bg-app: #f8fafc;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #e7f3e9;
-  --bg-surface-subtle: #edf7ef;
-  --bg-input: #f0f8f1;
+  --bg-surface-elevated: #eff6ff;
+  --bg-surface-subtle: #f1f5f9;
+  --bg-input: #ffffff;
 
-  /* M3 Expressive Green Primary & Secondary Tokens */
-  --m3-primary: #146c32;
+  /* Flat Blue Primary & Secondary Button Tokens */
+  --m3-primary: #2563eb;
   --m3-on-primary: #ffffff;
-  --m3-primary-container: #a3f4b5;
-  --m3-on-primary-container: #00210a;
-  --m3-secondary-container: #cfe9d4;
-  --m3-on-secondary-container: #0d2615;
+  --m3-primary-container: #2563eb;
+  --m3-on-primary-container: #ffffff;
+  --m3-secondary-container: #dbeafe;
+  --m3-on-secondary-container: #1e40af;
 
-  --text-primary: #0f2015;
-  --text-secondary: #3c5744;
-  --text-muted: #5d7a65;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
 
-  --border-subtle: #cde2d2;
-  --border-strong: #9ec4a8;
-  --accent-primary: #146c32;
-  --accent-focus: #146c32;
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --accent-primary: #2563eb;
+  --accent-focus: #1d4ed8;
+  --accent-glow: rgba(37, 99, 235, 0.16);
 
-  /* Harmonized M3 Expressive Category Palette (Light Mode) */
+  /* Preserved Periodic Table Category Palette (Light Mode) */
   --cat-alkali-bg: #ffecef;
   --cat-alkali-border: #f49da8;
   --cat-alkali-text: #8c1528;
@@ -164,8 +81,98 @@
   --cat-actinide-text: #8b1339;
   --cat-actinide-swatch: #e11d48;
 
-  --shadow-sm: 0 2px 8px rgba(13, 38, 21, 0.06);
-  --shadow-md: 0 10px 28px rgba(13, 38, 21, 0.12);
+  /* Flat design: no drop shadows, clean radii */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --radius-xl: 12px;
+  --radius-lg: 10px;
+  --radius-md: 8px;
+  --radius-pill: 8px;
+}
+
+:root[data-theme="dark"] {
+  /* Flat Dark Slate & Blue Surfaces */
+  --bg-app: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-surface-elevated: #26354d;
+  --bg-surface-subtle: #0f172a;
+  --bg-input: #1e293b;
+
+  /* Flat Blue Primary & Secondary Tokens */
+  --m3-primary: #3b82f6;
+  --m3-on-primary: #ffffff;
+  --m3-primary-container: #2563eb;
+  --m3-on-primary-container: #ffffff;
+  --m3-secondary-container: #1e3a8a;
+  --m3-on-secondary-container: #dbeafe;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  --border-subtle: #334155;
+  --border-strong: #475569;
+  --accent-primary: #3b82f6;
+  --accent-focus: #60a5fa;
+  --accent-glow: rgba(59, 130, 246, 0.22);
+
+  /* Preserved Periodic Table Category Palette (Dark Mode) */
+  --cat-alkali-bg: #32181c;
+  --cat-alkali-border: #8c3b47;
+  --cat-alkali-text: #ffb2ba;
+  --cat-alkali-swatch: #ff6b7b;
+
+  --cat-alkaline-bg: #311f12;
+  --cat-alkaline-border: #8b5629;
+  --cat-alkaline-text: #ffbc85;
+  --cat-alkaline-swatch: #fb923c;
+
+  --cat-transition-bg: #132822;
+  --cat-transition-border: #2e6f5b;
+  --cat-transition-text: #85f2ce;
+  --cat-transition-swatch: #2dd4bf;
+
+  --cat-post-transition-bg: #142a18;
+  --cat-post-transition-border: #337441;
+  --cat-post-transition-text: #94f7a7;
+  --cat-post-transition-swatch: #4ade80;
+
+  --cat-metalloid-bg: #292711;
+  --cat-metalloid-border: #756e25;
+  --cat-metalloid-text: #efe375;
+  --cat-metalloid-swatch: #facc15;
+
+  --cat-nonmetal-bg: #1b2d12;
+  --cat-nonmetal-border: #4a802d;
+  --cat-nonmetal-text: #b4f78e;
+  --cat-nonmetal-swatch: #84cc16;
+
+  --cat-halogen-bg: #11292e;
+  --cat-halogen-border: #2a7180;
+  --cat-halogen-text: #7ee8fa;
+  --cat-halogen-swatch: #22d3ee;
+
+  --cat-noble-bg: #221b33;
+  --cat-noble-border: #5c478a;
+  --cat-noble-text: #d6bfff;
+  --cat-noble-swatch: #a78bfa;
+
+  --cat-lanthanide-bg: #301729;
+  --cat-lanthanide-border: #823c6d;
+  --cat-lanthanide-text: #ffafd8;
+  --cat-lanthanide-swatch: #f472b6;
+
+  --cat-actinide-bg: #321721;
+  --cat-actinide-border: #873954;
+  --cat-actinide-text: #ffb1c8;
+  --cat-actinide-swatch: #fb7185;
+
+  --shadow-sm: none;
+  --shadow-md: none;
+  --radius-xl: 12px;
+  --radius-lg: 10px;
+  --radius-md: 8px;
+  --radius-pill: 8px;
 }
 
 *,
@@ -221,7 +228,9 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 14px 24px;
+  gap: 12px 20px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .brand-area {
@@ -230,31 +239,41 @@ select {
   gap: 13px;
   text-decoration: none;
   color: inherit;
+  flex-shrink: 0;
 }
 
 /* Multi-Page Navigation Pills (Material 3 Expressive) */
 .main-nav {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   padding: 4px;
-  border-radius: var(--radius-pill);
+  border-radius: 10px;
   background-color: var(--bg-surface-subtle);
   border: 1.5px solid var(--border-subtle);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.main-nav::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-tab {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   height: 34px;
-  padding: 0 15px;
+  padding: 0 13px;
   border-radius: var(--radius-pill);
   font-size: 12.5px;
   font-weight: 700;
   text-decoration: none;
   color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.16s cubic-bezier(0.2, 0, 0, 1);
 }
 
@@ -365,7 +384,7 @@ select {
   outline: none;
   border-color: var(--accent-focus);
   background-color: var(--bg-surface);
-  box-shadow: 0 0 0 3px rgba(109, 213, 140, 0.22);
+  box-shadow: 0 0 0 2px var(--accent-glow);
 }
 
 .search-shortcut {

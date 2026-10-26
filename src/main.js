@@ -11,7 +11,7 @@ import { PeriodicTable } from './components/periodic-table.js';
 import { AtomModel } from './components/atom-model.js';
 import { ElementDetails } from './components/element-details.js';
 
-const THEME_STORAGE_KEY = 'periodic_table_theme_v1';
+const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
 const STATE_LABELS_SK = {
   solid: 'Pevné skupenstvo',
@@ -113,9 +113,7 @@ class PeriodicTableApp {
     if (savedTheme === 'light' || savedTheme === 'dark') {
       this.theme = savedTheme;
     } else {
-      const prefersLight =
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      this.theme = prefersLight ? 'light' : 'dark';
+      this.theme = 'light';
     }
 
     this.applyTheme(this.theme);
@@ -495,6 +493,10 @@ class PeriodicTableApp {
           <a href="./editor.html#${element.symbol}" class="sel-bar-btn sel-bar-btn-tonal">
             <span aria-hidden="true">⚛</span>
             <span>Upraviť v editore atómu →</span>
+          </a>
+          <a href="./molekuly.html" class="sel-bar-btn sel-bar-btn-outline">
+            <span aria-hidden="true">🧪</span>
+            <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html#${element.symbol}" class="sel-bar-btn sel-bar-btn-outline">
             <span aria-hidden="true">📋</span>
