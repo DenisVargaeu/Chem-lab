@@ -198,19 +198,19 @@ export class AtomEditor {
 
           <div class="editor-history-bar" role="toolbar" aria-label="Nástroje editora atómu">
             <button type="button" class="ed-tool-btn" id="ed-undo-btn" disabled title="Späť (Ctrl+Z)">
-              ↶ Späť
+              <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Späť
             </button>
             <button type="button" class="ed-tool-btn" id="ed-redo-btn" disabled title="Dopredu (Ctrl+Y)">
-              ↷ Dopredu
+              <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Dopredu
             </button>
             <button type="button" class="ed-tool-btn ed-tool-tonal" id="ed-anim-btn" aria-pressed="${this.isAnimating}">
-              ${this.isAnimating ? '⏸ Pozastaviť obeh' : '▶ Spustiť obeh'}
+              ${this.isAnimating ? '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pozastaviť obeh' : '<i class="fa-solid fa-play" aria-hidden="true"></i> Spustiť obeh'}
             </button>
             <button type="button" class="ed-tool-btn" id="ed-ground-btn" title="Nastaviť elektróny do stabilného základného stavu pre aktuálny počet protónov">
-              ✨ Základný stav
+              <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Základný stav
             </button>
             <button type="button" class="ed-tool-btn ed-tool-danger" id="ed-reset-btn" title="Resetovať atóm na Uhlík-12">
-              ↺ Resetovať
+              <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Resetovať
             </button>
           </div>
         </div>
@@ -434,7 +434,9 @@ export class AtomEditor {
     this.animBtn.addEventListener('click', () => {
       this.isAnimating = !this.isAnimating;
       this.animBtn.setAttribute('aria-pressed', String(this.isAnimating));
-      this.animBtn.textContent = this.isAnimating ? '⏸ Pozastaviť obeh' : '▶ Spustiť obeh';
+      this.animBtn.innerHTML = this.isAnimating
+        ? '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pozastaviť obeh'
+        : '<i class="fa-solid fa-play" aria-hidden="true"></i> Spustiť obeh';
       this.renderCanvas();
     });
 
@@ -727,7 +729,7 @@ export class AtomEditor {
     this.confirmBannerEl.hidden = false;
     this.confirmBannerEl.innerHTML = `
       <div class="confirm-title" id="ed-confirm-title">
-        ⚠️ Vrstva <strong>${label} (n=${idx + 1})</strong> obsahuje <strong>${count} e⁻</strong>
+        <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Vrstva <strong>${label} (n=${idx + 1})</strong> obsahuje <strong>${count} e⁻</strong>
       </div>
       <p class="confirm-text">
         Elektróny sa pri odstraňovaní vrstvy nikdy nemažú bez potvrdenia. Chceš presunúť týchto ${count} elektrónov do inej vrstvy, alebo vymazať vrstvu aj s elektrónmi?
@@ -998,7 +1000,7 @@ export class AtomEditor {
         ${
           this.onSyncToTable
             ? `<button type="button" class="ed-sync-table-btn" id="ed-sync-table-btn" title="Zobraziť prvok ${element.name} v hornej periodickej tabuľke">
-                Zobraziť v tabuľke ↑
+                Zobraziť v tabuľke <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
               </button>`
             : ''
         }
@@ -1076,7 +1078,7 @@ export class AtomEditor {
                 ${this.shells.length <= 1 ? 'disabled' : ''}
                 title="Odstrániť vrstvu ${label}"
                 aria-label="Odstrániť vrstvu ${label}"
-              >✕</button>
+              ><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
             </div>
           </div>
         `;
@@ -1196,7 +1198,7 @@ export class AtomEditor {
     if (warnings.length === 0) {
       this.warningsBoxEl.innerHTML = `
         <div class="ed-diag-ok">
-          <span class="diag-icon">✓</span>
+          <span class="diag-icon"><i class="fa-solid fa-circle-check" aria-hidden="true"></i></span>
           <div>
             <strong>Vedecky korektná konfigurácia</strong>
             <p>

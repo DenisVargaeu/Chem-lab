@@ -9,13 +9,14 @@
   />
   <title>Periodická tabuľka prvkov — Slovenské a latinské názvy · ChemLab</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./src/styles/main.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/table.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/atom.css?v=7" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=10" />
 </head>
 <body>
   <div class="app-shell">
-    <!-- Top Application Bar with 4-Page Navigation (Material 3 Expressive) -->
+    <!-- Top Application Bar with 5-Page Navigation -->
     <header class="app-header">
       <div class="brand-and-nav">
         <a href="./index.html" class="brand-area" title="Domov — Periodická tabuľka prvkov">
@@ -32,114 +33,117 @@
         <!-- Multi-Page Navigation Bar -->
         <nav class="main-nav" aria-label="Hlavná navigácia">
           <a href="./index.html" class="nav-tab is-active" id="nav-link-table" aria-current="page">
-            <span aria-hidden="true">📊</span>
+            <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
             <span>Periodická tabuľka</span>
           </a>
           <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
-            <span aria-hidden="true">🔬</span>
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i>
             <span>2D Model a Detail</span>
           </a>
           <a href="./editor.html" class="nav-tab" id="nav-link-editor">
-            <span aria-hidden="true">⚛</span>
+            <i class="fa-solid fa-atom" aria-hidden="true"></i>
             <span>Editor atómu</span>
           </a>
           <a href="./molekuly.html" class="nav-tab" id="nav-link-molecules">
-            <span aria-hidden="true">🧪</span>
+            <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
             <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
-            <span aria-hidden="true">📋</span>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
             <span>Katalóg a porovnanie</span>
           </a>
         </nav>
       </div>
 
-      <div class="controls-bar" role="search" aria-label="Vyhľadávanie a filtrovanie prvkov">
-        <!-- Pill Search Field -->
-        <div class="search-input-wrap">
-          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          <input
-            type="search"
-            id="element-search"
-            class="search-input"
-            placeholder="Hľadaj slovenský/latinský názov, značku alebo Z (napr. Zlato, Aurum, Au, 79)…"
-            autocomplete="off"
-            aria-label="Hľadaj prvok podľa slovenského názvu, latinského názvu, značky alebo protónového čísla"
-          />
-          <kbd class="search-shortcut" title="Stlač / pre vyhľadávanie">/</kbd>
-          <button
-            type="button"
-            id="clear-search-btn"
-            class="clear-search-btn"
-            hidden
-            aria-label="Vymazať vyhľadávanie"
-            title="Vymazať vyhľadávanie"
-          >×</button>
-        </div>
-
-        <!-- Filter & Highlight Selects -->
-        <div class="filter-selects-group">
-          <select id="category-filter" class="ctrl-select" aria-label="Filtrovať podľa chemickej kategórie"></select>
-          <select id="group-select" class="ctrl-select" aria-label="Zvýrazniť chemickú skupinu"></select>
-          <select id="period-select" class="ctrl-select" aria-label="Zvýrazniť periódu"></select>
-          <select id="state-filter" class="ctrl-select" aria-label="Filtrovať podľa skupenstva pri STP">
-            <option value="all">Všetky skupenstvá (STP)</option>
-            <option value="solid">Pevné (STP)</option>
-            <option value="liquid">Kvapalné (STP)</option>
-            <option value="gas">Plynné (STP)</option>
-            <option value="unknown">Neznáme / Predpokladané</option>
-          </select>
-        </div>
-
-        <!-- Expressive Pill Action Buttons -->
-        <div class="action-buttons-group">
-          <button
-            type="button"
-            id="random-element-btn"
-            class="ctrl-btn ctrl-btn-tonal"
-            title="Vybrať náhodný prvok (Skratka: R)"
-          >
-            <span aria-hidden="true">⚄</span>
-            <span class="btn-text">Náhodný</span>
-          </button>
-          <button
-            type="button"
-            id="reset-all-btn"
-            class="ctrl-btn"
-            title="Resetovať vyhľadávanie, filtre a výber (Skratka: Esc)"
-          >
-            <span aria-hidden="true">↺</span>
-            <span class="btn-text">Resetovať</span>
-          </button>
-          <button
-            type="button"
-            id="theme-toggle-btn"
-            class="ctrl-btn theme-btn"
-            title="Prepnúť tmavý a svetlý režim"
-            aria-label="Prepnúť farebný režim"
-          >
-            <span class="theme-icon" aria-hidden="true">☀</span>
-            <span class="btn-text">Svetlý</span>
-          </button>
-        </div>
+      <div class="header-actions">
+        <button
+          type="button"
+          id="theme-toggle-btn"
+          class="ctrl-btn theme-btn"
+          title="Prepnúť tmavý a svetlý režim"
+          aria-label="Prepnúť farebný režim"
+        >
+          <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+          <span class="btn-text">Tmavý</span>
+        </button>
       </div>
     </header>
 
-    <!-- Interactive Category Legend Bar -->
-    <section class="legend-bar" aria-label="Legenda chemických kategórií">
-      <div id="category-legend" class="legend-chips-wrap"></div>
-      <div class="legend-status">
-        <span id="match-counter" class="match-counter" aria-live="polite">118 / 118 prvkov</span>
-      </div>
-    </section>
-
-    <!-- Page 1 Content: Compact Selected Element Preview Bar + Full-Width Periodic Table -->
+    <!-- Page 1 Content: Compact Selected Element Preview Bar + Filter Toolbar + Full-Width Periodic Table -->
     <main class="workspace">
       <!-- Compact Selected Element Quick Bar with Direct Multi-Page Links -->
       <section id="selected-element-bar" class="selected-element-bar" aria-live="polite"></section>
+
+      <!-- Dedicated Filter, Search & Category Legend Toolbar (Moved out of Navbar) -->
+      <section class="page-toolbar-card" role="search" aria-label="Vyhľadávanie, filtre a legenda kategórií">
+        <div class="toolbar-controls-row">
+          <!-- Search Field -->
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input
+              type="search"
+              id="element-search"
+              class="search-input"
+              placeholder="Hľadaj slovenský/latinský názov, značku alebo Z (napr. Zlato, Aurum, Au, 79)…"
+              autocomplete="off"
+              aria-label="Hľadaj prvok podľa slovenského názvu, latinského názvu, značky alebo protónového čísla"
+            />
+            <kbd class="search-shortcut" title="Stlač / pre vyhľadávanie">/</kbd>
+            <button
+              type="button"
+              id="clear-search-btn"
+              class="clear-search-btn"
+              hidden
+              aria-label="Vymazať vyhľadávanie"
+              title="Vymazať vyhľadávanie"
+            >×</button>
+          </div>
+
+          <!-- Filter & Highlight Dropdowns -->
+          <div class="filter-selects-group">
+            <select id="category-filter" class="ctrl-select" aria-label="Filtrovať podľa chemickej kategórie"></select>
+            <select id="group-select" class="ctrl-select" aria-label="Zvýrazniť chemickú skupinu"></select>
+            <select id="period-select" class="ctrl-select" aria-label="Zvýrazniť periódu"></select>
+            <select id="state-filter" class="ctrl-select" aria-label="Filtrovať podľa skupenstva pri STP">
+              <option value="all">Všetky skupenstvá (STP)</option>
+              <option value="solid">Pevné (STP)</option>
+              <option value="liquid">Kvapalné (STP)</option>
+              <option value="gas">Plynné (STP)</option>
+              <option value="unknown">Neznáme / Predpokladané</option>
+            </select>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons-group">
+            <button
+              type="button"
+              id="random-element-btn"
+              class="ctrl-btn ctrl-btn-tonal"
+              title="Vybrať náhodný prvok (Skratka: R)"
+            >
+              <i class="fa-solid fa-dice" aria-hidden="true"></i>
+              <span class="btn-text">Náhodný</span>
+            </button>
+            <button
+              type="button"
+              id="reset-all-btn"
+              class="ctrl-btn"
+              title="Resetovať vyhľadávanie, filtre a výber (Skratka: Esc)"
+            >
+              <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+              <span class="btn-text">Resetovať</span>
+            </button>
+            <span id="match-counter" class="match-counter" aria-live="polite">118 / 118 prvkov</span>
+          </div>
+        </div>
+
+        <div class="toolbar-legend-row" aria-label="Legenda chemických kategórií">
+          <div id="category-legend" class="legend-chips-wrap"></div>
+        </div>
+      </section>
 
       <!-- Full-Width Periodic Table -->
       <section class="table-pane" aria-label="Periodická tabuľka">
@@ -160,6 +164,6 @@
   <!-- Floating Element Hover Tooltip -->
   <div id="element-tooltip" class="element-tooltip" role="tooltip" aria-hidden="true"></div>
 
-  <script type="module" src="./src/main.js?v=7"></script>
+  <script type="module" src="./src/main.js?v=10"></script>
 </body>
 </html>

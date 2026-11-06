@@ -59,11 +59,14 @@ export class AtomModel {
         </div>
         <div class="atom-toolbar" role="toolbar" aria-label="Ovládanie 2D modelu atómu">
           <button type="button" class="atom-ctrl-btn atom-primary-pill" id="atom-pause-btn" aria-pressed="${this.isPaused}" title="Pozastaviť alebo spustiť animáciu obehu elektrónov (Skratka: P)">
-            ${this.isPaused ? '▶ Spustiť' : '⏸ Pozastaviť'}
+            ${this.isPaused ? '<i class="fa-solid fa-play" aria-hidden="true"></i> Spustiť' : '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pozastaviť'}
           </button>
-          <button type="button" class="atom-ctrl-btn atom-icon-btn" id="atom-zoom-in-btn" title="Priblížiť (+)" aria-label="Priblížiť">+</button>
-          <button type="button" class="atom-ctrl-btn atom-icon-btn" id="atom-zoom-out-btn" title="Oddialiť (−)" aria-label="Oddialiť">−</button>
-          <button type="button" class="atom-ctrl-btn atom-icon-btn" id="atom-reset-view-btn" title="Resetovať pohľad a priblíženie" aria-label="Resetovať pohľad">⟲</button>
+          <button type="button" class="atom-ctrl-btn atom-icon-btn" id="atom-zoom-in-btn" title="Priblížiť (+)" aria-label="Priblížiť"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></button>
+          <button type="button" class="atom-ctrl-btn atom-icon-btn" id="atom-zoom-out-btn" title="Oddialiť (−)" aria-label="Oddialiť"><i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i></button>
+          <button type="button" class="atom-ctrl-btn atom-icon-btn" id="atom-reset-view-btn" title="Resetovať pohľad a priblíženie" aria-label="Resetovať pohľad"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i></button>
+          <button type="button" class="atom-ctrl-btn atom-fullscreen-btn" id="atom-fullscreen-btn" title="Zobraziť 2D model na celú obrazovku (Skratka: F)" aria-label="Zobraziť na celú obrazovku">
+            <i class="fa-solid fa-expand" aria-hidden="true"></i> Celá obrazovka
+          </button>
         </div>
       </div>
 
@@ -111,6 +114,8 @@ export class AtomModel {
     this.zoomInBtn = this.container.querySelector('#atom-zoom-in-btn');
     this.zoomOutBtn = this.container.querySelector('#atom-zoom-out-btn');
     this.resetViewBtn = this.container.querySelector('#atom-reset-view-btn');
+    this.fullscreenBtn = this.container.querySelector('#atom-fullscreen-btn');
+    this.isFullscreen = false;
   }
 
   bindEvents() {
@@ -131,6 +136,30 @@ export class AtomModel {
       this.panX = 0;
       this.panY = 0;
       this.renderFrame();
+    });
+
+    this.fullscreenBtn?.addEventListener('click', () => {
+      this.toggleFullscreen();
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      const nativeFs = document.fullscreenElement === this.container;
+      if (!nativeFs && this.isFullscreen && !this.usingCssFallbackFs) {
+        this.setFullscreenState(false);
+      }
+      this.resizeCanvas();
+      this.renderFrame();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+      if (e.key === 'Escape' && this.isFullscreen) {
+        this.setFullscreenState(false);
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        this.toggleFullscreen();
+      }
     });
 
     this.canvas.addEventListener('pointerdown', (e) => {
@@ -184,7 +213,48 @@ export class AtomModel {
   togglePause() {
     this.isPaused = !this.isPaused;
     this.pauseBtn.setAttribute('aria-pressed', String(this.isPaused));
-    this.pauseBtn.textContent = this.isPaused ? '▶ Spustiť' : '⏸ Pozastaviť';
+    this.pauseBtn.innerHTML = this.isPaused
+      ? '<i class="fa-solid fa-play" aria-hidden="true"></i> Spustiť'
+      : '<i class="fa-solid fa-pause" aria-hidden="true"></i> Pozastaviť';
+  }
+
+  toggleFullscreen() {
+    this.setFullscreenState(!this.isFullscreen);
+  }
+
+  setFullscreenState(enable) {
+    if (!this.container) return;
+    this.isFullscreen = Boolean(enable);
+    this.container.classList.toggle('is-fullscreen', this.isFullscreen);
+    document.body.classList.toggle('has-fullscreen-atom', this.isFullscreen);
+
+    if (this.fullscreenBtn) {
+      this.fullscreenBtn.innerHTML = this.isFullscreen
+        ? '<i class="fa-solid fa-compress" aria-hidden="true"></i> Ukončiť celú obrazovku'
+        : '<i class="fa-solid fa-expand" aria-hidden="true"></i> Celá obrazovka';
+      this.fullscreenBtn.classList.toggle('atom-primary-pill', this.isFullscreen);
+    }
+
+    if (this.isFullscreen) {
+      this.usingCssFallbackFs = true;
+      if (this.container.requestFullscreen) {
+        this.container
+          .requestFullscreen()
+          .then(() => {
+            this.usingCssFallbackFs = false;
+          })
+          .catch(() => {
+            this.usingCssFallbackFs = true;
+          });
+      }
+    } else if (document.fullscreenElement === this.container && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    }
+
+    setTimeout(() => {
+      this.resizeCanvas();
+      this.renderFrame();
+    }, 30);
   }
 
   setZoom(nextZoom) {

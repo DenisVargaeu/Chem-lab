@@ -4,6 +4,7 @@ import {
   ELEMENTS_BY_SYMBOL,
 } from './data/elements.js';
 import { AtomEditor } from './components/atom-editor.js';
+import { initSiteChrome } from './components/site-chrome.js';
 
 const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
@@ -32,6 +33,7 @@ class EditorPageApp {
     this.syncNavLinks(initialEl.symbol);
 
     this.bindEvents();
+    initSiteChrome();
   }
 
   initTheme() {
@@ -65,8 +67,8 @@ class EditorPageApp {
         `Prepnúť na ${isLight ? 'tmavý' : 'svetlý'} režim`
       );
       this.themeToggleBtn.innerHTML = isLight
-        ? '<span class="theme-icon" aria-hidden="true">☾</span><span class="btn-text">Tmavý</span>'
-        : '<span class="theme-icon" aria-hidden="true">☀</span><span class="btn-text">Svetlý</span>';
+        ? '<i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i><span class="btn-text">Tmavý</span>'
+        : '<i class="fa-solid fa-sun theme-icon" aria-hidden="true"></i><span class="btn-text">Svetlý</span>';
     }
     if (this.atomEditor) {
       this.atomEditor.renderCanvas();

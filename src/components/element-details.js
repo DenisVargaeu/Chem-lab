@@ -130,8 +130,8 @@ export class ElementDetails {
             </span>
             ${
               element.isRadioactive
-                ? '<span class="badge-radioactive" title="Všetky izotopy tohto prvku sú rádioaktívne (nemá stabilné izotopy)">☢ Rádioaktívny</span>'
-                : '<span class="badge-stable" title="Prvok má aspoň jeden stabilný izotop">Stabilný nuklid</span>'
+                ? '<span class="badge-radioactive" title="Všetky izotopy tohto prvku sú rádioaktívne (nemá stabilné izotopy)"><i class="fa-solid fa-radiation" aria-hidden="true"></i> Rádioaktívny</span>'
+                : '<span class="badge-stable" title="Prvok má aspoň jeden stabilný izotop"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Stabilný nuklid</span>'
             }
           </div>
 
@@ -158,13 +158,13 @@ export class ElementDetails {
 
         <div class="details-nav-btns">
           <button type="button" class="nav-el-btn" id="detail-open-editor-btn" title="Otvoriť prvok ${element.name} na stránke interaktívneho editora atómu">
-            ⚛ Upraviť v editore →
+            <i class="fa-solid fa-atom" aria-hidden="true"></i> Upraviť v editore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </button>
           <button type="button" class="nav-el-btn" id="detail-prev-btn" title="Predchádzajúci prvok: ${prevEl.atomicNumber} ${prevEl.name} (${prevEl.latinName}, ${prevEl.symbol})">
-            ← ${prevEl.symbol}
+            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> ${prevEl.symbol}
           </button>
           <button type="button" class="nav-el-btn" id="detail-next-btn" title="Ďalší prvok: ${nextEl.atomicNumber} ${nextEl.name} (${nextEl.latinName}, ${nextEl.symbol})">
-            ${nextEl.symbol} →
+            ${nextEl.symbol} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </button>
         </div>
       </div>

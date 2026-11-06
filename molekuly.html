@@ -9,10 +9,11 @@
   />
   <title>Molekuly a zlúčeniny — Vizualizér chemických vzorcov · ChemLab</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./src/styles/main.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/table.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/atom.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/molecules.css?v=7" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/molecules.css?v=10" />
 </head>
 <body>
   <div class="app-shell">
@@ -33,50 +34,39 @@
         <!-- Multi-Page Navigation Bar -->
         <nav class="main-nav" aria-label="Hlavná navigácia">
           <a href="./index.html" class="nav-tab" id="nav-link-table">
-            <span aria-hidden="true">📊</span>
+            <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
             <span>Periodická tabuľka</span>
           </a>
           <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
-            <span aria-hidden="true">🔬</span>
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i>
             <span>2D Model a Detail</span>
           </a>
           <a href="./editor.html" class="nav-tab" id="nav-link-editor">
-            <span aria-hidden="true">⚛</span>
+            <i class="fa-solid fa-atom" aria-hidden="true"></i>
             <span>Editor atómu</span>
           </a>
           <a href="./molekuly.html" class="nav-tab is-active" id="nav-link-molecules" aria-current="page">
-            <span aria-hidden="true">🧪</span>
+            <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
             <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
-            <span aria-hidden="true">📋</span>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
             <span>Katalóg a porovnanie</span>
           </a>
         </nav>
       </div>
 
-      <div class="controls-bar" aria-label="Ovládanie stránky molekúl">
-        <div class="action-buttons-group">
-          <button
-            type="button"
-            id="mol-random-example-btn"
-            class="ctrl-btn ctrl-btn-tonal"
-            title="Načítať náhodný vzorec zo zbierky"
-          >
-            <span aria-hidden="true">⚄</span>
-            <span class="btn-text">Náhodný vzorec</span>
-          </button>
-          <button
-            type="button"
-            id="theme-toggle-btn"
-            class="ctrl-btn theme-btn"
-            title="Prepnúť tmavý a svetlý režim"
-            aria-label="Prepnúť farebný režim"
-          >
-            <span class="theme-icon" aria-hidden="true">☀</span>
-            <span class="btn-text">Svetlý</span>
-          </button>
-        </div>
+      <div class="header-actions">
+        <button
+          type="button"
+          id="theme-toggle-btn"
+          class="ctrl-btn theme-btn"
+          title="Prepnúť tmavý a svetlý režim"
+          aria-label="Prepnúť farebný režim"
+        >
+          <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+          <span class="btn-text">Tmavý</span>
+        </button>
       </div>
     </header>
 
@@ -87,7 +77,18 @@
         <div class="mol-editor-top">
           <div class="mol-editor-headings">
             <span class="mol-eyebrow">Sekcia · Molekuly a zlúčeniny</span>
-            <h2 class="mol-section-title">Editor a vizualizér chemických vzorcov</h2>
+            <div class="mol-title-with-action">
+              <h2 class="mol-section-title">Editor a vizualizér chemických vzorcov</h2>
+              <button
+                type="button"
+                id="mol-random-example-btn"
+                class="ctrl-btn ctrl-btn-tonal"
+                title="Načítať náhodný vzorec zo zbierky"
+              >
+                <i class="fa-solid fa-dice" aria-hidden="true"></i>
+                <span class="btn-text">Náhodný vzorec</span>
+              </button>
+            </div>
             <p class="mol-section-desc">
               Napíšte chemický vzorec (napr. <code>4CO₂</code>, <code>H₂O</code>, <code>Ca(OH)₂</code>, <code>Al₂(SO₄)₃</code>, <code>CH₃COOH</code>).
               <strong>Číslo bez Shiftu</strong> vloží koeficient (<code>4</code>), <strong>Shift + číslo</strong> vloží dolný index (<code>₂</code>) za značku prvku alebo zátvorku.
@@ -109,7 +110,7 @@
                 data-input-mode="auto"
                 title="Číslo bez Shiftu = koeficient (4), Shift + číslo = dolný index (₂)"
               >
-                ⚡ Auto (Shift = ₂)
+                <i class="fa-solid fa-bolt" aria-hidden="true"></i> Auto (Shift = ₂)
               </button>
               <button
                 type="button"
@@ -117,7 +118,7 @@
                 data-input-mode="coefficient"
                 title="Každé zadané číslo sa vloží ako normálne veľké číslo — koeficient (napr. 4)"
               >
-                🔢 Koeficient (4)
+                <i class="fa-solid fa-hashtag" aria-hidden="true"></i> Koeficient (4)
               </button>
               <button
                 type="button"
@@ -125,7 +126,7 @@
                 data-input-mode="subscript"
                 title="Každé zadané číslo za prvkom/zátvorkou sa vloží ako dolný index (napr. ₂)"
               >
-                ₂ Dolný index (₂)
+                <i class="fa-solid fa-subscript" aria-hidden="true"></i> Dolný index (₂)
               </button>
             </div>
           </div>
@@ -154,7 +155,7 @@
               title="Vymazať vzorec"
               aria-label="Vymazať vzorec"
             >
-              × Vymazať
+              <i class="fa-solid fa-xmark" aria-hidden="true"></i> Vymazať
             </button>
           </div>
 
@@ -269,6 +270,6 @@
     </main>
   </div>
 
-  <script type="module" src="./src/molecules-page.js?v=7"></script>
+  <script type="module" src="./src/molecules-page.js?v=10"></script>
 </body>
 </html>

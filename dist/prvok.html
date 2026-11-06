@@ -9,13 +9,14 @@
   />
   <title>2D Model a Detail prvku — Slovenské a latinské názvy · ChemLab</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./src/styles/main.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/table.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/atom.css?v=7" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=10" />
 </head>
 <body>
   <div class="app-shell">
-    <!-- Top Application Bar with 4-Page Navigation -->
+    <!-- Top Application Bar with 5-Page Navigation -->
     <header class="app-header">
       <div class="brand-and-nav">
         <a href="./index.html" class="brand-area" title="Domov — Periodická tabuľka prvkov">
@@ -31,59 +32,65 @@
 
         <nav class="main-nav" aria-label="Hlavná navigácia">
           <a href="./index.html" class="nav-tab" id="nav-link-table">
-            <span aria-hidden="true">📊</span>
+            <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
             <span>Periodická tabuľka</span>
           </a>
           <a href="./prvok.html" class="nav-tab is-active" id="nav-link-detail" aria-current="page">
-            <span aria-hidden="true">🔬</span>
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i>
             <span>2D Model a Detail</span>
           </a>
           <a href="./editor.html" class="nav-tab" id="nav-link-editor">
-            <span aria-hidden="true">⚛</span>
+            <i class="fa-solid fa-atom" aria-hidden="true"></i>
             <span>Editor atómu</span>
           </a>
           <a href="./molekuly.html" class="nav-tab" id="nav-link-molecules">
-            <span aria-hidden="true">🧪</span>
+            <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
             <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
-            <span aria-hidden="true">📋</span>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
             <span>Katalóg a porovnanie</span>
           </a>
         </nav>
       </div>
 
-      <div class="controls-bar" aria-label="Výber prvku">
-        <div class="filter-selects-group">
-          <select id="detail-element-picker" class="ctrl-select" aria-label="Vybrať prvok zo zoznamu 118 prvkov"></select>
-        </div>
-
-        <div class="action-buttons-group">
-          <button
-            type="button"
-            id="detail-random-btn"
-            class="ctrl-btn ctrl-btn-tonal"
-            title="Vybrať náhodný prvok (Skratka: R)"
-          >
-            <span aria-hidden="true">⚄</span>
-            <span class="btn-text">Náhodný prvok</span>
-          </button>
-          <button
-            type="button"
-            id="theme-toggle-btn"
-            class="ctrl-btn theme-btn"
-            title="Prepnúť tmavý a svetlý režim"
-            aria-label="Prepnúť farebný režim"
-          >
-            <span class="theme-icon" aria-hidden="true">☀</span>
-            <span class="btn-text">Svetlý</span>
-          </button>
-        </div>
+      <div class="header-actions">
+        <button
+          type="button"
+          id="theme-toggle-btn"
+          class="ctrl-btn theme-btn"
+          title="Prepnúť tmavý a svetlý režim"
+          aria-label="Prepnúť farebný režim"
+        >
+          <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+          <span class="btn-text">Tmavý</span>
+        </button>
       </div>
     </header>
 
     <!-- Dedicated Full-Page 2D Atom Model & Element Details Workspace -->
     <main class="workspace">
+      <!-- Element Selector Toolbar (Moved out of Navbar) -->
+      <section class="page-toolbar-card" aria-label="Výber prvku">
+        <div class="toolbar-controls-row">
+          <div class="toolbar-picker-group">
+            <label for="detail-element-picker" class="toolbar-label">Zobraziť prvok (1–118):</label>
+            <select id="detail-element-picker" class="ctrl-select" aria-label="Vybrať prvok zo zoznamu 118 prvkov"></select>
+          </div>
+          <div class="action-buttons-group">
+            <button
+              type="button"
+              id="detail-random-btn"
+              class="ctrl-btn ctrl-btn-tonal"
+              title="Vybrať náhodný prvok (Skratka: R)"
+            >
+              <i class="fa-solid fa-dice" aria-hidden="true"></i>
+              <span class="btn-text">Náhodný prvok</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section id="inspector-pane" class="inspector-pane" aria-label="2D model atómu a detail vybraného prvku">
         <div id="atom-model-container" class="inspector-card atom-card"></div>
         <div id="element-details-container" class="inspector-card details-card"></div>
@@ -91,6 +98,6 @@
     </main>
   </div>
 
-  <script type="module" src="./src/detail-page.js?v=7"></script>
+  <script type="module" src="./src/detail-page.js?v=10"></script>
 </body>
 </html>

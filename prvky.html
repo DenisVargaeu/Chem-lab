@@ -9,9 +9,10 @@
   />
   <title>Katalóg a porovnanie prvkov — Slovenské a latinské názvy · ChemLab</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./src/styles/main.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/table.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/catalog.css?v=7" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/catalog.css?v=10" />
 </head>
 <body>
   <div class="app-shell">
@@ -32,69 +33,39 @@
         <!-- Multi-Page Navigation Bar -->
         <nav class="main-nav" aria-label="Hlavná navigácia">
           <a href="./index.html" class="nav-tab" id="nav-link-table">
-            <span aria-hidden="true">📊</span>
+            <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
             <span>Periodická tabuľka</span>
           </a>
           <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
-            <span aria-hidden="true">🔬</span>
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i>
             <span>2D Model a Detail</span>
           </a>
           <a href="./editor.html" class="nav-tab" id="nav-link-editor">
-            <span aria-hidden="true">⚛</span>
+            <i class="fa-solid fa-atom" aria-hidden="true"></i>
             <span>Editor atómu</span>
           </a>
           <a href="./molekuly.html" class="nav-tab" id="nav-link-molecules">
-            <span aria-hidden="true">🧪</span>
+            <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
             <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html" class="nav-tab is-active" id="nav-link-catalog" aria-current="page">
-            <span aria-hidden="true">📋</span>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
             <span>Katalóg a porovnanie</span>
           </a>
         </nav>
       </div>
 
-      <div class="controls-bar" role="search" aria-label="Vyhľadávanie a zoradenie v katalógu">
-        <div class="search-input-wrap">
-          <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.8"/>
-            <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
-          <input
-            type="search"
-            id="catalog-search"
-            class="search-input"
-            placeholder="Hľadaj slovenský/latinský názov, značku alebo Z…"
-            autocomplete="off"
-            aria-label="Hľadať v katalógu prvkov"
-          />
-        </div>
-
-        <div class="filter-selects-group">
-          <select id="catalog-category" class="ctrl-select" aria-label="Filtrovať kategóriu"></select>
-          <select id="catalog-sort" class="ctrl-select" aria-label="Zoradiť prvky podľa">
-            <option value="z-asc">Zoradiť: Protónové číslo Z (1 → 118)</option>
-            <option value="z-desc">Zoradiť: Protónové číslo Z (118 → 1)</option>
-            <option value="name-asc">Zoradiť: Slovenský názov (A → Z)</option>
-            <option value="latin-asc">Zoradiť: Latinský názov (A → Z)</option>
-            <option value="mass-asc">Zoradiť: Atómová hmotnosť (od najľahšieho)</option>
-            <option value="eneg-desc">Zoradiť: Elektronegativita (od najvyššej)</option>
-            <option value="mp-desc">Zoradiť: Teplota topenia (od najvyššej)</option>
-          </select>
-        </div>
-
-        <div class="action-buttons-group">
-          <button
-            type="button"
-            id="theme-toggle-btn"
-            class="ctrl-btn theme-btn"
-            title="Prepnúť tmavý a svetlý režim"
-            aria-label="Prepnúť farebný režim"
-          >
-            <span class="theme-icon" aria-hidden="true">☀</span>
-            <span class="btn-text">Svetlý</span>
-          </button>
-        </div>
+      <div class="header-actions">
+        <button
+          type="button"
+          id="theme-toggle-btn"
+          class="ctrl-btn theme-btn"
+          title="Prepnúť tmavý a svetlý režim"
+          aria-label="Prepnúť farebný režim"
+        >
+          <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+          <span class="btn-text">Tmavý</span>
+        </button>
       </div>
     </header>
 
@@ -135,6 +106,37 @@
           <span id="catalog-count-badge" class="match-counter">118 / 118 prvkov</span>
         </div>
 
+        <!-- Vyhľadávanie a zoradenie priamo v karte katalógu (premiestnené z navbaru) -->
+        <div class="toolbar-controls-row catalog-toolbar-row" role="search" aria-label="Vyhľadávanie a zoradenie v katalógu">
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M13 13L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input
+              type="search"
+              id="catalog-search"
+              class="search-input"
+              placeholder="Hľadaj slovenský/latinský názov, značku alebo Z…"
+              autocomplete="off"
+              aria-label="Hľadať v katalógu prvkov"
+            />
+          </div>
+
+          <div class="filter-selects-group">
+            <select id="catalog-category" class="ctrl-select" aria-label="Filtrovať kategóriu"></select>
+            <select id="catalog-sort" class="ctrl-select" aria-label="Zoradiť prvky podľa">
+              <option value="z-asc">Zoradiť: Protónové číslo Z (1 → 118)</option>
+              <option value="z-desc">Zoradiť: Protónové číslo Z (118 → 1)</option>
+              <option value="name-asc">Zoradiť: Slovenský názov (A → Z)</option>
+              <option value="latin-asc">Zoradiť: Latinský názov (A → Z)</option>
+              <option value="mass-asc">Zoradiť: Atómová hmotnosť (od najľahšieho)</option>
+              <option value="eneg-desc">Zoradiť: Elektronegativita (od najvyššej)</option>
+              <option value="mp-desc">Zoradiť: Teplota topenia (od najvyššej)</option>
+            </select>
+          </div>
+        </div>
+
         <div class="catalog-table-wrap">
           <table class="catalog-table">
             <thead>
@@ -160,6 +162,6 @@
     </main>
   </div>
 
-  <script type="module" src="./src/catalog-page.js?v=7"></script>
+  <script type="module" src="./src/catalog-page.js?v=10"></script>
 </body>
 </html>

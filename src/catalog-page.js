@@ -7,6 +7,7 @@ import {
   SHELL_LABELS,
 } from './data/elements.js';
 import { normalizeText } from './components/periodic-table.js';
+import { initSiteChrome } from './components/site-chrome.js';
 
 const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
@@ -39,6 +40,7 @@ class CatalogPageApp {
     this.renderComparison();
     this.renderCatalogTable();
     this.bindEvents();
+    initSiteChrome();
   }
 
   initTheme() {
@@ -71,8 +73,8 @@ class CatalogPageApp {
         `Prepnúť na ${isLight ? 'tmavý' : 'svetlý'} režim`
       );
       this.themeToggleBtn.innerHTML = isLight
-        ? '<span class="theme-icon" aria-hidden="true">☾</span><span class="btn-text">Tmavý</span>'
-        : '<span class="theme-icon" aria-hidden="true">☀</span><span class="btn-text">Svetlý</span>';
+        ? '<i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i><span class="btn-text">Tmavý</span>'
+        : '<i class="fa-solid fa-sun theme-icon" aria-hidden="true"></i><span class="btn-text">Svetlý</span>';
     }
   }
 
@@ -208,9 +210,9 @@ class CatalogPageApp {
             </dl>
 
             <div class="cmp-card-links">
-              <a href="./prvok.html#${el.symbol}" class="cmp-link-btn">🔬 2D Model a Detail</a>
-              <a href="./editor.html#${el.symbol}" class="cmp-link-btn cmp-link-tonal">⚛ V editore atómu</a>
-              <a href="./index.html#${el.symbol}" class="cmp-link-btn">📊 V tabuľke</a>
+              <a href="./prvok.html#${el.symbol}" class="cmp-link-btn"><i class="fa-solid fa-microscope" aria-hidden="true"></i> 2D Model a Detail</a>
+              <a href="./editor.html#${el.symbol}" class="cmp-link-btn cmp-link-tonal"><i class="fa-solid fa-atom" aria-hidden="true"></i> V editore atómu</a>
+              <a href="./index.html#${el.symbol}" class="cmp-link-btn"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> V tabuľke</a>
             </div>
           </article>
         `;
@@ -278,9 +280,9 @@ class CatalogPageApp {
             <td class="td-mono">${el.electronegativity ?? '—'}</td>
             <td class="td-mono">${el.meltingPointK ?? '—'}</td>
             <td class="td-actions">
-              <a href="./prvok.html#${el.symbol}" class="tbl-act-link" title="Zobraziť 2D model a detail prvku ${el.name}">🔬 Detail</a>
-              <a href="./editor.html#${el.symbol}" class="tbl-act-link" title="Otvoriť ${el.name} v editore atómu">⚛ Editor</a>
-              <button type="button" class="tbl-act-btn" data-add-cmp="${el.atomicNumber}" title="Pridať ${el.name} do porovnania vyššie">⚖️ Porovnať</button>
+              <a href="./prvok.html#${el.symbol}" class="tbl-act-link" title="Zobraziť 2D model a detail prvku ${el.name}"><i class="fa-solid fa-microscope" aria-hidden="true"></i> Detail</a>
+              <a href="./editor.html#${el.symbol}" class="tbl-act-link" title="Otvoriť ${el.name} v editore atómu"><i class="fa-solid fa-atom" aria-hidden="true"></i> Editor</a>
+              <button type="button" class="tbl-act-btn" data-add-cmp="${el.atomicNumber}" title="Pridať ${el.name} do porovnania vyššie"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Porovnať</button>
             </td>
           </tr>
         `;

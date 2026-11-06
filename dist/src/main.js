@@ -10,6 +10,7 @@ import {
 import { PeriodicTable } from './components/periodic-table.js';
 import { AtomModel } from './components/atom-model.js';
 import { ElementDetails } from './components/element-details.js';
+import { initSiteChrome } from './components/site-chrome.js';
 
 const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
@@ -42,6 +43,7 @@ class PeriodicTableApp {
       this.validateDataIntegrity();
       this.initTheme();
       this.cacheDOM();
+      initSiteChrome();
       this.populateFilterControls();
       this.renderCategoryLegend();
 
@@ -134,8 +136,8 @@ class PeriodicTableApp {
         `Prepnúť na ${isLight ? 'tmavý' : 'svetlý'} režim`
       );
       this.themeToggleBtn.innerHTML = isLight
-        ? '<span class="theme-icon" aria-hidden="true">☾</span><span class="btn-text">Tmavý</span>'
-        : '<span class="theme-icon" aria-hidden="true">☀</span><span class="btn-text">Svetlý</span>';
+        ? '<i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i><span class="btn-text">Tmavý</span>'
+        : '<i class="fa-solid fa-sun theme-icon" aria-hidden="true"></i><span class="btn-text">Svetlý</span>';
     }
     if (this.atomModel) {
       this.atomModel.renderFrame();
@@ -487,19 +489,19 @@ class PeriodicTableApp {
 
         <div class="sel-bar-actions">
           <a href="./prvok.html#${element.symbol}" class="sel-bar-btn sel-bar-btn-primary">
-            <span aria-hidden="true">🔬</span>
-            <span>2D Model a Detail prvku →</span>
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i>
+            <span>2D Model a Detail prvku <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
           </a>
           <a href="./editor.html#${element.symbol}" class="sel-bar-btn sel-bar-btn-tonal">
-            <span aria-hidden="true">⚛</span>
-            <span>Upraviť v editore atómu →</span>
+            <i class="fa-solid fa-atom" aria-hidden="true"></i>
+            <span>Upraviť v editore atómu <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
           </a>
           <a href="./molekuly.html" class="sel-bar-btn sel-bar-btn-outline">
-            <span aria-hidden="true">🧪</span>
+            <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
             <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html#${element.symbol}" class="sel-bar-btn sel-bar-btn-outline">
-            <span aria-hidden="true">📋</span>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
             <span>Porovnať v katalógu</span>
           </a>
         </div>

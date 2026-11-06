@@ -9,10 +9,11 @@
   />
   <title>Editor atómu — Priama úprava elektrónových vrstiev · ChemLab</title>
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
-  <link rel="stylesheet" href="./src/styles/main.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/table.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/atom.css?v=7" />
-  <link rel="stylesheet" href="./src/styles/editor.css?v=7" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="./src/styles/main.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/table.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/atom.css?v=10" />
+  <link rel="stylesheet" href="./src/styles/editor.css?v=10" />
 </head>
 <body>
   <div class="app-shell">
@@ -33,63 +34,69 @@
         <!-- Multi-Page Navigation Bar -->
         <nav class="main-nav" aria-label="Hlavná navigácia">
           <a href="./index.html" class="nav-tab" id="nav-link-table">
-            <span aria-hidden="true">📊</span>
+            <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
             <span>Periodická tabuľka</span>
           </a>
           <a href="./prvok.html" class="nav-tab" id="nav-link-detail">
-            <span aria-hidden="true">🔬</span>
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i>
             <span>2D Model a Detail</span>
           </a>
           <a href="./editor.html" class="nav-tab is-active" id="nav-link-editor" aria-current="page">
-            <span aria-hidden="true">⚛</span>
+            <i class="fa-solid fa-atom" aria-hidden="true"></i>
             <span>Editor atómu</span>
           </a>
           <a href="./molekuly.html" class="nav-tab" id="nav-link-molecules">
-            <span aria-hidden="true">🧪</span>
+            <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
             <span>Molekuly a zlúčeniny</span>
           </a>
           <a href="./prvky.html" class="nav-tab" id="nav-link-catalog">
-            <span aria-hidden="true">📋</span>
+            <i class="fa-solid fa-list-check" aria-hidden="true"></i>
             <span>Katalóg a porovnanie</span>
           </a>
         </nav>
       </div>
 
-      <div class="controls-bar" aria-label="Rýchly výber prvku do editora">
-        <div class="filter-selects-group">
-          <select id="editor-element-picker" class="ctrl-select" aria-label="Načítať prvok zo zoznamu 118 prvkov"></select>
-        </div>
-
-        <div class="action-buttons-group">
-          <button
-            type="button"
-            id="editor-random-btn"
-            class="ctrl-btn ctrl-btn-tonal"
-            title="Načítať náhodný prvok do editora (Skratka: R)"
-          >
-            <span aria-hidden="true">⚄</span>
-            <span class="btn-text">Náhodný atóm</span>
-          </button>
-          <button
-            type="button"
-            id="theme-toggle-btn"
-            class="ctrl-btn theme-btn"
-            title="Prepnúť tmavý a svetlý režim"
-            aria-label="Prepnúť farebný režim"
-          >
-            <span class="theme-icon" aria-hidden="true">☀</span>
-            <span class="btn-text">Svetlý</span>
-          </button>
-        </div>
+      <div class="header-actions">
+        <button
+          type="button"
+          id="theme-toggle-btn"
+          class="ctrl-btn theme-btn"
+          title="Prepnúť tmavý a svetlý režim"
+          aria-label="Prepnúť farebný režim"
+        >
+          <i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i>
+          <span class="btn-text">Tmavý</span>
+        </button>
       </div>
     </header>
 
     <!-- Dedicated Full-Page Atomic Editor Workspace -->
     <main class="workspace">
+      <!-- Element Picker Toolbar (Moved out of Navbar) -->
+      <section class="page-toolbar-card" aria-label="Rýchly výber prvku do editora">
+        <div class="toolbar-controls-row">
+          <div class="toolbar-picker-group">
+            <label for="editor-element-picker" class="toolbar-label">Načítať referenčný atóm (1–118):</label>
+            <select id="editor-element-picker" class="ctrl-select" aria-label="Načítať prvok zo zoznamu 118 prvkov"></select>
+          </div>
+          <div class="action-buttons-group">
+            <button
+              type="button"
+              id="editor-random-btn"
+              class="ctrl-btn ctrl-btn-tonal"
+              title="Načítať náhodný prvok do editora (Skratka: R)"
+            >
+              <i class="fa-solid fa-dice" aria-hidden="true"></i>
+              <span class="btn-text">Náhodný atóm</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section id="atom-editor-container" class="atom-editor-section" aria-label="Interaktívny editor atómu"></section>
     </main>
   </div>
 
-  <script type="module" src="./src/editor-page.js?v=7"></script>
+  <script type="module" src="./src/editor-page.js?v=10"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ import {
   formatFormulaUnicode,
 } from './lib/formula-parser.js';
 import { MoleculeVisualizer } from './components/molecule-visualizer.js';
+import { initSiteChrome } from './components/site-chrome.js';
 
 const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
@@ -38,6 +39,7 @@ class MoleculesPageApp {
 
     this.bindEvents();
     this.evaluateCurrentFormula();
+    initSiteChrome();
   }
 
   initTheme() {
@@ -70,8 +72,8 @@ class MoleculesPageApp {
         `Prepnúť na ${isLight ? 'tmavý' : 'svetlý'} režim`
       );
       this.themeToggleBtn.innerHTML = isLight
-        ? '<span class="theme-icon" aria-hidden="true">☾</span><span class="btn-text">Tmavý</span>'
-        : '<span class="theme-icon" aria-hidden="true">☀</span><span class="btn-text">Svetlý</span>';
+        ? '<i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i><span class="btn-text">Tmavý</span>'
+        : '<i class="fa-solid fa-sun theme-icon" aria-hidden="true"></i><span class="btn-text">Svetlý</span>';
     }
     if (this.visualizer) {
       this.visualizer.renderFrame();
@@ -349,7 +351,7 @@ class MoleculesPageApp {
         : '';
       this.feedbackEl.innerHTML = `
         <div class="mol-feedback-row">
-          <span>${parsed.isEmpty ? 'ℹ' : '⚠'} ${parsed.error}</span>
+          <span><i class="fa-solid ${parsed.isEmpty ? 'fa-circle-info' : 'fa-triangle-exclamation'}" aria-hidden="true"></i> ${parsed.error}</span>
           ${suggestionHtml}
         </div>
       `;
@@ -369,7 +371,7 @@ class MoleculesPageApp {
       this.feedbackEl.hidden = false;
       this.feedbackEl.className = 'mol-input-feedback is-warning';
       const msg = this.transientWarning || parsed.caseSensitivityNote;
-      this.feedbackEl.innerHTML = `<div class="mol-feedback-row"><span>💡 ${msg}</span></div>`;
+      this.feedbackEl.innerHTML = `<div class="mol-feedback-row"><span><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> ${msg}</span></div>`;
       return;
     }
 
@@ -397,7 +399,7 @@ class MoleculesPageApp {
               ${cls.badgeLabel}
             </span>
             <span class="mol-source-pill ${parsed.hasVerifiedDatabaseEntry ? 'is-db' : 'is-calc'}">
-              ${parsed.hasVerifiedDatabaseEntry ? '✓ Overená látka v databáze ChemLab' : '⚙ Vypočítané priamo zo vzorca'}
+              ${parsed.hasVerifiedDatabaseEntry ? '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Overená látka v databáze ChemLab' : '<i class="fa-solid fa-gears" aria-hidden="true"></i> Vypočítané priamo zo vzorca'}
             </span>
           </div>
           <h2 class="mol-banner-name">${parsed.substanceName}</h2>
@@ -504,11 +506,11 @@ class MoleculesPageApp {
           <div class="mol-about-source-tag is-db">Overené údaje z databázy ChemLab</div>
           <div class="mol-about-descriptions">
             <div class="mol-desc-box">
-              <h4>🎓 Jednoduché vysvetlenie pre študenta</h4>
+              <h4><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Jednoduché vysvetlenie pre študenta</h4>
               <p>${db.studentSummary}</p>
             </div>
             <div class="mol-desc-box">
-              <h4>🔬 Odborné vysvetlenie zloženia a väzieb</h4>
+              <h4><i class="fa-solid fa-microscope" aria-hidden="true"></i> Odborné vysvetlenie zloženia a väzieb</h4>
               <p>${db.expertSummary}</p>
             </div>
           </div>
@@ -516,7 +518,7 @@ class MoleculesPageApp {
             db.usesAndFacts?.length
               ? `
             <div class="mol-facts-box">
-              <h4>💡 Bežné využitie a overené fakty</h4>
+              <h4><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Bežné využitie a overené fakty</h4>
               <ul class="mol-facts-list">
                 ${db.usesAndFacts.map((f) => `<li>${f}</li>`).join('')}
               </ul>
@@ -530,7 +532,7 @@ class MoleculesPageApp {
         <div class="mol-about-block">
           <div class="mol-about-source-tag is-calc">Informácia o pôvode údajov</div>
           <div class="mol-desc-box">
-            <h4>🎓 Vysvetlenie zloženia zo vzorca</h4>
+            <h4><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Vysvetlenie zloženia zo vzorca</h4>
             <p>
               Pre vzorec <strong>${parsed.unitFormulaUnicode}</strong> aplikácia presne vypočítala stechiometrické zastúpenie prvkov, počet atómov a molárnu hmotnosť priamo z overených atómových hmotností IUPAC.
               Keďže rovnaký sumárny vzorec môže v chémii zodpovedať viacerým odlišným zlúčeninám alebo izomérom, aplikácia zámerne nevymýšľa neoverený názov ani vlastnosti a zobrazuje výlučne exaktné kvantitatívne údaje.
@@ -607,10 +609,10 @@ class MoleculesPageApp {
             <td>
               <div class="mol-tbl-links">
                 <a href="./prvok.html#${el.symbol}" class="tbl-act-link" title="Otvoriť 2D model a detail prvku ${el.name}">
-                  🔬 Detail prvku
+                  <i class="fa-solid fa-microscope" aria-hidden="true"></i> Detail prvku
                 </a>
                 <a href="./index.html#${el.symbol}" class="tbl-act-link" title="Zvýrazniť ${el.name} v periodickej tabuľke">
-                  📊 Tabuľka
+                  <i class="fa-solid fa-table-cells" aria-hidden="true"></i> Tabuľka
                 </a>
               </div>
             </td>

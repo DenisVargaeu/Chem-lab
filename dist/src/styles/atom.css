@@ -8,6 +8,31 @@
   gap: 12px;
 }
 
+.atom-card.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  border: none;
+  padding: 24px 32px;
+  background-color: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+}
+
+.atom-card.is-fullscreen .atom-stage-wrapper {
+  flex: 1;
+  height: auto;
+  min-height: 0;
+}
+
+body.has-fullscreen-atom {
+  overflow: hidden;
+}
+
 .atom-panel-header {
   display: flex;
   flex-wrap: wrap;

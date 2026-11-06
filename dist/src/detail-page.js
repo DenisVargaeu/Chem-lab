@@ -5,6 +5,7 @@ import {
 } from './data/elements.js';
 import { AtomModel } from './components/atom-model.js';
 import { ElementDetails } from './components/element-details.js';
+import { initSiteChrome } from './components/site-chrome.js';
 
 const THEME_STORAGE_KEY = 'periodic_table_theme_v2_flat';
 
@@ -47,6 +48,7 @@ class DetailPageApp {
 
     this.selectElement(this.selectedElement);
     this.bindEvents();
+    initSiteChrome();
   }
 
   initTheme() {
@@ -79,8 +81,8 @@ class DetailPageApp {
         `Prepnúť na ${isLight ? 'tmavý' : 'svetlý'} režim`
       );
       this.themeToggleBtn.innerHTML = isLight
-        ? '<span class="theme-icon" aria-hidden="true">☾</span><span class="btn-text">Tmavý</span>'
-        : '<span class="theme-icon" aria-hidden="true">☀</span><span class="btn-text">Svetlý</span>';
+        ? '<i class="fa-solid fa-moon theme-icon" aria-hidden="true"></i><span class="btn-text">Tmavý</span>'
+        : '<i class="fa-solid fa-sun theme-icon" aria-hidden="true"></i><span class="btn-text">Svetlý</span>';
     }
     this.atomModel?.renderFrame();
   }

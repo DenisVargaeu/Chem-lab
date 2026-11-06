@@ -54,12 +54,12 @@ export class MoleculeVisualizer {
 
           <div class="mol-cam-btns">
             <button type="button" id="mol-autorotate-btn" class="atom-ctrl-btn" title="Automatické otáčanie modelu">
-              ⟳ Otáčať
+              <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Otáčať
             </button>
-            <button type="button" id="mol-zoom-in-btn" class="atom-ctrl-btn" title="Priblížiť model">+</button>
-            <button type="button" id="mol-zoom-out-btn" class="atom-ctrl-btn" title="Oddialiť model">−</button>
+            <button type="button" id="mol-zoom-in-btn" class="atom-ctrl-btn" title="Priblížiť model"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i></button>
+            <button type="button" id="mol-zoom-out-btn" class="atom-ctrl-btn" title="Oddialiť model"><i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i></button>
             <button type="button" id="mol-reset-cam-btn" class="atom-ctrl-btn" title="Obnoviť predvolený pohľad">
-              ↺ Reset
+              <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset
             </button>
           </div>
         </div>
@@ -123,7 +123,9 @@ export class MoleculeVisualizer {
     this.autoRotateBtn?.addEventListener('click', () => {
       this.autoRotate = !this.autoRotate;
       this.autoRotateBtn.classList.toggle('is-active', this.autoRotate);
-      this.autoRotateBtn.textContent = this.autoRotate ? '⏸Zastaviť' : '⟳ Otáčať';
+      this.autoRotateBtn.innerHTML = this.autoRotate
+        ? '<i class="fa-solid fa-pause" aria-hidden="true"></i> Zastaviť'
+        : '<i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> Otáčať';
       if (this.autoRotate) {
         this.startAnimationLoop();
       } else {
@@ -329,12 +331,12 @@ export class MoleculeVisualizer {
 
     if (this.structureBadgeEl) {
       if (d.hasKnownStructure) {
-        this.structureBadgeEl.textContent = isIonic
-          ? '⚡ Iónová vzorcová jednotka'
-          : '✓ Overená molekulová štruktúra';
+        this.structureBadgeEl.innerHTML = isIonic
+          ? '<i class="fa-solid fa-bolt" aria-hidden="true"></i> Iónová vzorcová jednotka'
+          : '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Overená molekulová štruktúra';
         this.structureBadgeEl.className = 'mol-structure-badge is-verified';
       } else {
-        this.structureBadgeEl.textContent = 'ℹ Zloženie prvkov (bez väzbovej schémy)';
+        this.structureBadgeEl.innerHTML = '<i class="fa-solid fa-circle-info" aria-hidden="true"></i> Zloženie prvkov (bez väzbovej schémy)';
         this.structureBadgeEl.className = 'mol-structure-badge is-composition';
       }
     }
@@ -437,10 +439,10 @@ export class MoleculeVisualizer {
         </div>
         <div class="mol-atom-ins-actions">
           <a href="./prvok.html#${elData.symbol}" class="mol-ins-link mol-ins-link-primary">
-            🔬 2D Model a Detail prvku ${elData.symbol} →
+            <i class="fa-solid fa-microscope" aria-hidden="true"></i> 2D Model a Detail prvku ${elData.symbol} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
           <a href="./index.html#${elData.symbol}" class="mol-ins-link">
-            📊 Zobraziť v periodickej tabuľke
+            <i class="fa-solid fa-table-cells" aria-hidden="true"></i> Zobraziť v periodickej tabuľke
           </a>
         </div>
       </div>
