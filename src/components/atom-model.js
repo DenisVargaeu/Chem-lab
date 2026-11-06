@@ -418,10 +418,10 @@ export class AtomModel {
     const maxRadius = minDim * 0.43 * this.zoom;
 
     const isLight = document.documentElement.getAttribute('data-theme') !== 'dark';
-    const ringStroke = isLight ? 'rgba(37, 99, 235, 0.30)' : 'rgba(96, 165, 250, 0.32)';
-    const labelBg = isLight ? '#dbeafe' : '#1e3a8a';
-    const labelBorder = isLight ? 'rgba(37, 99, 235, 0.35)' : 'rgba(96, 165, 250, 0.40)';
-    const labelText = isLight ? '#1e40af' : '#dbeafe';
+    const ringStroke = isLight ? 'rgba(55, 53, 47, 0.24)' : 'rgba(230, 230, 228, 0.24)';
+    const labelBg = isLight ? '#e7f3f8' : '#1f3547';
+    const labelBorder = isLight ? '#b3d4e2' : '#355b78';
+    const labelText = isLight ? '#0b6e99' : '#91d5ff';
 
     for (const shell of this.shellsData) {
       const r = shell.radiusFactor * maxRadius;
@@ -486,13 +486,13 @@ export class AtomModel {
 
     ctx.beginPath();
     ctx.arc(cx, cy, maxNucleusRadius + nucleonRadius + 2, 0, Math.PI * 2);
-    ctx.fillStyle = isLight ? 'rgba(37, 99, 235, 0.08)' : 'rgba(59, 130, 246, 0.10)';
+    ctx.fillStyle = isLight ? 'rgba(55, 53, 47, 0.06)' : 'rgba(230, 230, 228, 0.08)';
     ctx.fill();
 
-    const protonFill = isLight ? '#e11d48' : '#fb7185';
-    const protonStroke = isLight ? '#881337' : '#4c0519';
-    const neutronFill = isLight ? '#64748b' : '#94a3b8';
-    const neutronStroke = isLight ? '#1e293b' : '#0f172a';
+    const protonFill = isLight ? '#e03e3e' : '#ff7875';
+    const protonStroke = isLight ? '#6e3630' : '#492928';
+    const neutronFill = isLight ? '#9b9a97' : '#8c959f';
+    const neutronStroke = isLight ? '#37352f' : '#191919';
 
     for (let i = 0; i < total; i++) {
       const n = this.nucleons[i];
@@ -510,8 +510,8 @@ export class AtomModel {
   }
 
   draw2DElectron(ctx, x, y, r, isLight) {
-    const electronFill = isLight ? '#2563eb' : '#3b82f6';
-    const electronStroke = isLight ? '#ffffff' : '#0f172a';
+    const electronFill = isLight ? '#2383e2' : '#529cca';
+    const electronStroke = isLight ? '#ffffff' : '#202020';
 
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);

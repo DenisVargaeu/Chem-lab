@@ -5,10 +5,9 @@
 .catalog-card {
   width: 100%;
   background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 22px;
-  box-shadow: var(--shadow-sm);
+  padding: 22px 24px;
 }
 
 .catalog-card-header {
@@ -17,24 +16,25 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px 20px;
-  margin-bottom: 18px;
-  padding-bottom: 14px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .catalog-eyebrow {
   display: block;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--accent-primary);
+  color: var(--text-muted);
 }
 
 .catalog-title {
   margin: 2px 0 0;
-  font-size: 20px;
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .compare-selectors {
@@ -47,8 +47,8 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 12.5px;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
@@ -60,8 +60,8 @@
 
 .cmp-card {
   background-color: var(--bg-surface-subtle);
-  border: 1.5px solid var(--border-subtle);
-  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -72,13 +72,15 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .cmp-badge {
-  width: 58px;
-  height: 62px;
-  border-radius: 16px;
-  border-width: 2px;
+  width: 54px;
+  height: 58px;
+  border-radius: 6px;
+  border-width: 1.5px;
   border-style: solid;
   display: flex;
   flex-direction: column;
@@ -188,35 +190,39 @@
   transform: translateY(-1px);
 }
 
-/* Full 118 Elements Table */
+/* Full 118 Elements Table (Wikipedia Wikitable / Notion Database Style) */
 .catalog-table-wrap {
   width: 100%;
   overflow-x: auto;
-  border-radius: 16px;
-  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
 }
 
 .catalog-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12.5px;
+  font-size: 13px;
   min-width: 980px;
 }
 
 .catalog-table th,
 .catalog-table td {
-  padding: 10px 12px;
+  padding: 9px 12px;
   text-align: left;
   border-bottom: 1px solid var(--border-subtle);
+  border-right: 1px solid var(--border-subtle);
+}
+
+.catalog-table th:last-child,
+.catalog-table td:last-child {
+  border-right: none;
 }
 
 .catalog-table th {
-  background-color: var(--bg-surface-elevated);
-  color: var(--text-secondary);
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  background-color: var(--bg-surface-subtle);
+  color: var(--text-primary);
+  font-size: 11.5px;
+  font-weight: 700;
   position: sticky;
   top: 0;
 }

@@ -1,178 +1,199 @@
 /* ==========================================================================
-   Main Application Styles — Flat White & Blue Design
+   Main Application Styles — Notion + Wikipedia Clean Knowledge Base Design
    Preserves all 10 Periodic Table Category Colors.
    ========================================================================== */
 
 :root,
 :root[data-theme="light"] {
-  /* Flat White & Light Slate Surfaces (Main = White) */
-  --bg-app: #f8fafc;
+  /* Authentic Notion Light Mode Surfaces (Warm Paper + Crisp White Page) */
+  --bg-app: #f7f6f3;
   --bg-surface: #ffffff;
-  --bg-surface-elevated: #eff6ff;
-  --bg-surface-subtle: #f1f5f9;
+  --bg-surface-elevated: #efefef;
+  --bg-surface-subtle: #f7f6f3;
   --bg-input: #ffffff;
 
-  /* Flat Blue Primary & Secondary Button Tokens */
-  --m3-primary: #2563eb;
+  /* Typography Stacks (Notion UI + Wikipedia Encyclopedic Headings) */
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Linux Libertine", "Georgia", "Cambria", "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Official Notion Blue Action & Tag Tokens */
+  --m3-primary: #2383e2;
   --m3-on-primary: #ffffff;
-  --m3-primary-container: #2563eb;
-  --m3-on-primary-container: #ffffff;
-  --m3-secondary-container: #dbeafe;
-  --m3-on-secondary-container: #1e40af;
+  --m3-primary-container: #e7f3f8;
+  --m3-on-primary-container: #0b6e99;
+  --m3-secondary-container: #f1f1ef;
+  --m3-on-secondary-container: #37352f;
 
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
+  /* Authentic Notion Charcoal & Warm Gray Ink (#37352f) */
+  --text-primary: #37352f;
+  --text-secondary: #6b6a65;
+  --text-muted: #9b9a97;
 
-  --border-subtle: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --accent-primary: #2563eb;
-  --accent-focus: #1d4ed8;
-  --accent-glow: rgba(37, 99, 235, 0.16);
+  /* Crisp Notion 1px Warm Hairline Borders */
+  --border-subtle: #e9e9e7;
+  --border-strong: #d3d1cb;
+  --accent-primary: #2383e2;
+  --accent-focus: #0b6e99;
+  --accent-glow: rgba(35, 131, 226, 0.18);
 
-  /* Preserved Periodic Table Category Palette (Light Mode) */
-  --cat-alkali-bg: #ffecef;
-  --cat-alkali-border: #f49da8;
-  --cat-alkali-text: #8c1528;
-  --cat-alkali-swatch: #e11d48;
+  /* Notion 10 Official Tag Colors for Periodic Table Categories (Light Mode) */
+  /* 1. Alkali Metals — Notion Red */
+  --cat-alkali-bg: #fbe4e4;
+  --cat-alkali-border: #f1baba;
+  --cat-alkali-text: #6e3630;
+  --cat-alkali-swatch: #e03e3e;
 
-  --cat-alkaline-bg: #fff1e6;
-  --cat-alkaline-border: #f6b079;
-  --cat-alkaline-text: #863c05;
-  --cat-alkaline-swatch: #ea580c;
+  /* 2. Alkaline Earth Metals — Notion Orange */
+  --cat-alkaline-bg: #faebdd;
+  --cat-alkaline-border: #f0c8a4;
+  --cat-alkaline-text: #794216;
+  --cat-alkaline-swatch: #d9730d;
 
-  --cat-transition-bg: #e3faf3;
-  --cat-transition-border: #76d9bd;
-  --cat-transition-text: #065743;
-  --cat-transition-swatch: #0d9488;
+  /* 3. Transition Metals — Notion Blue */
+  --cat-transition-bg: #ddebf1;
+  --cat-transition-border: #b3d4e2;
+  --cat-transition-text: #184965;
+  --cat-transition-swatch: #0b6e99;
 
-  --cat-post-transition-bg: #e5f9ea;
-  --cat-post-transition-border: #7ed992;
-  --cat-post-transition-text: #0b5921;
-  --cat-post-transition-swatch: #16a34a;
+  /* 4. Post-Transition Metals — Notion Teal/Green */
+  --cat-post-transition-bg: #ddedea;
+  --cat-post-transition-border: #b2d8d0;
+  --cat-post-transition-text: #1c5246;
+  --cat-post-transition-swatch: #0f7b6c;
 
-  --cat-metalloid-bg: #fdf8dc;
-  --cat-metalloid-border: #decb5d;
-  --cat-metalloid-text: #655700;
-  --cat-metalloid-swatch: #ca8a04;
+  /* 5. Metalloids — Notion Yellow */
+  --cat-metalloid-bg: #fbf3db;
+  --cat-metalloid-border: #edd89a;
+  --cat-metalloid-text: #695314;
+  --cat-metalloid-swatch: #dfab01;
 
-  --cat-nonmetal-bg: #eefbe3;
-  --cat-nonmetal-border: #9add6d;
-  --cat-nonmetal-text: #275c06;
-  --cat-nonmetal-swatch: #65a30d;
+  /* 6. Reactive Nonmetals — Notion Sage/Emerald */
+  --cat-nonmetal-bg: #e4f2e1;
+  --cat-nonmetal-border: #b8ddb0;
+  --cat-nonmetal-text: #25531f;
+  --cat-nonmetal-swatch: #2b8a3e;
 
-  --cat-halogen-bg: #e3f8fc;
-  --cat-halogen-border: #77d4e6;
-  --cat-halogen-text: #075363;
-  --cat-halogen-swatch: #0891b2;
+  /* 7. Halogens — Notion Warm Brown/Amber */
+  --cat-halogen-bg: #eee0da;
+  --cat-halogen-border: #d6b9ad;
+  --cat-halogen-text: #5c3b2e;
+  --cat-halogen-swatch: #8c523a;
 
-  --cat-noble-bg: #f3edff;
-  --cat-noble-border: #bfa8f5;
-  --cat-noble-text: #4c238f;
-  --cat-noble-swatch: #7c3aed;
+  /* 8. Noble Gases — Notion Purple */
+  --cat-noble-bg: #eae4f2;
+  --cat-noble-border: #cabbe0;
+  --cat-noble-text: #492f64;
+  --cat-noble-swatch: #6940a5;
 
-  --cat-lanthanide-bg: #fdebf5;
-  --cat-lanthanide-border: #f09cce;
-  --cat-lanthanide-text: #821456;
-  --cat-lanthanide-swatch: #db2777;
+  /* 9. Lanthanides — Notion Pink */
+  --cat-lanthanide-bg: #f4dfeb;
+  --cat-lanthanide-border: #e0b5ce;
+  --cat-lanthanide-text: #69294f;
+  --cat-lanthanide-swatch: #ad1a72;
 
-  --cat-actinide-bg: #ffecf1;
-  --cat-actinide-border: #f39cb5;
-  --cat-actinide-text: #8b1339;
-  --cat-actinide-swatch: #e11d48;
+  /* 10. Actinides — Notion Warm Gray */
+  --cat-actinide-bg: #ebeced;
+  --cat-actinide-border: #c9cccf;
+  --cat-actinide-text: #454b4e;
+  --cat-actinide-swatch: #646a6e;
 
-  /* Flat design: no drop shadows, clean radii */
+  /* Crisp Notion Geometry (6px - 8px radii, zero heavy shadows) */
   --shadow-sm: none;
   --shadow-md: none;
-  --radius-xl: 12px;
-  --radius-lg: 10px;
-  --radius-md: 8px;
-  --radius-pill: 8px;
+  --radius-xl: 8px;
+  --radius-lg: 6px;
+  --radius-md: 6px;
+  --radius-pill: 6px;
 }
 
 :root[data-theme="dark"] {
-  /* Flat Dark Slate & Blue Surfaces */
-  --bg-app: #0f172a;
-  --bg-surface: #1e293b;
-  --bg-surface-elevated: #26354d;
-  --bg-surface-subtle: #0f172a;
-  --bg-input: #1e293b;
+  /* Authentic Notion Dark Mode Surfaces (#191919 / #202020) */
+  --bg-app: #191919;
+  --bg-surface: #202020;
+  --bg-surface-elevated: #2f2f2f;
+  --bg-surface-subtle: #252525;
+  --bg-input: #202020;
 
-  /* Flat Blue Primary & Secondary Tokens */
-  --m3-primary: #3b82f6;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Linux Libertine", "Georgia", "Cambria", "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Notion Dark Mode Blue Tokens */
+  --m3-primary: #2383e2;
   --m3-on-primary: #ffffff;
-  --m3-primary-container: #2563eb;
-  --m3-on-primary-container: #ffffff;
-  --m3-secondary-container: #1e3a8a;
-  --m3-on-secondary-container: #dbeafe;
+  --m3-primary-container: #1f3547;
+  --m3-on-primary-container: #7cc4fa;
+  --m3-secondary-container: #2f2f2f;
+  --m3-on-secondary-container: #e6e6e4;
 
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
+  --text-primary: #e6e6e4;
+  --text-secondary: #9b9a97;
+  --text-muted: #6e6d6a;
 
-  --border-subtle: #334155;
-  --border-strong: #475569;
-  --accent-primary: #3b82f6;
-  --accent-focus: #60a5fa;
-  --accent-glow: rgba(59, 130, 246, 0.22);
+  --border-subtle: #2f2f2f;
+  --border-strong: #3f3f3f;
+  --accent-primary: #529cca;
+  --accent-focus: #7cc4fa;
+  --accent-glow: rgba(82, 156, 202, 0.24);
 
-  /* Preserved Periodic Table Category Palette (Dark Mode) */
-  --cat-alkali-bg: #32181c;
-  --cat-alkali-border: #8c3b47;
-  --cat-alkali-text: #ffb2ba;
-  --cat-alkali-swatch: #ff6b7b;
+  /* Notion 10 Official Tag Colors for Periodic Table Categories (Dark Mode) */
+  --cat-alkali-bg: #492928;
+  --cat-alkali-border: #7a3e3c;
+  --cat-alkali-text: #ffa39e;
+  --cat-alkali-swatch: #ff7875;
 
-  --cat-alkaline-bg: #311f12;
-  --cat-alkaline-border: #8b5629;
-  --cat-alkaline-text: #ffbc85;
-  --cat-alkaline-swatch: #fb923c;
+  --cat-alkaline-bg: #493222;
+  --cat-alkaline-border: #7c5132;
+  --cat-alkaline-text: #ffc085;
+  --cat-alkaline-swatch: #ffa940;
 
-  --cat-transition-bg: #132822;
-  --cat-transition-border: #2e6f5b;
-  --cat-transition-text: #85f2ce;
-  --cat-transition-swatch: #2dd4bf;
+  --cat-transition-bg: #1f3547;
+  --cat-transition-border: #355b78;
+  --cat-transition-text: #91d5ff;
+  --cat-transition-swatch: #40a9ff;
 
-  --cat-post-transition-bg: #142a18;
-  --cat-post-transition-border: #337441;
-  --cat-post-transition-text: #94f7a7;
-  --cat-post-transition-swatch: #4ade80;
+  --cat-post-transition-bg: #203834;
+  --cat-post-transition-border: #346159;
+  --cat-post-transition-text: #87e8de;
+  --cat-post-transition-swatch: #36cfc9;
 
-  --cat-metalloid-bg: #292711;
-  --cat-metalloid-border: #756e25;
-  --cat-metalloid-text: #efe375;
-  --cat-metalloid-swatch: #facc15;
+  --cat-metalloid-bg: #463b21;
+  --cat-metalloid-border: #756131;
+  --cat-metalloid-text: #ffe58f;
+  --cat-metalloid-swatch: #fadb14;
 
-  --cat-nonmetal-bg: #1b2d12;
-  --cat-nonmetal-border: #4a802d;
-  --cat-nonmetal-text: #b4f78e;
-  --cat-nonmetal-swatch: #84cc16;
+  --cat-nonmetal-bg: #223a24;
+  --cat-nonmetal-border: #3b663f;
+  --cat-nonmetal-text: #b7eb8f;
+  --cat-nonmetal-swatch: #73d13d;
 
-  --cat-halogen-bg: #11292e;
-  --cat-halogen-border: #2a7180;
-  --cat-halogen-text: #7ee8fa;
-  --cat-halogen-swatch: #22d3ee;
+  --cat-halogen-bg: #3d2d27;
+  --cat-halogen-border: #664a3f;
+  --cat-halogen-text: #e8c3b5;
+  --cat-halogen-swatch: #b88672;
 
-  --cat-noble-bg: #221b33;
-  --cat-noble-border: #5c478a;
-  --cat-noble-text: #d6bfff;
-  --cat-noble-swatch: #a78bfa;
+  --cat-noble-bg: #332742;
+  --cat-noble-border: #574173;
+  --cat-noble-text: #d3adf7;
+  --cat-noble-swatch: #9254de;
 
-  --cat-lanthanide-bg: #301729;
-  --cat-lanthanide-border: #823c6d;
-  --cat-lanthanide-text: #ffafd8;
-  --cat-lanthanide-swatch: #f472b6;
+  --cat-lanthanide-bg: #422638;
+  --cat-lanthanide-border: #703c5d;
+  --cat-lanthanide-text: #ffadd2;
+  --cat-lanthanide-swatch: #f759ab;
 
-  --cat-actinide-bg: #321721;
-  --cat-actinide-border: #873954;
-  --cat-actinide-text: #ffb1c8;
-  --cat-actinide-swatch: #fb7185;
+  --cat-actinide-bg: #2f3235;
+  --cat-actinide-border: #51565c;
+  --cat-actinide-text: #d0d5dd;
+  --cat-actinide-swatch: #8c959f;
 
   --shadow-sm: none;
   --shadow-md: none;
-  --radius-xl: 12px;
-  --radius-lg: 10px;
-  --radius-md: 8px;
-  --radius-pill: 8px;
+  --radius-xl: 8px;
+  --radius-lg: 6px;
+  --radius-md: 6px;
+  --radius-pill: 6px;
 }
 
 *,
@@ -187,9 +208,9 @@ body {
   padding: 0;
   background-color: var(--bg-app);
   color: var(--text-primary);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.48;
+  font-family: var(--font-sans);
+  font-size: 14.5px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -201,7 +222,7 @@ select {
 }
 
 /* ==========================================================================
-   App Layout Shell
+   App Layout Shell (Notion Workspace + Wikipedia Article Structure)
    ========================================================================== */
 
 .app-shell {
@@ -212,23 +233,26 @@ select {
   margin: 0 auto;
 }
 
-/* Top Application Bar (Material 3 Expressive) */
+/* Notion-Style Compact Top Bar */
 .app-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 14px 20px;
-  padding: 14px 22px;
+  gap: 12px 20px;
+  padding: 10px 24px;
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 200;
 }
 
 .brand-and-nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px 20px;
+  gap: 10px 20px;
   min-width: 0;
   max-width: 100%;
 }
@@ -236,22 +260,21 @@ select {
 .brand-area {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 10px;
   text-decoration: none;
   color: inherit;
   flex-shrink: 0;
+  padding-right: 12px;
+  border-right: 1px solid var(--border-subtle);
 }
 
-/* Multi-Page Navigation Pills (Material 3 Expressive) */
+/* Notion-Style Workspace Tabs */
 .main-nav {
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
   gap: 4px;
-  padding: 4px;
-  border-radius: 10px;
-  background-color: var(--bg-surface-subtle);
-  border: 1.5px solid var(--border-subtle);
+  padding: 0;
   max-width: 100%;
   overflow-x: auto;
   scrollbar-width: none;
@@ -264,54 +287,69 @@ select {
 .nav-tab {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 34px;
-  padding: 0 13px;
-  border-radius: var(--radius-pill);
-  font-size: 12.5px;
-  font-weight: 700;
+  gap: 7px;
+  height: 32px;
+  padding: 0 11px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
   text-decoration: none;
   color: var(--text-secondary);
+  border: 1px solid transparent;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: all 0.16s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.nav-tab i {
+  font-size: 12.5px;
+  color: var(--text-muted);
 }
 
 .nav-tab:hover {
   color: var(--text-primary);
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-surface-subtle);
+}
+
+.nav-tab:hover i {
+  color: var(--accent-primary);
 }
 
 .nav-tab.is-active {
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
-  box-shadow: var(--shadow-sm);
+  border-color: rgba(37, 99, 235, 0.25);
+  font-weight: 700;
+}
+
+.nav-tab.is-active i {
+  color: var(--accent-primary);
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  background-color: var(--m3-primary-container);
-  color: var(--m3-on-primary-container);
-  border: 1.5px solid var(--accent-primary);
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+  border: 1px solid var(--accent-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   line-height: 1;
   flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
 }
 
 .brand-z {
-  font-size: 9.5px;
+  font-size: 8.5px;
   font-weight: 700;
+  font-family: var(--font-mono);
   opacity: 0.9;
 }
 
 .brand-sym {
-  font-size: 17px;
+  font-size: 14.5px;
   font-weight: 800;
   letter-spacing: -0.02em;
 }
@@ -323,16 +361,16 @@ select {
 
 .app-title {
   margin: 0;
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
 .app-subtitle {
   margin: 0;
-  font-size: 12px;
-  color: var(--text-secondary);
+  font-size: 11.5px;
+  color: var(--text-muted);
 }
 
 .header-actions {
@@ -342,12 +380,12 @@ select {
   flex-shrink: 0;
 }
 
-/* Dedicated Page Filter & Picker Toolbars (Outside Navbar) */
+/* Notion Database Filter & Search Bar */
 .page-toolbar-card {
   background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 14px 18px;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -405,15 +443,15 @@ select {
 
 .search-input {
   width: 100%;
-  height: 38px;
-  padding: 0 58px 0 36px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-subtle);
+  height: 34px;
+  padding: 0 56px 0 34px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
   background-color: var(--bg-input);
   color: var(--text-primary);
   font-size: 13px;
   font-weight: 500;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+  transition: border-color 0.14s ease, box-shadow 0.14s ease;
 }
 
 .search-input::placeholder {
@@ -429,37 +467,37 @@ select {
 
 .search-shortcut {
   position: absolute;
-  right: 11px;
-  padding: 1px 6px;
+  right: 9px;
+  padding: 1px 5px;
   font-size: 10px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: var(--text-secondary);
-  background: var(--bg-surface-elevated);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  background: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 4px;
   pointer-events: none;
 }
 
 .clear-search-btn {
   position: absolute;
-  right: 32px;
-  width: 22px;
-  height: 22px;
+  right: 30px;
+  width: 20px;
+  height: 20px;
   border: none;
-  border-radius: 50%;
+  border-radius: 4px;
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1;
 }
 
 .clear-search-btn:hover {
   color: var(--text-primary);
-  background: var(--bg-surface-elevated);
+  background: var(--bg-surface-subtle);
 }
 
 .filter-selects-group {
@@ -469,21 +507,21 @@ select {
 }
 
 .ctrl-select {
-  height: 38px;
-  padding: 0 13px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-subtle);
+  height: 34px;
+  padding: 0 11px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
   background-color: var(--bg-input);
   color: var(--text-primary);
   font-size: 12.5px;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.16s ease, background-color 0.16s ease;
+  transition: border-color 0.14s ease, background-color 0.14s ease;
 }
 
 .ctrl-select:hover {
-  border-color: var(--border-strong);
-  background-color: var(--bg-surface-elevated);
+  border-color: var(--accent-primary);
+  background-color: var(--bg-surface-subtle);
 }
 
 .ctrl-select:focus {
@@ -498,11 +536,11 @@ select {
 }
 
 .ctrl-btn {
-  height: 38px;
-  padding: 0 15px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-subtle);
-  background-color: var(--bg-surface-elevated);
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-surface);
   color: var(--text-primary);
   font-size: 12.5px;
   font-weight: 600;
@@ -510,22 +548,25 @@ select {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }
 
 .ctrl-btn-tonal {
-  background-color: var(--m3-primary-container);
-  color: var(--m3-on-primary-container);
-  border-color: var(--accent-primary);
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+  border-color: var(--m3-primary);
 }
 
-.ctrl-btn:hover {
-  transform: translateY(-1px);
-  border-color: var(--accent-primary);
+.ctrl-btn-tonal:hover {
+  background-color: var(--accent-focus);
+  border-color: var(--accent-focus);
+  color: #ffffff;
 }
 
-.ctrl-btn:active {
-  transform: scale(0.97);
+.ctrl-btn:hover:not(.ctrl-btn-tonal) {
+  background-color: var(--bg-surface-subtle);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
 }
 
 .ctrl-btn:focus-visible {
@@ -534,7 +575,7 @@ select {
 }
 
 /* ==========================================================================
-   Category Legend Bar (M3 Expressive Filter Chips)
+   Category Legend Bar (Notion Tag Chips)
    ========================================================================== */
 
 .legend-bar {
@@ -551,33 +592,32 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .legend-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 5px 12px;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface);
   color: var(--text-secondary);
   font-size: 11.5px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.16s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.12s ease, border-color 0.12s ease;
 }
 
 .legend-chip:hover {
   border-color: var(--border-strong);
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-surface-subtle);
   color: var(--text-primary);
-  transform: translateY(-1px);
 }
 
 .legend-chip.is-active {
-  border-color: var(--m3-primary);
+  border-color: var(--accent-primary);
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
   font-weight: 700;
@@ -643,10 +683,9 @@ select {
 .periodic-table-mount {
   width: 100%;
   background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 18px;
-  box-shadow: var(--shadow-sm);
+  padding: 16px;
 }
 
 .table-shortcuts-bar {
@@ -655,24 +694,25 @@ select {
   align-items: center;
   justify-content: center;
   gap: 12px 24px;
-  padding: 8px 16px;
-  font-size: 11.5px;
+  padding: 8px 14px;
+  font-size: 12px;
   color: var(--text-secondary);
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
+  border-radius: 6px;
 }
 
 .table-shortcuts-bar kbd {
   display: inline-block;
   padding: 1px 6px;
   margin-right: 3px;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: var(--m3-on-primary-container);
-  background-color: var(--m3-primary-container);
-  border-radius: 5px;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
 }
 
 /* BOTTOM: Element Inspector Dashboard Underneath Table */
@@ -680,20 +720,19 @@ select {
   width: 100%;
   display: grid;
   grid-template-columns: minmax(360px, 460px) minmax(0, 1fr);
-  gap: 20px;
+  gap: 18px;
   align-items: stretch;
 }
 
 .inspector-card {
   background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 22px;
-  box-shadow: var(--shadow-sm);
+  padding: 22px 24px;
 }
 
 /* ==========================================================================
-   Element Details Component Styles (Material 3 Expressive)
+   Element Details Component Styles (Wikipedia Article + Infobox Style)
    ========================================================================== */
 
 .details-header {
@@ -701,21 +740,22 @@ select {
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .details-symbol-box {
-  width: 78px;
-  height: 86px;
-  border-radius: 20px;
+  width: 74px;
+  height: 82px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 7px 8px;
+  padding: 6px 8px;
   flex-shrink: 0;
-  border-width: 2px;
+  border-width: 1.5px;
   border-style: solid;
-  box-shadow: var(--shadow-sm);
 }
 
 .details-z {
@@ -786,9 +826,10 @@ select {
 
 .details-name {
   margin: 0 0 4px;
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -796,10 +837,11 @@ select {
 }
 
 .details-latin-inline {
-  font-size: 17px;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 400;
   font-style: italic;
-  color: var(--accent-primary);
+  color: var(--text-secondary);
 }
 
 .tt-latin {
@@ -810,7 +852,7 @@ select {
 }
 
 .details-submeta {
-  font-size: 12.5px;
+  font-size: 13px;
   color: var(--text-secondary);
   display: flex;
   flex-wrap: wrap;
@@ -819,7 +861,7 @@ select {
 }
 
 .meta-note {
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--text-muted);
 }
 
@@ -830,39 +872,40 @@ select {
 }
 
 .nav-el-btn {
-  padding: 7px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: var(--radius-pill);
-  border: 1.5px solid var(--border-subtle);
-  background-color: var(--bg-surface-elevated);
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-surface);
   color: var(--text-primary);
   cursor: pointer;
-  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
 }
 
 .nav-el-btn:hover {
   border-color: var(--accent-primary);
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
-  transform: translateY(-1px);
 }
 
+/* Wikipedia Lead Paragraph + Notion Callout Style */
 .details-summary {
-  margin: 0 0 16px;
-  padding: 12px 16px;
+  margin: 0 0 18px;
+  padding: 14px 16px;
   background-color: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  font-size: 13.5px;
-  line-height: 1.55;
+  border-left: 3px solid var(--accent-primary);
+  border-radius: 6px;
+  font-size: 14.5px;
+  line-height: 1.68;
   color: var(--text-primary);
 }
 
 .details-section {
   border-top: 1px solid var(--border-subtle);
-  padding-top: 14px;
-  margin-top: 14px;
+  padding-top: 16px;
+  margin-top: 16px;
 }
 
 .section-header-row {
@@ -871,16 +914,17 @@ select {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-title {
   margin: 0;
-  font-size: 12px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent-primary);
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 .isotope-select-label {
@@ -1057,30 +1101,35 @@ select {
   border-radius: 999px;
 }
 
+/* Wikipedia Infobox Key-Value Grid */
 .props-grid {
   margin: 10px 0 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  overflow: hidden;
+  gap: 1px;
+  background-color: var(--border-subtle);
 }
 
 .prop-item {
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid var(--border-subtle);
-  background-color: var(--bg-surface-subtle);
+  padding: 10px 14px;
+  border-radius: 0;
+  border: none;
+  background-color: var(--bg-surface);
 }
 
 .prop-item dt {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 3px;
 }
 
 .prop-item dd {
   margin: 0;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 700;
   color: var(--text-primary);
   display: flex;
@@ -1090,30 +1139,31 @@ select {
 }
 
 .inline-action-btn {
-  padding: 2px 9px;
-  font-size: 10.5px;
-  font-weight: 700;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--accent-primary);
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
   cursor: pointer;
-  transition: transform 0.14s ease;
 }
 
 .inline-action-btn:hover {
-  transform: scale(1.04);
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
 }
 
 .scientific-data-note {
-  margin: 12px 0 0;
+  margin: 14px 0 0;
   padding: 10px 14px;
-  border-radius: 14px;
-  background-color: var(--bg-surface-elevated);
-  border-left: 4px solid var(--accent-primary);
-  font-size: 11.5px;
+  border-radius: 6px;
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid var(--accent-primary);
+  font-size: 12.5px;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ==========================================================================
@@ -1203,15 +1253,14 @@ select {
 }
 
 /* ==========================================================================
-   Selected Element Compact Overview Bar (index.html)
+   Selected Element Compact Overview Bar (index.html — Wikipedia Summary Header)
    ========================================================================== */
 
 .selected-element-bar {
   background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-strong);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
-  padding: 16px 22px;
-  box-shadow: var(--shadow-md);
+  padding: 16px 20px;
 }
 
 .sel-bar-main {
@@ -1219,51 +1268,50 @@ select {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 18px 24px;
+  gap: 16px 24px;
 }
 
 .sel-bar-identity {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
-  flex: 1 1 360px;
+  flex: 1 1 380px;
   min-width: 0;
 }
 
 .sel-bar-badge {
-  width: 68px;
-  height: 76px;
-  border-radius: 18px;
+  width: 64px;
+  height: 72px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 6px 8px;
+  padding: 5px 7px;
   flex-shrink: 0;
-  border-width: 2px;
+  border-width: 1.5px;
   border-style: solid;
-  box-shadow: var(--shadow-sm);
 }
 
 .sel-bar-z {
   align-self: flex-start;
   font-size: 11px;
   font-weight: 800;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   line-height: 1;
 }
 
 .sel-bar-sym {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
 .sel-bar-mass {
   font-size: 9.5px;
   font-weight: 600;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   line-height: 1;
   opacity: 0.9;
 }
@@ -1282,9 +1330,9 @@ select {
 
 .sel-bar-name {
   margin: 0 0 4px;
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 23px;
+  font-weight: 700;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -1292,17 +1340,18 @@ select {
 }
 
 .sel-bar-latin {
-  font-size: 14.5px;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: 15.5px;
+  font-weight: 400;
   font-style: italic;
-  color: var(--accent-primary);
+  color: var(--text-secondary);
 }
 
 .sel-bar-summary {
   margin: 0;
-  font-size: 12.5px;
+  font-size: 13.5px;
   color: var(--text-secondary);
-  line-height: 1.45;
+  line-height: 1.58;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -1314,7 +1363,7 @@ select {
   flex-wrap: wrap;
   gap: 12px 18px;
   padding: 10px 14px;
-  border-radius: 16px;
+  border-radius: 6px;
   background-color: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
 }
@@ -1322,7 +1371,7 @@ select {
 .sel-bar-stat {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .sel-bar-stat-label {
@@ -1334,7 +1383,7 @@ select {
 }
 
 .sel-bar-stat-val {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 700;
   color: var(--accent-primary);
@@ -1347,12 +1396,12 @@ select {
 }
 
 .sel-bar-shell-pill {
-  padding: 2px 7px;
-  border-radius: var(--radius-pill);
-  background-color: var(--bg-surface-elevated);
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   font-size: 11px;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   color: var(--text-primary);
 }
 
@@ -1360,67 +1409,65 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .sel-bar-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 9px 15px;
-  border-radius: var(--radius-pill);
+  padding: 7px 13px;
+  border-radius: 6px;
   font-size: 12.5px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.16s cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
   white-space: nowrap;
 }
 
 .sel-bar-btn-primary {
-  background-color: var(--accent-primary);
+  background-color: var(--m3-primary);
   color: var(--m3-on-primary);
-  border: 1.5px solid var(--accent-primary);
+  border: 1px solid var(--m3-primary);
 }
 
 .sel-bar-btn-primary:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.06);
-  box-shadow: var(--shadow-sm);
+  background-color: var(--accent-focus);
+  border-color: var(--accent-focus);
 }
 
 .sel-bar-btn-tonal {
   background-color: var(--m3-primary-container);
   color: var(--m3-on-primary-container);
-  border: 1.5px solid var(--accent-primary);
+  border: 1px solid rgba(37, 99, 235, 0.3);
 }
 
 .sel-bar-btn-tonal:hover {
-  background-color: var(--accent-primary);
+  background-color: var(--m3-primary);
   color: var(--m3-on-primary);
-  transform: translateY(-1px);
 }
 
 .sel-bar-btn-outline {
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-surface);
   color: var(--text-primary);
-  border: 1.5px solid var(--border-subtle);
+  border: 1px solid var(--border-strong);
 }
 
 .sel-bar-btn-outline:hover {
+  background-color: var(--bg-surface-subtle);
   border-color: var(--accent-primary);
   color: var(--accent-primary);
-  transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   Upgraded 4-Column Application Footer (.app-footer)
+   Compact Application Footer (.app-footer — Notion/Wiki Style)
    ========================================================================== */
 
 .app-footer {
   margin-top: auto;
   background-color: var(--bg-surface);
-  border-top: 2px solid var(--border-subtle);
-  padding: 36px 24px 22px;
+  border-top: 1px solid var(--border-subtle);
+  padding: 12px 24px;
 }
 
 .app-footer-inner {
@@ -1428,33 +1475,28 @@ select {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 8px;
 }
 
-.footer-top-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 1.45fr 1fr 1.1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.footer-col {
+.footer-compact-row {
   display: flex;
-  flex-direction: column;
-  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
 }
 
-.footer-brand-header {
+.footer-compact-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .footer-logo-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background-color: var(--accent-primary);
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  background-color: var(--m3-primary);
   color: var(--m3-on-primary);
   display: flex;
   flex-direction: column;
@@ -1462,118 +1504,66 @@ select {
   justify-content: center;
   text-decoration: none;
   flex-shrink: 0;
-  border: 1.5px solid var(--accent-primary);
+  border: 1px solid var(--accent-primary);
 }
 
 .footer-logo-z {
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 800;
   line-height: 1;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   opacity: 0.9;
 }
 
 .footer-logo-sym {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.05;
 }
 
-.footer-brand-titles {
+.footer-compact-identity {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 
 .footer-brand-name-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .footer-brand-name {
-  font-size: 19px;
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: 14.5px;
+  font-weight: 700;
   color: var(--text-primary);
-  letter-spacing: -0.02em;
 }
 
 .footer-version-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-  background-color: var(--accent-primary);
-  color: var(--m3-on-primary);
-  font-size: 11.5px;
-  font-weight: 800;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-.footer-brand-sub {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.footer-about-text {
-  margin: 0;
-  font-size: 12.5px;
-  line-height: 1.55;
-  color: var(--text-secondary);
-}
-
-/* Author Card: Made by Denis Varga */
-.footer-author-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border-radius: 14px;
+  gap: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
   background-color: var(--m3-primary-container);
-  border: 1.5px solid var(--accent-primary);
-}
-
-.footer-author-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background-color: var(--accent-primary);
-  color: var(--m3-on-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-  flex-shrink: 0;
-}
-
-.footer-author-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.footer-author-eyebrow {
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--m3-on-primary-container);
-  opacity: 0.85;
-}
-
-.footer-author-main {
-  font-size: 14px;
+  border: 1px solid rgba(35, 131, 226, 0.25);
+  font-size: 10.5px;
   font-weight: 700;
-  color: var(--m3-on-primary-container);
+  font-family: var(--font-mono);
+}
+
+.footer-author-inline {
+  font-size: 12.5px;
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .footer-author-link {
   color: var(--accent-primary);
-  font-weight: 800;
+  font-weight: 700;
   text-decoration: none;
 }
 
@@ -1581,122 +1571,124 @@ select {
   text-decoration: underline;
 }
 
-.footer-author-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+.footer-brand-sub {
   font-size: 11.5px;
-  margin-top: 2px;
-}
-
-.footer-author-links a {
-  color: var(--m3-on-primary-container);
-  text-decoration: none;
-  font-weight: 600;
-  opacity: 0.9;
-}
-
-.footer-author-links a:hover {
-  color: var(--accent-primary);
-  text-decoration: underline;
-}
-
-/* Column Headers */
-.footer-col-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.footer-col-title {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.footer-col-title i {
-  color: var(--accent-primary);
-}
-
-.footer-col-tag {
-  font-size: 10.5px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
-  background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
 }
 
-/* Release Timeline in Footer */
-.footer-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-release-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 8px 11px;
-  border-radius: 12px;
-  background-color: var(--bg-surface-subtle);
-  border: 1px solid var(--border-subtle);
-}
-
-.footer-release-item.is-current {
-  background-color: var(--m3-primary-container);
-  border-color: var(--accent-primary);
-}
-
-.footer-release-marker {
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+.footer-brand-sub a {
   color: var(--accent-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  flex-shrink: 0;
-  margin-top: 1px;
+  text-decoration: none;
 }
 
-.footer-release-item.is-current .footer-release-marker {
-  background-color: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: var(--m3-on-primary);
+.footer-brand-sub a:hover {
+  text-decoration: underline;
 }
 
-.footer-release-content {
+/* Compact Versions Bar */
+.footer-compact-versions {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.footer-release-top {
-  display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 
+.footer-versions-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-versions-label i {
+  color: var(--accent-primary);
+}
+
+.footer-version-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-ver-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+
+.footer-ver-pill strong {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.footer-ver-pill span {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.footer-ver-pill.is-current {
+  background-color: var(--m3-primary-container);
+  border-color: rgba(35, 131, 226, 0.35);
+}
+
+.footer-ver-pill.is-current strong,
+.footer-ver-pill.is-current span {
+  color: var(--m3-on-primary-container);
+}
+
+.footer-ver-pill:hover {
+  border-color: var(--accent-primary);
+  background-color: var(--m3-primary-container);
+}
+
+/* Compact Actions (Changelog, Privacy Policy, Cookies) */
+.footer-compact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-compact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.footer-compact-btn i {
+  color: var(--accent-primary);
+  font-size: 11px;
+}
+
+.footer-compact-btn:hover {
+  border-color: var(--accent-primary);
+  background-color: var(--m3-primary-container);
+  color: var(--m3-on-primary-container);
+}
+
 .footer-release-ver {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 800;
   color: var(--accent-primary);
@@ -1718,209 +1710,43 @@ select {
   color: var(--m3-on-primary);
 }
 
-.footer-release-date {
-  font-size: 10.5px;
-  color: var(--text-muted);
-  margin-left: auto;
-}
-
-.footer-release-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.3;
-}
-
-.footer-release-desc {
-  margin: 0;
-  font-size: 11px;
-  color: var(--text-secondary);
-  line-height: 1.35;
-}
-
-.footer-changelog-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: 1.5px solid var(--border-strong);
-  background-color: var(--bg-surface);
-  color: var(--accent-primary);
-  font-size: 11.5px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.14s ease;
-}
-
-.footer-changelog-btn:hover {
-  background-color: var(--m3-primary-container);
-  border-color: var(--accent-primary);
-}
-
-/* Navigation Column in Footer */
-.footer-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.footer-nav-item {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 7px 10px;
-  border-radius: 10px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-decoration: none;
-  background-color: var(--bg-surface-subtle);
-  border: 1px solid transparent;
-  transition: all 0.14s ease;
-}
-
-.footer-nav-item i {
-  width: 16px;
-  text-align: center;
-  color: var(--accent-primary);
-}
-
-.footer-nav-item:hover {
-  background-color: var(--m3-primary-container);
-  border-color: var(--accent-primary);
-  color: var(--m3-on-primary-container);
-}
-
-.footer-quick-chips-block {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.footer-sub-label {
-  font-size: 10.5px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
-}
-
-.footer-quick-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.footer-chip {
-  padding: 3px 9px;
-  border-radius: var(--radius-pill);
-  background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  font-size: 11px;
-  font-weight: 700;
-  text-decoration: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  transition: all 0.14s ease;
-}
-
-.footer-chip:hover {
-  background-color: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: var(--m3-on-primary);
-}
-
-/* Privacy, Cookies & Font Awesome Column */
-.footer-tech-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.footer-tech-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 9px 11px;
-  border-radius: 12px;
-  background-color: var(--bg-surface-subtle);
-  border: 1px solid var(--border-subtle);
-}
-
-.footer-tech-icon {
-  font-size: 16px;
-  color: var(--accent-primary);
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.footer-tech-item strong {
-  display: block;
-  font-size: 12px;
-  color: var(--text-primary);
-  margin-bottom: 2px;
-}
-
-.footer-tech-item p {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.4;
-  color: var(--text-secondary);
-}
-
-.footer-legal-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.footer-legal-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 9px 12px;
-  border-radius: 10px;
-  border: 1.5px solid var(--border-strong);
-  background-color: var(--bg-surface);
-  color: var(--text-primary);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.14s ease;
-}
-
-.footer-legal-btn:hover {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-  background-color: var(--m3-primary-container);
-}
-
-.footer-legal-btn-primary {
-  background-color: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: var(--m3-on-primary);
-}
-
-.footer-legal-btn-primary:hover {
-  background-color: #1d4ed8;
-  color: #ffffff;
-}
-
-/* Bottom Bar in Footer */
+/* Bottom Slim Bar in Footer */
 .footer-bottom-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px 20px;
-  padding-top: 16px;
+  gap: 8px 16px;
+  padding-top: 7px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-secondary);
+}
+
+.footer-inline-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+}
+
+.footer-inline-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer-inline-nav a i {
+  color: var(--accent-primary);
+  font-size: 11px;
+}
+
+.footer-inline-nav a:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
 }
 
 .footer-bottom-left,
@@ -1928,31 +1754,15 @@ select {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 14px;
-}
-
-.footer-status-indicator {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 600;
-}
-
-.status-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #16a34a;
-  display: inline-block;
+  gap: 8px 12px;
 }
 
 .footer-tech-pill {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  border-radius: 4px;
   background-color: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
   font-size: 11px;
@@ -1962,17 +1772,6 @@ select {
 
 .footer-tech-pill i {
   color: var(--accent-primary);
-}
-
-.footer-bottom-link {
-  background: none;
-  border: none;
-  padding: 0;
-  color: var(--accent-primary);
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 /* ==========================================================================

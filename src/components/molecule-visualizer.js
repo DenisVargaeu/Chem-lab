@@ -567,15 +567,15 @@ export class MoleculeVisualizer {
       // Plochý rámček karty každej samostatnej molekuly pri zobrazení viacerých molekúl
       if (unitCountToDraw > 1) {
         ctx.save();
-        ctx.fillStyle = isLight ? '#ffffff' : 'rgba(37, 99, 235, 0.06)';
-        ctx.strokeStyle = isLight ? '#cbd5e1' : 'rgba(96, 165, 250, 0.28)';
-        ctx.lineWidth = 1.4;
-        this.roundRect(ctx, cellX, cellY, cellW, cellH, 10);
+        ctx.fillStyle = isLight ? '#ffffff' : '#202020';
+        ctx.strokeStyle = isLight ? '#d3d1cb' : '#3f3f3f';
+        ctx.lineWidth = 1.2;
+        this.roundRect(ctx, cellX, cellY, cellW, cellH, 6);
         ctx.fill();
         ctx.stroke();
 
         // Označenie poradia molekuly (napr. Molekula #1 · CO₂)
-        ctx.fillStyle = isLight ? '#2563eb' : '#60a5fa';
+        ctx.fillStyle = isLight ? '#37352f' : '#e6e6e4';
         ctx.font = '700 11.5px system-ui, -apple-system, sans-serif';
         const unitLabel = d.classification?.isIonic ? 'Jednotka' : 'Molekula';
         ctx.fillText(

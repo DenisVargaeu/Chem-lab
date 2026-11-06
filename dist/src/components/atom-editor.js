@@ -1319,17 +1319,17 @@ export class AtomEditor {
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
 
       if (isOverCap) {
-        ctx.strokeStyle = isLight ? 'rgba(225, 29, 72, 0.78)' : 'rgba(251, 113, 133, 0.85)';
+        ctx.strokeStyle = isLight ? '#e03e3e' : '#ff7875';
         ctx.lineWidth = isHoveredShell || isSelected ? 3.0 : 2.0;
       } else if (isHoveredShell) {
-        ctx.strokeStyle = isLight ? '#2563eb' : '#60a5fa';
-        ctx.lineWidth = 3.2;
+        ctx.strokeStyle = isLight ? '#2383e2' : '#529cca';
+        ctx.lineWidth = 3.0;
       } else if (isSelected) {
-        ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.72)' : 'rgba(96, 165, 250, 0.72)';
-        ctx.lineWidth = 2.2;
+        ctx.strokeStyle = isLight ? 'rgba(35, 131, 226, 0.75)' : 'rgba(82, 156, 202, 0.75)';
+        ctx.lineWidth = 2.0;
       } else {
-        ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.28)' : 'rgba(96, 165, 250, 0.28)';
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = isLight ? 'rgba(55, 53, 47, 0.24)' : 'rgba(230, 230, 228, 0.24)';
+        ctx.lineWidth = 1.4;
       }
       ctx.stroke();
 
@@ -1343,41 +1343,41 @@ export class AtomEditor {
 
       ctx.fillStyle = isOverCap
         ? isLight
-          ? '#ffe4e6'
-          : '#3f1520'
+          ? '#fbe4e4'
+          : '#492928'
         : isSelected || isHoveredShell
         ? isLight
-          ? '#2563eb'
-          : '#1d4ed8'
+          ? '#2383e2'
+          : '#1f3547'
         : isLight
-        ? '#dbeafe'
-        : '#1e293b';
+        ? '#e7f3f8'
+        : '#252525';
 
       ctx.strokeStyle = isOverCap
-        ? '#fb7185'
+        ? '#e03e3e'
         : isSelected || isHoveredShell
         ? isLight
-          ? '#1d4ed8'
-          : '#60a5fa'
+          ? '#0b6e99'
+          : '#529cca'
         : isLight
-        ? 'rgba(37, 99, 235, 0.35)'
-        : 'rgba(96, 165, 250, 0.35)';
-      ctx.lineWidth = 1.2;
+        ? '#b3d4e2'
+        : '#3f3f3f';
+      ctx.lineWidth = 1.1;
 
       ctx.beginPath();
-      ctx.roundRect(cx - bw / 2, labelY - bh / 2, bw, bh, 6);
+      ctx.roundRect(cx - bw / 2, labelY - bh / 2, bw, bh, 5);
       ctx.fill();
       ctx.stroke();
 
       ctx.fillStyle = isOverCap
         ? isLight
-          ? '#9f1239'
-          : '#fecdd3'
+          ? '#6e3630'
+          : '#ffa39e'
         : isSelected || isHoveredShell
         ? '#ffffff'
         : isLight
-        ? '#1e40af'
-        : '#bfdbfe';
+        ? '#0b6e99'
+        : '#91d5ff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(labelText, cx, labelY + 0.5);
@@ -1463,13 +1463,13 @@ export class AtomEditor {
         ctx.beginPath();
         ctx.arc(ex, ey, rad, 0, Math.PI * 2);
         ctx.fillStyle = isHoveredThisElectron
-          ? '#fb7185'
+          ? '#e03e3e'
           : isLight
-          ? '#2563eb'
-          : '#3b82f6';
+          ? '#2383e2'
+          : '#529cca';
         ctx.fill();
         ctx.lineWidth = 1.5;
-        ctx.strokeStyle = isLight ? '#ffffff' : '#0f172a';
+        ctx.strokeStyle = isLight ? '#ffffff' : '#202020';
         ctx.stroke();
       }
     }
@@ -1501,10 +1501,10 @@ export class AtomEditor {
     // Distinct nucleus boundary ring separating nucleus from K-shell
     ctx.beginPath();
     ctx.arc(cx, cy, maxNucleusRadius, 0, Math.PI * 2);
-    ctx.fillStyle = isLight ? 'rgba(37, 99, 235, 0.06)' : 'rgba(59, 130, 246, 0.08)';
+    ctx.fillStyle = isLight ? 'rgba(55, 53, 47, 0.05)' : 'rgba(230, 230, 228, 0.06)';
     ctx.fill();
     ctx.setLineDash([3, 3]);
-    ctx.strokeStyle = isLight ? 'rgba(37, 99, 235, 0.28)' : 'rgba(96, 165, 250, 0.28)';
+    ctx.strokeStyle = isLight ? 'rgba(55, 53, 47, 0.25)' : 'rgba(230, 230, 228, 0.25)';
     ctx.lineWidth = 1;
     ctx.stroke();
     ctx.setLineDash([]);
@@ -1514,10 +1514,10 @@ export class AtomEditor {
         ? 7.5
         : Math.max(2.3, Math.min(6.2, (clusterRadius / Math.pow(total, 0.36)) * 1.05));
 
-    const protonFill = isLight ? '#e11d48' : '#fb7185';
-    const protonStroke = isLight ? '#881337' : '#4c0519';
-    const neutronFill = isLight ? '#64748b' : '#94a3b8';
-    const neutronStroke = isLight ? '#1e293b' : '#0f172a';
+    const protonFill = isLight ? '#e03e3e' : '#ff7875';
+    const protonStroke = isLight ? '#6e3630' : '#492928';
+    const neutronFill = isLight ? '#9b9a97' : '#8c959f';
+    const neutronStroke = isLight ? '#37352f' : '#191919';
 
     for (let i = 0; i < total; i++) {
       const n = this.nucleons[i];

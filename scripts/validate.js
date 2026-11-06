@@ -146,6 +146,7 @@ function validateProjectFiles() {
     'src/components/atom-model.js',
     'src/components/atom-editor.js',
     'src/components/molecule-visualizer.js',
+    'src/components/site-chrome.js',
     'src/styles/main.css',
     'src/styles/table.css',
     'src/styles/atom.css',
@@ -178,9 +179,13 @@ function validateProjectFiles() {
         `Navbar in ${page} is missing navigation link ${link}`
       );
     }
+    assert(
+      html.includes('class="app-footer"') && html.includes('Denis Varga'),
+      `Footer (.app-footer with Denis Varga) is missing in ${page}`
+    );
   }
 
-  console.log('   ✓ All required modular project files & 5-page navbars are valid.');
+  console.log('   ✓ All required modular project files, 5-page navbars & footers are valid.');
 }
 
 function validateFormulaParserAndSmartInput() {

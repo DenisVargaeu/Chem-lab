@@ -56,39 +56,45 @@ body.has-fullscreen-atom {
 
 .atom-element-heading {
   margin: 0;
-  font-size: 18px;
-  font-weight: 800;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .atom-toolbar {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .atom-ctrl-btn {
-  height: 32px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1.5px solid var(--border-subtle);
-  background-color: var(--bg-surface-elevated);
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border-strong);
+  background-color: var(--bg-surface);
   color: var(--text-primary);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+  transition: all 0.12s ease;
 }
 
 .atom-primary-pill {
-  background-color: var(--m3-primary-container);
-  color: var(--m3-on-primary-container);
-  border-color: var(--accent-primary);
+  background-color: var(--m3-primary);
+  color: var(--m3-on-primary);
+  border-color: var(--m3-primary);
 }
 
 .atom-ctrl-btn:hover {
   border-color: var(--accent-primary);
-  transform: translateY(-1px);
+  background-color: var(--bg-surface-subtle);
+}
+
+.atom-primary-pill:hover {
+  background-color: var(--accent-focus);
+  color: #ffffff;
 }
 
 .atom-ctrl-btn:focus-visible {
@@ -97,12 +103,12 @@ body.has-fullscreen-atom {
 }
 
 .atom-icon-btn {
-  width: 32px;
+  width: 30px;
   padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 /* 2D Canvas Stage */
@@ -110,8 +116,8 @@ body.has-fullscreen-atom {
   position: relative;
   width: 100%;
   height: 340px;
-  border-radius: 20px;
-  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface-subtle);
   overflow: hidden;
   user-select: none;

@@ -62,7 +62,7 @@
   font-weight: 800;
 }
 
-/* Flat Element Tile (Preserving Category Colors) */
+/* Flat Element Tile (Preserving Category Colors — Crisp Notion/Wiki Geometry) */
 .element-tile {
   position: relative;
   display: flex;
@@ -70,17 +70,17 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 4px 5px;
-  border-radius: 8px;
-  border-width: 1.5px;
+  border-radius: 5px;
+  border-width: 1px;
   border-style: solid;
   cursor: pointer;
   text-align: left;
   min-height: 70px;
   user-select: none;
   transition:
-    background-color 0.14s ease,
-    opacity 0.14s ease,
-    border-color 0.14s ease;
+    background-color 0.12s ease,
+    opacity 0.12s ease,
+    border-color 0.12s ease;
 }
 
 .tile-top {

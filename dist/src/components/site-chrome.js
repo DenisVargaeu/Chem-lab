@@ -65,197 +65,84 @@ export const RELEASE_HISTORY = [
 export function renderFooterHTML() {
   return `
     <div class="app-footer-inner">
-      <div class="footer-top-grid">
-        <!-- 1. Stĺpec: Značka, popis a autor Denis Varga -->
-        <div class="footer-col footer-col-brand">
-          <div class="footer-brand-header">
-            <a href="./index.html" class="footer-logo-badge" aria-label="ChemLab Domov">
-              <span class="footer-logo-z">118</span>
-              <span class="footer-logo-sym">Pt</span>
-            </a>
-            <div class="footer-brand-titles">
-              <div class="footer-brand-name-row">
-                <span class="footer-brand-name">ChemLab</span>
-                <span class="footer-version-badge" title="Aktuálna produkčná verzia">
-                  <i class="fa-solid fa-code-branch" aria-hidden="true"></i> v${APP_VERSION}
-                </span>
-              </div>
-              <span class="footer-brand-sub">Interaktívne chemické laboratórium a periodická sústava</span>
-            </div>
-          </div>
-
-          <p class="footer-about-text">
-            Vzdelávacia vedecká webová aplikácia pre študentov, učiteľov a nadšencov chémie. Obsahuje presné dáta IUPAC pre všetkých 118 prvkov, 2D Bohrov model, interaktívny editor vrstiev a vizualizér chemických vzorcov.
-          </p>
-
-          <!-- Výrazná autorská karta: Made by Denis Varga -->
-          <div class="footer-author-card">
-            <div class="footer-author-avatar" aria-hidden="true">
-              <i class="fa-solid fa-user-astronaut"></i>
-            </div>
-            <div class="footer-author-info">
-              <span class="footer-author-eyebrow">Autor a vývojár projektu</span>
-              <div class="footer-author-main">
+      <!-- Kompaktný hlavný riadok: Značka + Made by Denis Varga | Hlavné verzie | Moduly & Privacy -->
+      <div class="footer-compact-row">
+        <div class="footer-compact-brand">
+          <a href="./index.html" class="footer-logo-badge" aria-label="ChemLab Domov">
+            <span class="footer-logo-z">118</span>
+            <span class="footer-logo-sym">Pt</span>
+          </a>
+          <div class="footer-compact-identity">
+            <div class="footer-brand-name-row">
+              <strong class="footer-brand-name">ChemLab</strong>
+              <span class="footer-version-badge" title="Aktuálna verzia aplikácie">v${APP_VERSION}</span>
+              <span class="footer-sep" aria-hidden="true">·</span>
+              <span class="footer-author-inline">
                 Made by <a href="https://denisvarga.eu" target="_blank" rel="noopener noreferrer" class="footer-author-link">Denis Varga <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
-              </div>
-              <div class="footer-author-links">
-                <a href="https://denisvarga.eu" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-solid fa-globe" aria-hidden="true"></i> denisvarga.eu
-                </a>
-                <span aria-hidden="true">·</span>
-                <a href="https://denisvarga.eu/chemlab/#H" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-solid fa-rocket" aria-hidden="true"></i> denisvarga.eu/chemlab
-                </a>
-              </div>
+              </span>
             </div>
+            <span class="footer-brand-sub">
+              118 prvkov IUPAC · 2D Bohrov model · Editor vrstiev · Vizualizér vzorcov (<a href="https://denisvarga.eu/chemlab/#H" target="_blank" rel="noopener noreferrer">denisvarga.eu/chemlab</a>)
+            </span>
           </div>
         </div>
 
-        <!-- 2. Stĺpec: Hlavné verzie a história vývoja (Changelog) -->
-        <div class="footer-col footer-col-versions" aria-label="Hlavné verzie aplikácie">
-          <div class="footer-col-header">
-            <h3 class="footer-col-title">
-              <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
-              Hlavné verzie (Changelog)
-            </h3>
-            <span class="footer-col-tag">História vydaní</span>
-          </div>
-
-          <div class="footer-timeline">
+        <!-- Kompaktný pás hlavných verzií -->
+        <div class="footer-compact-versions" aria-label="Hlavné verzie aplikácie">
+          <span class="footer-versions-label">
+            <i class="fa-solid fa-code-branch" aria-hidden="true"></i> Hlavné verzie:
+          </span>
+          <div class="footer-version-pills">
             ${RELEASE_HISTORY.map(
               (rel) => `
-              <div class="footer-release-item ${rel.isCurrent ? 'is-current' : ''}">
-                <div class="footer-release-marker" aria-hidden="true">
-                  <i class="${rel.icon}"></i>
-                </div>
-                <div class="footer-release-content">
-                  <div class="footer-release-top">
-                    <span class="footer-release-ver">${rel.version}</span>
-                    <span class="footer-release-badge ${rel.isCurrent ? 'badge-current' : ''}">${rel.tag}</span>
-                    <span class="footer-release-date">${rel.date}</span>
-                  </div>
-                  <strong class="footer-release-title">${rel.title}</strong>
-                  <p class="footer-release-desc">${rel.highlights[0]}</p>
-                </div>
-              </div>
+              <button
+                type="button"
+                class="footer-ver-pill ${rel.isCurrent ? 'is-current' : ''}"
+                data-open-changelog-modal
+                title="${rel.version} — ${rel.title}"
+              >
+                <strong>${rel.version}</strong>
+                <span>${rel.isCurrent ? 'Aktuálna' : rel.tag}</span>
+              </button>
             `
             ).join('')}
           </div>
+        </div>
 
-          <button type="button" class="footer-changelog-btn" data-open-changelog-modal>
-            <i class="fa-solid fa-list-ul" aria-hidden="true"></i>
-            Zobraziť kompletný prehľad verzií (v1.0 – v${APP_VERSION})
+        <!-- Kompaktné tlačidlá: Súkromie, Cookies & Font Awesome -->
+        <div class="footer-compact-actions">
+          <span class="footer-tech-pill" title="Ikony Font Awesome 6 Free cez Cloudflare CDN">
+            <i class="fa-brands fa-font-awesome" aria-hidden="true"></i> Font Awesome 6
+          </span>
+          <button type="button" class="footer-compact-btn" data-open-changelog-modal>
+            <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i>
+            <span>Changelog</span>
           </button>
-        </div>
-
-        <!-- 3. Stĺpec: Sekcie aplikácie a rýchle vedecké ukážky -->
-        <div class="footer-col footer-col-nav">
-          <div class="footer-col-header">
-            <h3 class="footer-col-title">
-              <i class="fa-solid fa-compass" aria-hidden="true"></i>
-              Moduly aplikácie
-            </h3>
-          </div>
-
-          <nav class="footer-nav-list" aria-label="Navigácia v pätičke">
-            <a href="./index.html" class="footer-nav-item">
-              <i class="fa-solid fa-table-cells" aria-hidden="true"></i>
-              <span>Periodická tabuľka (118 prvkov)</span>
-            </a>
-            <a href="./prvok.html#H" class="footer-nav-item">
-              <i class="fa-solid fa-microscope" aria-hidden="true"></i>
-              <span>2D Bohrov model a detail prvku</span>
-            </a>
-            <a href="./editor.html#C" class="footer-nav-item">
-              <i class="fa-solid fa-atom" aria-hidden="true"></i>
-              <span>Interaktívny editor atómu (K–Q)</span>
-            </a>
-            <a href="./molekuly.html#4CO2" class="footer-nav-item">
-              <i class="fa-solid fa-flask-vial" aria-hidden="true"></i>
-              <span>Molekuly a chemické vzorce</span>
-            </a>
-            <a href="./prvky.html" class="footer-nav-item">
-              <i class="fa-solid fa-list-check" aria-hidden="true"></i>
-              <span>Katalóg a porovnanie prvkov</span>
-            </a>
-          </nav>
-
-          <div class="footer-quick-chips-block">
-            <span class="footer-sub-label">Rýchle ukážky:</span>
-            <div class="footer-quick-chips">
-              <a href="./prvok.html#H" class="footer-chip">¹H Vodík</a>
-              <a href="./prvok.html#C" class="footer-chip">¹²C Uhlík</a>
-              <a href="./prvok.html#Au" class="footer-chip">¹⁹⁷Au Zlato</a>
-              <a href="./molekuly.html#4CO2" class="footer-chip">4CO₂</a>
-              <a href="./molekuly.html#H2O" class="footer-chip">H₂O</a>
-              <a href="./molekuly.html#Al2(SO4)3" class="footer-chip">Al₂(SO₄)₃</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Stĺpec: Súkromie, Cookies, Font Awesome & Technológie -->
-        <div class="footer-col footer-col-legal">
-          <div class="footer-col-header">
-            <h3 class="footer-col-title">
-              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-              Súkromie, Cookies &amp; Ikony
-            </h3>
-          </div>
-
-          <div class="footer-tech-cards">
-            <div class="footer-tech-item">
-              <i class="fa-brands fa-font-awesome footer-tech-icon" aria-hidden="true"></i>
-              <div>
-                <strong>Font Awesome 6 Free</strong>
-                <p>Aplikácia používa vektorové ikony Font Awesome načítavané cez Cloudflare CDN.</p>
-              </div>
-            </div>
-
-            <div class="footer-tech-item">
-              <i class="fa-solid fa-cookie-bite footer-tech-icon" aria-hidden="true"></i>
-              <div>
-                <strong>Cookies &amp; LocalStorage</strong>
-                <p>Nepoužívame reklamné ani sledovacie cookies. Ukladáme len tému vzhľadu a súhlas s bannerom.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-legal-actions">
-            <button type="button" class="footer-legal-btn footer-legal-btn-primary" data-open-privacy-modal>
-              <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
-              <span>Privacy Policy (Ochrana súkromia)</span>
-            </button>
-            <button type="button" class="footer-legal-btn" data-open-cookie-banner>
-              <i class="fa-solid fa-sliders" aria-hidden="true"></i>
-              <span>Nastavenia Cookies a úložiska</span>
-            </button>
-          </div>
+          <button type="button" class="footer-compact-btn" data-open-privacy-modal>
+            <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+            <span>Privacy Policy</span>
+          </button>
+          <button type="button" class="footer-compact-btn" data-open-cookie-banner>
+            <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+            <span>Cookies</span>
+          </button>
         </div>
       </div>
 
-      <!-- Spodná lišta pätičky -->
+      <!-- Spodný tenký riadok: Navigácia modulov + Copyright -->
       <div class="footer-bottom-bar">
-        <div class="footer-bottom-left">
-          <span class="footer-copyright">
-            <i class="fa-regular fa-copyright" aria-hidden="true"></i> 2026 <strong>ChemLab</strong> · Made by <a href="https://denisvarga.eu" target="_blank" rel="noopener noreferrer" class="footer-author-link">Denis Varga</a>
-          </span>
-          <span class="footer-sep" aria-hidden="true">•</span>
-          <span class="footer-status-indicator">
-            <span class="status-dot" aria-hidden="true"></span>
-            Všetkých 118 prvkov IUPAC overených
-          </span>
-        </div>
+        <nav class="footer-inline-nav" aria-label="Rýchla navigácia v pätičke">
+          <a href="./index.html"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Periodická tabuľka</a>
+          <a href="./prvok.html#H"><i class="fa-solid fa-microscope" aria-hidden="true"></i> 2D Model a Detail</a>
+          <a href="./editor.html#C"><i class="fa-solid fa-atom" aria-hidden="true"></i> Editor atómu</a>
+          <a href="./molekuly.html#4CO2"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i> Molekuly (4CO₂)</a>
+          <a href="./prvky.html"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Katalóg prvkov</a>
+        </nav>
 
         <div class="footer-bottom-right">
-          <span class="footer-tech-pill">
-            <i class="fa-brands fa-font-awesome" aria-hidden="true"></i> Font Awesome 6.5.2
+          <span class="footer-copyright">
+            <i class="fa-regular fa-copyright" aria-hidden="true"></i> 2026 <strong>ChemLab v${APP_VERSION}</strong> · Made by <a href="https://denisvarga.eu" target="_blank" rel="noopener noreferrer" class="footer-author-link">Denis Varga</a>
           </span>
-          <span class="footer-tech-pill">
-            <i class="fa-solid fa-code" aria-hidden="true"></i> Verzia v${APP_VERSION}
-          </span>
-          <button type="button" class="footer-bottom-link" data-open-privacy-modal>
-            Privacy Policy &amp; Cookies
-          </button>
         </div>
       </div>
     </div>
@@ -263,11 +150,17 @@ export function renderFooterHTML() {
 }
 
 export function initSiteChrome() {
-  // 1. Upgrade/hydrate .app-footer with rich interactive markup if present
-  const footerEl = document.querySelector('.app-footer');
-  if (footerEl) {
-    footerEl.innerHTML = renderFooterHTML();
+  // 1. Upgrade/hydrate .app-footer with rich interactive markup (create if missing)
+  let footerEl = document.querySelector('.app-footer');
+  if (!footerEl) {
+    footerEl = document.createElement('footer');
+    footerEl.className = 'app-footer';
+    footerEl.setAttribute('role', 'contentinfo');
+    footerEl.setAttribute('aria-label', 'Pätička aplikácie, verzie a autor projektu');
+    const shell = document.querySelector('.app-shell') || document.body;
+    shell.appendChild(footerEl);
   }
+  footerEl.innerHTML = renderFooterHTML();
 
   // 2. Inject Cookie Banner & Privacy/Changelog Modals if not yet in DOM
   if (!document.getElementById('chemlab-cookie-banner')) {

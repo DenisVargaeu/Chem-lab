@@ -5,17 +5,16 @@
 .atom-editor-section {
   width: 100%;
   background-color: var(--bg-surface);
-  border: 1.5px solid var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xl);
   padding: 24px;
-  box-shadow: var(--shadow-sm);
 }
 
 .editor-header {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-bottom: 18px;
+  gap: 14px;
+  padding-bottom: 16px;
   border-bottom: 1px solid var(--border-subtle);
   margin-bottom: 20px;
 }
@@ -23,22 +22,22 @@
 .editor-title-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
 
 .editor-eyebrow {
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent-primary);
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
 }
 
 .editor-main-title {
   margin: 0;
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-size: 25px;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
@@ -147,18 +146,19 @@
 
 .ed-card {
   background-color: var(--bg-surface-subtle);
-  border: 1.5px solid var(--border-subtle);
-  border-radius: 22px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
   padding: 16px;
 }
 
 .ed-section-title {
-  margin: 0 0 2px;
-  font-size: 13px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--accent-primary);
+  margin: 0 0 4px;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .ed-helper-text {
@@ -418,8 +418,8 @@
   position: relative;
   width: 100%;
   height: 480px;
-  border-radius: 26px;
-  border: 2px solid var(--border-subtle);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
   background-color: var(--bg-surface-subtle);
   overflow: hidden;
   user-select: none;
