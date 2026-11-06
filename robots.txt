@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# ChemLab — Interaktívne chemické laboratórium a periodická sústava prvkov
+# Made by Denis Varga (https://denisvarga.eu)
+Sitemap: https://denisvarga.eu/chemlab/sitemap.xml

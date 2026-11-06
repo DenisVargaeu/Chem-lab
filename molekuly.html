@@ -79,15 +79,22 @@
             <span class="mol-eyebrow">Sekcia · Molekuly a zlúčeniny</span>
             <div class="mol-title-with-action">
               <h2 class="mol-section-title">Editor a vizualizér chemických vzorcov</h2>
-              <button
-                type="button"
-                id="mol-random-example-btn"
-                class="ctrl-btn ctrl-btn-tonal"
-                title="Načítať náhodný vzorec zo zbierky"
-              >
-                <i class="fa-solid fa-dice" aria-hidden="true"></i>
-                <span class="btn-text">Náhodný vzorec</span>
-              </button>
+              <div class="action-buttons-group">
+                <select
+                  id="mol-database-picker"
+                  class="ctrl-select"
+                  aria-label="Vybrať zlúčeninu z databázy ChemLab"
+                ></select>
+                <button
+                  type="button"
+                  id="mol-random-example-btn"
+                  class="ctrl-btn ctrl-btn-tonal"
+                  title="Načítať náhodný vzorec zo zbierky"
+                >
+                  <i class="fa-solid fa-dice" aria-hidden="true"></i>
+                  <span class="btn-text">Náhodný vzorec</span>
+                </button>
+              </div>
             </div>
             <p class="mol-section-desc">
               Napíšte chemický vzorec (napr. <code>4CO₂</code>, <code>H₂O</code>, <code>Ca(OH)₂</code>, <code>Al₂(SO₄)₃</code>, <code>CH₃COOH</code>).

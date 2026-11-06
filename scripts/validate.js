@@ -14,6 +14,7 @@ import {
   parseChemicalFormula,
   handleSmartDigitInsertion,
 } from '../src/lib/formula-parser.js';
+import { COMPOUNDS_DATABASE } from '../src/data/compounds.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -130,6 +131,8 @@ function validateProjectFiles() {
     'editor.html',
     'molekuly.html',
     'prvky.html',
+    'robots.txt',
+    'sitemap.xml',
     'package.json',
     'README.md',
     'assets/favicon.svg',
@@ -347,7 +350,29 @@ function validateFormulaParserAndSmartInput() {
   const blockedAtStart = handleSmartDigitInsertion({ currentValue: 'CO', selectionStart: 0, digit: '2', shiftKey: true });
   assert(blockedAtStart.blockedSubscript && blockedAtStart.newValue === 'CO', 'Shift+digit at index 0 must be blocked');
 
-  console.log('   ✓ Formula parser, stoichiometry & smart Shift+digit controls passed all unit tests.');
+  // Overenie všetkých zlúčenín v COMPOUNDS_DATABASE (vrátane súladu počtu atómov v 3D/2D štruktúre)
+  const dbKeys = Object.keys(COMPOUNDS_DATABASE);
+  assert(dbKeys.length >= 40, `Expected at least 40 compounds in COMPOUNDS_DATABASE, found ${dbKeys.length}`);
+  for (const [key, entry] of Object.entries(COMPOUNDS_DATABASE)) {
+    assert(entry.formula === key, `Mismatch between key ${key} and entry.formula ${entry.formula}`);
+    const parsed = parseChemicalFormula(key);
+    assert(parsed.ok, `Database compound ${key} failed to parse: ${parsed.error}`);
+    assert(parsed.substanceName === entry.name, `Database compound ${key} name mismatch`);
+    if (entry.structure) {
+      assert(
+        entry.structure.atoms.length === parsed.totalAtomsPerUnit,
+        `Compound ${key} structure has ${entry.structure.atoms.length} atoms, expected ${parsed.totalAtomsPerUnit}`
+      );
+      for (const b of entry.structure.bonds) {
+        assert(
+          b.from >= 0 && b.from < entry.structure.atoms.length && b.to >= 0 && b.to < entry.structure.atoms.length,
+          `Invalid bond indices in ${key}`
+        );
+      }
+    }
+  }
+
+  console.log(`   ✓ Formula parser, ${dbKeys.length} database compounds & smart Shift+digit controls passed all unit tests.`);
 }
 
 validateDataset();

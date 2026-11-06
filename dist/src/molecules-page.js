@@ -1,5 +1,6 @@
 import {
   QUICK_FORMULA_EXAMPLES,
+  COMPOUNDS_DATABASE,
   getAtomVisualStyle,
 } from './data/compounds.js';
 import {
@@ -82,6 +83,7 @@ class MoleculesPageApp {
 
   cacheDOM() {
     this.themeToggleBtn = document.getElementById('theme-toggle-btn');
+    this.databasePickerEl = document.getElementById('mol-database-picker');
     this.randomExampleBtn = document.getElementById('mol-random-example-btn');
 
     this.formulaInput = document.getElementById('formula-input');
@@ -115,6 +117,30 @@ class MoleculesPageApp {
   }
 
   renderExampleChips() {
+    if (this.databasePickerEl) {
+      const dbEntries = Object.values(COMPOUNDS_DATABASE);
+      const molecularList = dbEntries.filter((c) => c.bondingType === 'molecular');
+      const ionicList = dbEntries.filter((c) => c.bondingType === 'ionic');
+
+      const renderOptions = (list) =>
+        list
+          .map((item) => {
+            const unicode = formatFormulaUnicode(item.formula);
+            return `<option value="${unicode}">${unicode} — ${item.name}</option>`;
+          })
+          .join('');
+
+      this.databasePickerEl.innerHTML = `
+        <option value="">Databáza zlúčenín (${dbEntries.length} látok)…</option>
+        <optgroup label="Molekulové látky, kyseliny, oxidy a organika (${molecularList.length})">
+          ${renderOptions(molecularList)}
+        </optgroup>
+        <optgroup label="Iónové zlúčeniny, hydroxidy a soli (${ionicList.length})">
+          ${renderOptions(ionicList)}
+        </optgroup>
+      `;
+    }
+
     if (!this.examplesWrapEl) return;
     this.examplesWrapEl.innerHTML = QUICK_FORMULA_EXAMPLES.map(
       (ex) => `
@@ -148,13 +174,25 @@ class MoleculesPageApp {
       this.applyTheme(nextTheme);
     });
 
+    this.databasePickerEl?.addEventListener('change', (e) => {
+      const val = e.target.value;
+      if (!val || !this.formulaInput) return;
+      this.formulaInput.value = val;
+      this.transientWarning = null;
+      this.evaluateCurrentFormula();
+    });
+
     this.randomExampleBtn?.addEventListener('click', () => {
       const current = this.formulaInput?.value.trim();
-      const candidates = QUICK_FORMULA_EXAMPLES.filter((e) => e.display !== current);
+      const allFormulas = [
+        ...QUICK_FORMULA_EXAMPLES.map((e) => e.display),
+        ...Object.values(COMPOUNDS_DATABASE).map((c) => formatFormulaUnicode(c.formula)),
+      ];
+      const uniqueFormulas = [...new Set(allFormulas)].filter((f) => f !== current);
       const chosen =
-        candidates[Math.floor(Math.random() * candidates.length)] || QUICK_FORMULA_EXAMPLES[0];
+        uniqueFormulas[Math.floor(Math.random() * uniqueFormulas.length)] || '4CO₂';
       if (this.formulaInput) {
-        this.formulaInput.value = chosen.display;
+        this.formulaInput.value = chosen;
         this.transientWarning = null;
         this.evaluateCurrentFormula();
       }
