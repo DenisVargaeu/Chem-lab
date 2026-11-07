@@ -136,6 +136,8 @@ function validateProjectFiles() {
     'package.json',
     'README.md',
     'assets/favicon.svg',
+    'assets/og-image.svg',
+    'assets/og-image.png',
     'src/main.js',
     'src/detail-page.js',
     'src/editor-page.js',
@@ -185,6 +187,13 @@ function validateProjectFiles() {
     assert(
       html.includes('class="app-footer"') && html.includes('Denis Varga'),
       `Footer (.app-footer with Denis Varga) is missing in ${page}`
+    );
+    assert(
+      html.includes('name="description"') &&
+        html.includes('property="og:image"') &&
+        html.includes('og-image.png') &&
+        html.includes('name="twitter:card"'),
+      `SEO / Open Graph meta tags are missing in ${page}`
     );
   }
 
